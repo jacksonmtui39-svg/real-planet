@@ -1,0 +1,114 @@
+VICOBA SYSTEM - SOMA KWANZA
+Toleo 2.0 (12/11/2026)
+==========================================
+
+Folda hii ina VICOBA SYSTEM tayari kuwekwa kama app kwenye
+kompyuta na simu.
+
+NDANI YA FOLDA HII
+  index.html            Mfumo wenyewe
+  manifest.webmanifest  Jina na alama ya app (usiliguse)
+  sw.js                 Inaruhusu app kufanya kazi bila intaneti (usiliguse)
+  WEKA_APP_KWENYE_KOMPYUTA.bat   Inaweka app kwenye Desktop (Windows)
+  weka_app.ps1          Inatumiwa na faili la .bat (usiliguse)
+  icons/                Alama (logo) za app
+  SOMA_KWANZA.txt       Maelekezo haya
+
+Usibadilishe majina ya faili wala kuzitoa nje ya folda.
+
+
+HATUA YA 1: KUFUNGUA ZIP
+------------------------
+Kompyuta (Windows):
+  1. Bonyeza kulia (right-click) faili VICOBA_SYSTEM_app.zip
+  2. Chagua "Extract All..." kisha "Extract"
+  3. Folda mpya VICOBA_SYSTEM_app itafunguka
+
+Kompyuta (Mac):
+  Bonyeza zip mara mbili. Folda inatokea pembeni yake.
+
+Simu ya Android:
+  1. Fungua app ya "Files" (Files by Google)
+  2. Nenda Downloads, gusa VICOBA_SYSTEM_app.zip
+  3. Gusa "Extract"
+
+
+NJIA A: KUTUMIA MOJA KWA MOJA (bila kuweka mtandaoni)
+-----------------------------------------------------
+Bonyeza mara mbili index.html. Mfumo unafunguka kwenye
+kivinjari kama faili la kawaida. Njia hii haisakinishi app.
+
+
+NJIA B: APP KWENYE KOMPYUTA YA WINDOWS (bila intaneti, bila Netlify)
+-------------------------------------------------------------------
+  1. Hamisha folda VICOBA_SYSTEM_app mahali itakapokaa kudumu,
+     mf. Documents (si Downloads, ambayo watu hufuta mara kwa mara).
+  2. Fungua folda, bonyeza mara mbili WEKA_APP_KWENYE_KOMPYUTA.bat
+  3. Windows ikionyesha "Windows protected your PC", bonyeza
+     "More info" kisha "Run anyway".
+  4. Dirisha jeusi litasema IMEKAMILIKA. Bonyeza Enter.
+  5. Alama ya VICOBA SYSTEM iko kwenye Desktop na Start Menu.
+     Inafunguka kwenye dirisha lake kama app, bila sehemu ya anwani.
+  Data ni ileile uliyokuwa nayo kwenye Edge/Chrome ya kompyuta hii.
+  Ukihamisha folda baadaye, endesha WEKA_APP_KWENYE_KOMPYUTA.bat tena.
+  (Njia hii ni kwa kompyuta tu. Kwa simu tumia Njia C.)
+
+
+NJIA C: APP KWENYE SIMU NA KOMPYUTA (kupitia mtandao)
+---------------------------------------
+App inahitaji anwani salama ya mtandao (https). Fanya hivi
+mara moja tu, kwa kompyuta:
+
+  1. Fungua https://app.netlify.com/drop
+  2. Buruta (drag) folda nzima VICOBA_SYSTEM_app uiachie
+     kwenye ukurasa huo. (Buruta FOLDA, si zip.)
+  3. Subiri sekunde chache. Utapata anwani kama
+     https://jina-fulani.netlify.app
+  4. Fungua akaunti ya bure na ubonyeze "Claim" ili site
+     ibaki mtandaoni. Unaweza kubadilisha jina la site
+     (Site configuration > Change site name), mf. umoja-vicoba
+
+Kusakinisha kwenye kompyuta (Chrome au Edge):
+  Fungua anwani yako (lazima ianze na https://). Bonyeza alama
+  ya kusakinisha upande wa kulia wa sehemu ya anwani.
+  Edge: menyu (...) > Apps > "Install this site as an app".
+  Chrome: menyu (vitone vitatu) > "Cast, save and share" >
+  "Install page as app".
+  Kama anwani inaanza na C:/ au file:/// HAUWEZI kusakinisha;
+  tumia Njia B au weka mtandaoni kwanza.
+
+Kusakinisha kwenye simu ya Android (Chrome):
+  Fungua anwani yako > menyu (vitone vitatu) >
+  "Install app" au "Add to Home screen".
+
+Kusakinisha kwenye iPhone (Safari):
+  Fungua anwani yako > kitufe cha Share > "Add to Home Screen".
+
+
+KUHAMISHA DATA KUTOKA FAILI LA ZAMANI
+-------------------------------------
+Data ya faili la zamani (Mfumo_wa_Kikundi.html) haihamii
+yenyewe kwenye app.
+  1. Fungua faili la zamani > Mipangilio > "Pakua Nakala (.json)"
+  2. Fungua app mpya > Mipangilio > "Rejesha kutoka Nakala"
+  3. Chagua faili la nakala ulilopakua
+
+
+KUSASISHA MFUMO (TOLEO JIPYA)
+-----------------------------
+  1. Fungua zip ya toleo jipya (Hatua ya 1)
+  2. Ingia https://app.netlify.com > chagua site yako > "Deploys"
+  3. Buruta folda mpya kwenye sehemu ya "Drag and drop"
+  4. Kwenye kila kifaa: funga app kabisa, kisha ifungue mara mbili
+  5. Hakikisha: Mipangilio > Ukaguzi wa data > "Toleo la mfumo"
+     linaonyesha toleo jipya
+Data yako haiguswi wakati wa kusasisha.
+
+
+MUHIMU
+------
+- Data iko kwenye kifaa ulichotumia tu. Simu na kompyuta
+  hazishirikiani data. Chagua kifaa kimoja cha kuingizia.
+- Pakua nakala kila baada ya kikao.
+- Mtu mwenye anwani anaweza kufungua mfumo, lakini ataona
+  mfumo mtupu kwenye kifaa chake. Data ya kikundi haiko mtandaoni.

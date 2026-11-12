@@ -1,0 +1,1626 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICOBA SYSTEM</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1F5C4A">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VICOBA">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2231%22%20fill%3D%22%231F5C4A%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2228.5%22%20fill%3D%22none%22%20stroke%3D%22%23E2B93B%22%20stroke-width%3D%221.6%22/%3E%3Cg%20fill%3D%22%23fff%22%20stroke%3D%22%231F5C4A%22%20stroke-width%3D%221.6%22%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2224.5%22%20r%3D%224.6%22/%3E%3Cpath%20d%3D%22M8.5%2045%20Q8.5%2031%2017%2031%20Q25.5%2031%2025.5%2045Z%22/%3E%3Ccircle%20cx%3D%2247%22%20cy%3D%2224.5%22%20r%3D%224.6%22/%3E%3Cpath%20d%3D%22M38.5%2045%20Q38.5%2031%2047%2031%20Q55.5%2031%2055.5%2045Z%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2218.5%22%20r%3D%225.4%22/%3E%3Cpath%20d%3D%22M22%2046%20Q22%2026%2032%2026%20Q42%2026%2042%2046Z%22/%3E%3C/g%3E%3Cpath%20d%3D%22M13%2038%20Q32%2030%2051%2038%22%20fill%3D%22none%22%20stroke%3D%22%23E2B93B%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M12%2048.5%20Q32%2056%2052%2048.5%22%20fill%3D%22none%22%20stroke%3D%22%23E2B93B%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<style>
+:root{
+  --g:#1F5C4A; --g2:#2E7D5B; --gl:#E8F1EC; --ink:#1d2421; --mut:#5d6b65; --line:#d9e2dd;
+  --bg:#f6f8f7; --card:#ffffff; --in:#fffbea; --inb:#e2c766; --red:#b00020; --redl:#fde7ea;
+  --amb:#8a5a00; --ambl:#fff3d6; --ok:#1b5e20; --okl:#e3f2e5;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:var(--g);color:#fff;padding:14px 16px 0}
+header .top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;max-width:1200px;margin:0 auto}
+header h1{margin:0;font-size:20px;letter-spacing:.3px}
+.brand{display:flex;align-items:center;gap:12px}.brand svg{width:52px;height:52px;flex:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+.bn{font-size:11px;font-weight:700;letter-spacing:2.5px;color:#E2B93B}
+body.locked nav{display:none}
+.lockcard svg{width:84px;height:84px;margin-bottom:6px}
+.receipt .rl{display:flex;justify-content:center;margin-bottom:4px}.receipt .rl svg{width:42px;height:42px}
+.leaders{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.leader{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+.leader .c{font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
+.leader .n{font-size:16px;font-weight:700;color:var(--g);margin:2px 0}
+.printsig{display:none}.printonly{display:none}
+@media print{.printonly{display:block!important}textarea.noprint{display:none!important}.printsig{display:flex;justify-content:space-between;gap:20px;margin-top:40px;font-size:12px}}
+header .sub{opacity:.85;font-size:13px}
+nav{display:flex;gap:2px;overflow-x:auto;max-width:1200px;margin:10px auto 0;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{background:transparent;color:#dcebe4;border:0;padding:10px 12px;font:inherit;font-size:14px;cursor:pointer;border-radius:8px 8px 0 0;white-space:nowrap}
+nav button.on{background:var(--bg);color:var(--g);font-weight:600}
+main{max-width:1200px;margin:0 auto;padding:16px}
+h2{font-size:18px;margin:4px 0 12px;color:var(--g)}
+h3{font-size:15px;margin:0 0 10px;color:var(--g)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
+.grid{display:grid;gap:12px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi .l{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}
+.kpi .v{font-size:22px;font-weight:700;color:var(--g);font-variant-numeric:tabular-nums}
+.kpi.warn .v{color:var(--red)}
+.two{grid-template-columns:1fr 1fr}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 14px}
+label{display:flex;flex-direction:column;font-size:13px;color:var(--mut);gap:4px}
+label.full{grid-column:1/-1}
+input,select,textarea{font:inherit;padding:9px 10px;border:1px solid var(--inb);background:var(--in);border-radius:8px;color:var(--ink);width:100%}
+input:focus,select:focus{outline:2px solid var(--g2);outline-offset:1px}
+input[type=number]{font-variant-numeric:tabular-nums}
+.btn{font:inherit;font-weight:600;background:var(--g);color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer}
+.btn:hover{background:var(--g2)}
+.btn.sec{background:#fff;color:var(--g);border:1px solid var(--g)}
+.btn.sm{padding:5px 10px;font-size:13px;font-weight:500}
+.btn.dan{background:var(--red)}
+.btn.ghost{background:transparent;color:var(--g);padding:5px 8px}
+.btn.ghost.dan{color:var(--red);background:transparent}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.right{margin-left:auto}
+.info{font-size:13px;color:var(--mut);background:var(--gl);border-radius:8px;padding:8px 10px}
+.pickname{font-size:13px;color:var(--g);font-weight:600;min-height:18px}
+.acts{white-space:nowrap}.acts .btn{margin-right:4px}
+.btn.del{background:#fff;color:var(--red);border:1px solid var(--red)}.btn.del:hover{background:var(--redl)}
+.lengo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;grid-column:1/-1;background:var(--gl);padding:10px;border-radius:10px}
+@media (max-width:520px){.lengo-wrap{grid-template-columns:1fr}}
+.calc{background:var(--gl);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.calc div span{display:block;font-size:12px;color:var(--mut)}
+.calc div b{font-size:17px;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{background:var(--g);color:#fff;text-align:left;font-weight:600;padding:8px 10px;white-space:nowrap;position:sticky;top:0}
+td{padding:7px 10px;border-top:1px solid var(--line);white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:700;background:var(--gl);border-top:2px solid var(--g)}
+tbody tr:hover{background:#fafcfb}
+.chip{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600}
+.chip.ok{background:var(--okl);color:var(--ok)}
+.chip.bad{background:var(--redl);color:var(--red)}
+.chip.hai{background:var(--ambl);color:var(--amb)}
+.stmt td:first-child{color:var(--mut)}
+.stmt td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.stmt tr.sec td{background:var(--g);color:#fff;font-weight:600}
+.stmt tr.big td{font-size:17px;font-weight:700;background:var(--gl)}
+.stmt input{max-width:160px;text-align:right}
+.alert{border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:14px}
+.alert.bad{background:var(--redl);color:var(--red)}
+.alert.ok{background:var(--okl);color:var(--ok)}
+.alert.amb{background:var(--ambl);color:var(--amb)}
+.muted{color:var(--mut);font-size:13px}
+.empty{padding:22px;text-align:center;color:var(--mut)}
+dialog{border:0;border-radius:14px;padding:0;max-width:720px;width:calc(100% - 24px);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(10,30,22,.45)}
+dialog .dh{background:var(--g);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+dialog .dh b{font-size:16px}
+dialog .dh button{background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer;line-height:1}
+dialog .db{padding:16px;max-height:75vh;overflow:auto}
+dialog .df{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50;max-width:90%}
+#toast.on{opacity:1}
+.receipt{max-width:380px;margin:0 auto;font-size:14px}
+.receipt h4{text-align:center;margin:0;font-size:17px;color:var(--g)}
+.receipt .t{text-align:center;font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:6px;margin:4px 0 10px}
+.receipt table td{border-top:1px dashed var(--line)}
+.sig{margin-top:26px;display:flex;justify-content:space-between;font-size:12px;color:var(--mut)}
+@media print{
+  header,nav,.noprint,#toast{display:none!important}
+  body{background:#fff}
+  main{padding:0;max-width:none}
+  .card{border:0;padding:0}
+  body.pm main{display:none}
+  body.pm dialog{position:static;box-shadow:none;max-width:none;width:auto}
+  body.pm dialog .dh,body.pm dialog .df{display:none}
+  body.pm dialog .db{max-height:none;overflow:visible}
+  th{background:#ddd!important;color:#000!important}
+  .tw{overflow:visible!important;border:0}
+  table{font-size:11px}
+  td,th{padding:4px 6px;white-space:normal}
+  th{position:static}
+  tr,.kpi,.stmt tr{page-break-inside:avoid;break-inside:avoid}
+  h3{page-break-after:avoid;break-after:avoid}
+  .kpis{grid-template-columns:repeat(4,1fr)!important;gap:6px}
+  .kpi{padding:6px 8px}.kpi .v{font-size:15px}
+  .pdfhead{display:flex!important}
+  html,body{background:#fff!important}
+}
+@page{size:A4;margin:12mm}
+.pdfhead{display:none;align-items:center;gap:12px;border-bottom:2px solid var(--g);padding-bottom:8px;margin-bottom:12px}
+.pdfhead svg{width:46px;height:46px}
+.pdfhead .t{font-size:17px;font-weight:700;color:var(--g)}
+.pdfhead .m{font-size:11px;color:var(--mut)}
+.btn.pdf{background:#B3261E}.btn.pdf:hover{background:#8C1D18}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand"><svg aria-hidden="true" viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="#1F5C4A"/><circle cx="32" cy="32" r="28.5" fill="none" stroke="#E2B93B" stroke-width="1.6"/><g fill="#fff" stroke="#1F5C4A" stroke-width="1.6"><circle cx="17" cy="24.5" r="4.6"/><path d="M8.5 45 Q8.5 31 17 31 Q25.5 31 25.5 45Z"/><circle cx="47" cy="24.5" r="4.6"/><path d="M38.5 45 Q38.5 31 47 31 Q55.5 31 55.5 45Z"/><circle cx="32" cy="18.5" r="5.4"/><path d="M22 46 Q22 26 32 26 Q42 26 42 46Z"/></g><path d="M13 38 Q32 30 51 38" fill="none" stroke="#E2B93B" stroke-width="2.6" stroke-linecap="round"/><path d="M12 48.5 Q32 56 52 48.5" fill="none" stroke="#E2B93B" stroke-width="3" stroke-linecap="round"/></svg><div><div class="bn">VICOBA SYSTEM</div><h1 id="hJina">Kikundi</h1><div class="sub" id="hSub"></div></div></div>
+    <div style="text-align:right"><button class="btn sm" id="hInstall" data-a="installApp" style="display:none;background:#E2B93B;color:#1F5C4A;margin-bottom:6px">&#11015; Sakinisha App</button><div class="sub" id="hSave"></div></div>
+  </div>
+  <nav id="nav"></nav>
+</header>
+<main id="app"></main>
+<dialog id="dlg"><div class="dh"><b id="dlgT"></b><button data-a="closeDlg" aria-label="Funga">&times;</button></div><div class="db" id="dlgB"></div><div class="df" id="dlgF"></div></dialog>
+<div id="toast"></div>
+<input type="file" id="fileIn" accept=".json,application/json" hidden>
+<input type="file" id="xlsKikao" accept=".xlsx,.csv" hidden>
+<input type="file" id="xlsIn" accept=".xlsx,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" hidden>
+<datalist id="dlMw"></datalist>
+<datalist id="dlLengo"></datalist>
+
+<script>
+"use strict";
+const APP_VERSION="2.0 (12/11/2026)";
+const LOGO=`<svg aria-hidden="true" viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="#1F5C4A"/><circle cx="32" cy="32" r="28.5" fill="none" stroke="#E2B93B" stroke-width="1.6"/><g fill="#fff" stroke="#1F5C4A" stroke-width="1.6"><circle cx="17" cy="24.5" r="4.6"/><path d="M8.5 45 Q8.5 31 17 31 Q25.5 31 25.5 45Z"/><circle cx="47" cy="24.5" r="4.6"/><path d="M38.5 45 Q38.5 31 47 31 Q55.5 31 55.5 45Z"/><circle cx="32" cy="18.5" r="5.4"/><path d="M22 46 Q22 26 32 26 Q42 26 42 46Z"/></g><path d="M13 38 Q32 30 51 38" fill="none" stroke="#E2B93B" stroke-width="2.6" stroke-linecap="round"/><path d="M12 48.5 Q32 56 52 48.5" fill="none" stroke="#E2B93B" stroke-width="3" stroke-linecap="round"/></svg>`;
+const CHEO=["Mwenyekiti","Makamu Mwenyekiti","Katibu","Katibu Msaidizi","Mweka Hazina"];
+/* ================================================================ DATA */
+const KEY = "mfumo_kikundi_v1";
+const AINA = ["Hisa","Jamii","Marejesho ya Mkopo","Riba ya Mkopo","Adhabu ya Mkopo","Adhabu Nyingine","Ada ya Kujiunga","Mchango Mwingine"];
+const LENGO_DEF = ["T-shirt","Rambirambi","Harusi","Uzazi","Ugonjwa","Sherehe","Safari"];
+const LOAN_TYPES = ["Marejesho ya Mkopo","Riba ya Mkopo","Adhabu ya Mkopo"];
+const KUNDI = ["Uendeshaji wa Ofisi","Shajara na Vifaa","Usafiri","Posho za Vikao","Ada za Benki na Simu","Gharama za Mradi","Mengineyo","Msaada wa Jamii","Matumizi ya Michango Maalum"];
+const KUNDI_FAIDA = KUNDI.filter(k=>k!=="Msaada wa Jamii"&&k!=="Matumizi ya Michango Maalum");
+const HALI = ["Hai","Amesimamishwa","Amejitoa"];
+
+function todayISO(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function blank(){
+  const y=new Date().getFullYear();
+  return {v:1,settings:{jina:"KIKUNDI CHETU",anza:y+"-01-01",mwisho:y+"-12-31",beiHisa:5000,riba:10,ainaRiba:"Flat",kikomo:3,
+    adhabuPct:5,rudishaJamii:"NDIYO",kataDeni:"HAPANA",salioKuanzia:0,mapatoMengineyo:0,adaKujiunga:0,akibaPct:10,kiasiKilichoamuliwa:"",uchakavu:0},
+    usalama:{hash:"",salt:"",fungaWote:false,adminHash:"",adminSalt:""},vikao:[],
+    wanachama:[],michango:[],mikopo:[],miradi:[],mapato:[],matumizi:[],historia:[],uongozi:[],kumbukumbu:[],imehifadhiwa:null};
+}
+let D = blank();
+let storageOk = true;
+function load(){
+  try{const s=localStorage.getItem(KEY); if(s){D=normalize(JSON.parse(s))}}
+  catch(e){storageOk=false}
+}
+function normalize(o){const b=blank(),x=Object.assign(b,o);x.settings=Object.assign(blank().settings,o.settings||{});x.usalama=Object.assign(blank().usalama,o.usalama||{});return x}
+function save(){
+  D.imehifadhiwa=new Date().toISOString();
+  try{localStorage.setItem(KEY,JSON.stringify(D)); storageOk=true}catch(e){storageOk=false}
+  renderHeader();
+}
+
+/* ================================================================ HELPERS */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num=v=>{const n=parseFloat(String(v??"").replace(/,/g,""));return isFinite(n)?n:0};
+const fm=n=>Math.round(num(n)).toLocaleString("en-US");
+const fd=iso=>{if(!iso)return"";const [y,m,d]=iso.split("-");return d+"/"+m+"/"+y};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function parseISO(s){const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}
+function toISO(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function addMonths(iso,n){const d=parseISO(iso);const day=d.getDate();const t=new Date(d.getFullYear(),d.getMonth()+n,1);
+  const last=new Date(t.getFullYear(),t.getMonth()+1,0).getDate();t.setDate(Math.min(day,last));return toISO(t)}
+function monthsBetween(a,b){const x=parseISO(a),y=parseISO(b);if(y<x)return 0;let m=(y.getFullYear()-x.getFullYear())*12+(y.getMonth()-x.getMonth());if(y.getDate()<x.getDate())m--;return Math.max(0,m)}
+function nextCode(list,prefix,digits){let mx=0;for(const r of list){const s=String(r.id||"");if(s.startsWith(prefix)){const n=parseInt(s.slice(prefix.length),10);if(n>mx)mx=n}}return prefix+String(mx+1).padStart(digits,"0")}
+function nextReceipt(){let mx=0;for(const r of D.michango){const n=parseInt(String(r.risiti).slice(3),10);if(n>mx)mx=n}return "RS-"+String(mx+1).padStart(5,"0")}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("on"),2600)}
+function fullName(m){return [m.j1,m.j2,m.j3].filter(Boolean).join(" ")}
+function member(id){return D.wanachama.find(m=>m.id===id)}
+function memberLabel(id){const m=member(id);return m?m.id+" - "+fullName(m):id}
+function round(n){return Math.round(n)}
+/* member lookup by the group's own member number */
+function resolveMember(t){
+  t=String(t??"").trim();if(!t)return null;
+  const p=t.indexOf(" - ");if(p>0)t=t.slice(0,p).trim();
+  const u=t.toUpperCase();
+  let m=D.wanachama.find(x=>String(x.id).toUpperCase()===u);
+  if(!m&&/^\d+$/.test(t))m=D.wanachama.find(x=>/^\d+$/.test(x.id)&&Number(x.id)===Number(t));
+  return m||null;
+}
+function picker(name,value,label,opt){
+  const m=value?member(value):null;
+  return `<label class="${opt&&opt.full?"full":""}">${label}<input name="${name}" list="dlMw" autocomplete="off" inputmode="text" data-picker placeholder="Andika namba ya mwanachama" value="${esc(m?m.id:value||"")}"><span class="pickname">${m?esc(fullName(m)):""}</span></label>`;
+}
+function lengoList(){const set=new Set(LENGO_DEF);for(const r of D.michango)if(r.lengo)set.add(r.lengo);for(const r of D.matumizi)if(r.lengo)set.add(r.lengo);return [...set]}
+function refreshDatalist(){const dl=$("#dlMw");if(dl)dl.innerHTML=D.wanachama.map(m=>`<option value="${esc(m.id)}">${esc(fullName(m))}</option>`).join("");
+  const ll=$("#dlLengo");if(ll)ll.innerHTML=lengoList().map(x=>`<option value="${esc(x)}"></option>`).join("")}
+function ainaTxt(r){return r.aina+(r.lengo?" ("+r.lengo+")":"")}
+function acts(btns){return `<td class="acts noprint">${btns.join("")}</td>`}
+function bEdit(a,id){return `<button class="btn sm sec" data-a="${a}" data-id="${esc(id)}">&#9998; Hariri</button>`}
+function bDel(a,id){return `<button class="btn sm del" data-a="${a}" data-id="${esc(id)}">&#128465; Futa</button>`}
+function suggestNumber(){
+  const ids=D.wanachama.map(m=>m.id);
+  if(!ids.length)return "001";
+  const nums=ids.filter(i=>/^\d+$/.test(i));
+  if(nums.length===ids.length){const w=Math.max(...nums.map(n=>n.length));return String(Math.max(...nums.map(Number))+1).padStart(w,"0")}
+  const last=ids[ids.length-1],mm=last.match(/^(.*?)(\d+)$/);
+  return mm?mm[1]+String(Number(mm[2])+1).padStart(mm[2].length,"0"):"";
+}
+function guarantorText(l){return [l.mdhamini1,l.mdhamini2].filter(Boolean).map(g=>{const m=member(g);return m?m.id+" "+fullName(m):g}).join(", ")}
+async function hashPw(pw,salt){
+  const s=salt+"|"+pw;
+  try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("")}
+  catch(e){let h=5381;for(let i=0;i<s.length;i++)h=((h*33)^s.charCodeAt(i))>>>0;return "f"+h.toString(16)}
+}
+let unlocked=false;
+function orphans(){
+  const ids=new Set(D.wanachama.map(m=>m.id)),lids=new Set(D.mikopo.map(l=>l.id));
+  return {mich:D.michango.filter(r=>!ids.has(r.mw)||(r.mkopo&&!lids.has(r.mkopo))),
+    mik:D.mikopo.filter(l=>!ids.has(l.mw)),
+    ldr:D.uongozi.filter(u=>!ids.has(u.mw))};
+}
+function orphanCount(){const o=orphans();return o.mich.length+o.mik.length+o.ldr.length}
+function moneyAlerts(F,where){
+  const S=D.settings,out=[];
+  if(F.pesa<0){
+    const big=D.matumizi.slice().sort((a,b)=>num(b.kiasi)-num(a.kiasi)).slice(0,3).map(r=>r.id+" "+r.kundi+" "+fm(r.kiasi)).join("; ");
+    out.push(`<div class="alert bad"><b>Pesa iliyopo ni hasi (${fm(F.pesa)}).</b> Pesa iliyotoka (mikopo ${fm(F.mikopoJumla)}, matumizi ${fm(F.matumiziYote)}, mtaji wa miradi ${fm(F.mtaji)}) ni zaidi ya iliyoingia. Angalia kama kuna matumizi au mkopo ulioingizwa kwa makosa${big?" ("+esc(big)+")":""}, au weka <b>Salio la kuanzia</b> kwenye Mipangilio. <button class="btn sm sec" data-a="go" data-v="matumizi">Fungua Matumizi</button></div>`);
+  }
+  if(S.kiasiKilichoamuliwa!==""&&S.kiasiKilichoamuliwa!=null&&num(S.kiasiKilichoamuliwa)>Math.max(0,F.faida)){
+    out.push(`<div class="alert amb">Kiasi cha kugawa <b>${fm(S.kiasiKilichoamuliwa)}</b> kiliandikwa kwa mkono (Kiasi kilichoamuliwa na kikundi), lakini faida halisi ni ${fm(F.faida)}. <button class="btn sm sec" data-a="clearKiasi">Ondoa kiasi hicho, tumia pendekezo</button></div>`);
+  }
+  return out.join("");
+}
+function kumb(kitendo,maelezo){D.kumbukumbu.push({t:new Date().toISOString(),kitendo,maelezo});if(D.kumbukumbu.length>1000)D.kumbukumbu.splice(0,D.kumbukumbu.length-1000)}
+function rowTxt(r){return r.risiti+" "+fd(r.tarehe)+" "+r.mw+" "+ainaTxt(r)+" "+fm(r.kiasi)+(r.mkopo?" ("+r.mkopo+")":"")}
+function leader(cheo){const x=D.uongozi.find(u=>u.cheo===cheo);return x?member(x.mw):null}
+function leaderName(cheo){const m=leader(cheo);return m?fullName(m):"__________"}
+function sigBlock(){return `<div class="printsig"><span>Mwenyekiti: ${esc(leaderName("Mwenyekiti"))}<br><br>Sahihi: __________</span><span>Katibu: ${esc(leaderName("Katibu"))}<br><br>Sahihi: __________</span><span>Mweka Hazina: ${esc(leaderName("Mweka Hazina"))}<br><br>Sahihi: __________</span></div>`}
+
+/* ================================================================ CALCULATIONS */
+function sumM(f){let s=0;for(const r of D.michango)if(f(r))s+=num(r.kiasi);return s}
+function loanInterest(P,r,n,aina){
+  if(aina==="Inayopungua"){if(r===0)return 0;const i=r/100;const pmt=P*i/(1-Math.pow(1+i,-n));return round(pmt*n-P)}
+  return round(P*r/100*n);
+}
+function pmtOf(P,r,n){if(r===0)return P/n;const i=r/100;return P*i/(1-Math.pow(1+i,-n))}
+function loanCalc(l){
+  const P=num(l.kiasi),r=num(l.riba),n=Math.max(1,num(l.muda));
+  const riba=loanInterest(P,r,n,l.aina)+num(l.ribaYaZamani), total=P+riba, rejesho=round(total/n), mwisho=addMonths(l.tarehe,n);
+  const paidP=sumM(x=>x.mkopo===l.id&&x.aina==="Marejesho ya Mkopo");
+  const paidR=sumM(x=>x.mkopo===l.id&&x.aina==="Riba ya Mkopo");
+  const paidA=sumM(x=>x.mkopo===l.id&&x.aina==="Adhabu ya Mkopo");
+  const salio=Math.max(0,P-paidP), deni=salio+Math.max(0,riba-paidR);
+  const elapsed=Math.min(n,monthsBetween(l.tarehe,todayISO()));
+  const malimbikizo=deni<=0?0:Math.min(deni,Math.max(0,elapsed*rejesho-(paidP+paidR)));
+  const hali=deni<=0?"Imelipwa":(malimbikizo>0?"Imechelewa":"Hai");
+  return {P,r,n,riba,total,rejesho,mwisho,paidP,paidR,paidA,salio,deni,malimbikizo,hali,adhabu:round(malimbikizo*num(D.settings.adhabuPct)/100)};
+}
+function schedule(l){
+  const c=loanCalc(l),rows=[];let bal=c.P;const pmt=round(pmtOf(c.P,c.r,c.n));
+  for(let k=1;k<=c.n;k++){
+    const riba=l.aina==="Inayopungua"?round(bal*c.r/100):round(c.riba/c.n);
+    let msingi=k===c.n?bal:(l.aina==="Inayopungua"?pmt-riba:round(c.P/c.n));
+    bal-=msingi;rows.push({k,tarehe:addMonths(l.tarehe,k),rejesho:riba+msingi,riba,msingi,salio:bal});
+  }
+  return rows;
+}
+function activeLoan(mid){for(const l of D.mikopo){if(l.mw===mid&&loanCalc(l).deni>0)return l}return null}
+function mStats(mid){
+  const hisa=sumM(r=>r.mw===mid&&r.aina==="Hisa"), jamii=sumM(r=>r.mw===mid&&r.aina==="Jamii");
+  let deni=0;for(const l of D.mikopo)if(l.mw===mid)deni+=loanCalc(l).deni;
+  return {hisa,jamii,deni};
+}
+function finance(){
+  const S=D.settings, byA=a=>sumM(r=>r.aina===a);
+  const mapatoMiradi=D.mapato.reduce((s,r)=>s+num(r.kiasi),0);
+  const inc={riba:byA("Riba ya Mkopo"),adhabuMk:byA("Adhabu ya Mkopo"),adhabuNy:byA("Adhabu Nyingine"),ada:byA("Ada ya Kujiunga"),miradi:mapatoMiradi,mengineyo:num(S.mapatoMengineyo)};
+  const mapato=Object.values(inc).reduce((a,b)=>a+b,0);
+  const exp={};for(const k of KUNDI_FAIDA)exp[k]=D.matumizi.filter(r=>r.kundi===k).reduce((s,r)=>s+num(r.kiasi),0);
+  const uchakavu=num(S.uchakavu);
+  const matumizi=Object.values(exp).reduce((a,b)=>a+b,0)+uchakavu;
+  const faida=mapato-matumizi;
+  const akiba=Math.max(0,round(faida*num(S.akibaPct)/100));
+  const pendekezo=Math.max(0,faida-akiba);
+  const kugawa=S.kiasiKilichoamuliwa===""||S.kiasiKilichoamuliwa==null?pendekezo:num(S.kiasiKilichoamuliwa);
+  let ribaIliyopangwa=0,ribaIliyolipwa=0,deni=0,mikopoJumla=0,iliyochelewa=0,carriedP=0,salioMsingi=0,malimbikizo=0,deniChelewa=0;
+  for(const l of D.mikopo){const c=loanCalc(l);ribaIliyopangwa+=c.riba;ribaIliyolipwa+=c.paidR;deni+=c.deni;salioMsingi+=c.salio;
+    if(l.vushwa)carriedP+=c.P;else mikopoJumla+=c.P;
+    if(c.hali==="Imechelewa"){iliyochelewa++;malimbikizo+=c.malimbikizo;deniChelewa+=c.deni}}
+  const michangoYote=sumM(()=>true);
+  const matumiziYote=D.matumizi.reduce((s,r)=>s+num(r.kiasi),0);
+  const mtaji=D.miradi.reduce((s,r)=>s+num(r.mtaji),0);
+  const pesa=num(S.salioKuanzia)+michangoYote+mapatoMiradi+num(S.mapatoMengineyo)-mikopoJumla-matumiziYote-mtaji;
+  const maalumIn=byA("Mchango Mwingine"),maalumOut=D.matumizi.filter(r=>r.kundi==="Matumizi ya Michango Maalum").reduce((s,r)=>s+num(r.kiasi),0);
+  const byLengo={};for(const r of D.michango)if(r.aina==="Mchango Mwingine"){const k=r.lengo||"Bila lengo";byLengo[k]=byLengo[k]||{in:0,out:0};byLengo[k].in+=num(r.kiasi)}
+  for(const r of D.matumizi)if(r.kundi==="Matumizi ya Michango Maalum"){const k=r.lengo||"Bila lengo";byLengo[k]=byLengo[k]||{in:0,out:0};byLengo[k].out+=num(r.kiasi)}
+  const jamiiIn=byA("Jamii"), msaada=D.matumizi.filter(r=>r.kundi==="Msaada wa Jamii").reduce((s,r)=>s+num(r.kiasi),0);
+  return {inc,mapato,exp,uchakavu,matumizi,faida,akiba,pendekezo,kugawa,ribaHaijalipwa:Math.max(0,ribaIliyopangwa-ribaIliyolipwa),
+    deni,mikopoJumla,iliyochelewa,carriedP,salioMsingi,malimbikizo,deniChelewa,michangoYote,matumiziYote,mtaji,pesa,jamiiIn,msaada,salioJamii:jamiiIn-msaada,maalumIn,maalumOut,salioMaalum:maalumIn-maalumOut,byLengo,hisa:byA("Hisa"),mapatoMiradi};
+}
+function gawio(){
+  const F=finance(),rows=D.wanachama.map(m=>{const s=mStats(m.id);return {m,...s,msingi:s.hisa+s.jamii}});
+  const tot=rows.reduce((a,r)=>a+r.msingi,0);
+  const kata=D.settings.kataDeni==="NDIYO";
+  for(const r of rows){r.pct=tot?r.msingi/tot:0;r.gawio=round(r.pct*F.kugawa);r.jamiiRud=D.settings.rudishaJamii==="NDIYO"?r.jamii:0;
+    r.kabla=r.hisa+r.jamiiRud+r.gawio;r.kato=kata?Math.min(r.deni,Math.max(0,r.kabla)):0;r.malipo=r.kabla-r.kato;r.deniVuka=r.deni-r.kato}
+  const sum=k=>rows.reduce((a,r)=>a+r[k],0);
+  return {rows,tot,F,kata,kiwango:tot?F.kugawa/tot:0,jumla:sum("malipo"),gawioJumla:sum("gawio"),katoJumla:sum("kato"),deniVuka:sum("deniVuka")};
+}
+
+/* ================================================================ UI SHELL */
+const VIEWS=[["mwanzo","Mwanzo"],["wanachama","Wanachama"],["michango","Michango"],["kikao","Kikao"],["mikopo","Mikopo"],
+  ["miradi","Miradi"],["matumizi","Matumizi"],["faida","Faida"],["gawio","Gawio"],["taarifa","Taarifa"],["ripoti","Ripoti"],["uongozi","Uongozi"],["mipangilio","Mipangilio"]];
+let view="mwanzo", state={};
+let installEvt=null;
+const isApp=()=>{try{return matchMedia("(display-mode: standalone)").matches||matchMedia("(display-mode: window-controls-overlay)").matches||navigator.standalone===true}catch(e){return false}};
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installEvt=e;renderHeader();if(view==="mwanzo")render()});
+window.addEventListener("appinstalled",()=>{installEvt=null;renderHeader();if(view==="mwanzo")render();toast("VICOBA SYSTEM imesakinishwa. Ifungue kutoka Desktop au Start Menu.")});
+function renderHeader(){
+  const ib=$("#hInstall");if(ib)ib.style.display=(!isApp()&&(installEvt||location.protocol.startsWith("http")))?"inline-block":"none";
+  $("#hJina").textContent=D.settings.jina||"Kikundi";
+  $("#hSub").textContent="Mzunguko: "+fd(D.settings.anza)+" - "+fd(D.settings.mwisho);
+  $("#hSave").textContent=storageOk?(D.imehifadhiwa?"Imehifadhiwa kwenye kifaa hiki":""):"TAHADHARI: kifaa hiki hakihifadhi data - pakua nakala!";
+  const nav=$("#nav");
+  if(!nav.children.length)nav.innerHTML=VIEWS.map(([k,t])=>`<button data-a="go" data-v="${k}">${t}</button>`).join("");
+  nav.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.v===view));
+}
+function go(v,st){if(v!=="mipangilio")adminUnlocked=false;view=v;state=st||{};renderHeader();render();window.scrollTo(0,0)}
+function needsLock(){return !!D.usalama.hash&&!unlocked}
+let adminUnlocked=false;
+function needsAdmin(){return view==="mipangilio"&&!!D.usalama.adminHash&&!adminUnlocked}
+let lastAct=Date.now();
+["click","keydown","touchstart"].forEach(ev=>document.addEventListener(ev,()=>{lastAct=Date.now()},{passive:true}));
+setInterval(()=>{const idle=Date.now()-lastAct;
+  if(D.usalama.hash&&unlocked&&idle>15*60*1000){unlocked=false;adminUnlocked=false;closeDlg();render()}
+  else if(adminUnlocked&&idle>5*60*1000){adminUnlocked=false;if(view==="mipangilio"){closeDlg();render()}}},30000);
+let rendering=false;
+function render(){
+  if(rendering)return;
+  const ae=document.activeElement;if(ae&&ae!==document.body&&$("#app").contains(ae))ae.blur();
+  rendering=true;try{renderInner()}finally{rendering=false}
+}
+function renderInner(){
+  refreshDatalist();
+  document.body.classList.toggle("locked",needsLock());
+  if(needsLock()||needsAdmin()){$("#app").innerHTML=lockScreen(needsLock()?"sys":"admin");setTimeout(()=>{const p=$("#pwIn");if(p)p.focus()},30);return}
+  const f=R[view];$("#app").innerHTML=f();if(A["after_"+view])A["after_"+view]()}
+function lockScreen(mode){
+  return `<div class="card lockcard" style="max-width:420px;margin:40px auto;text-align:center">${LOGO}<div class="bn" style="color:var(--g)">VICOBA SYSTEM</div><h2>${mode==="admin"?"Mipangilio":esc(D.settings.jina)}</h2>
+  <p class="muted">${mode==="admin"?"Sehemu hii ni ya msimamizi tu. Ingiza password ya msimamizi.":"Ingiza password kuendelea."}</p><form id="pwForm"><input type="password" id="pwIn" autocomplete="current-password" style="text-align:center"></form>
+  <div class="row" style="margin-top:12px;justify-content:center"><button class="btn" data-a="unlock">Fungua</button></div></div>`;
+}
+function memberOptions(sel,onlyActive){return `<option value="">-- Chagua mwanachama --</option>`+D.wanachama.filter(m=>!onlyActive||m.hali!=="Amejitoa").map(m=>`<option value="${esc(m.id)}" ${m.id===sel?"selected":""}>${esc(m.id+" - "+fullName(m))}</option>`).join("")}
+function opts(list,sel,first){return (first!=null?`<option value="">${first}</option>`:"")+list.map(x=>`<option ${x===sel?"selected":""}>${esc(x)}</option>`).join("")}
+function chip(h){return `<span class="chip ${h==="Imelipwa"?"ok":h==="Imechelewa"?"bad":"hai"}">${h}</span>`}
+function table(heads,rows,foot){
+  if(!rows.length)return `<div class="tw"><div class="empty">Hakuna taarifa bado.</div></div>`;
+  return `<div class="tw"><table><thead><tr>${heads.map(h=>`<th class="${h.n?"n":""} ${h.np?"noprint":""}">${h.t||h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}${foot||""}</tbody></table></div>`;
+}
+function dlg(title,body,foot){$("#dlgT").textContent=title;$("#dlgB").innerHTML=body;$("#dlgF").innerHTML=foot||`<button class="btn sec" data-a="closeDlg">Funga</button>`;const d=$("#dlg");if(!d.open)d.showModal()}
+function closeDlg(){const d=$("#dlg");if(d.open)d.close();document.body.classList.remove("pm")}
+function formVals(root){const o={};root.querySelectorAll("[name]").forEach(el=>o[el.name]=el.value.trim());return o}
+
+/* ================================================================ VIEWS */
+const R={};
+R.mwanzo=()=>{
+  const F=finance(),S=D.settings;
+  const k=(l,v,w)=>`<div class="kpi ${w?"warn":""}"><div class="l">${l}</div><div class="v">${v}</div></div>`;
+  const months=[];const st=parseISO(S.anza);
+  for(let i=0;i<12;i++){const a=toISO(new Date(st.getFullYear(),st.getMonth()+i,1)),b=toISO(new Date(st.getFullYear(),st.getMonth()+i+1,1));
+    const inM=r=>r.tarehe>=a&&r.tarehe<b;
+    months.push({a,hisa:sumM(r=>inM(r)&&r.aina==="Hisa"),jamii:sumM(r=>inM(r)&&r.aina==="Jamii"),mar:sumM(r=>inM(r)&&r.aina==="Marejesho ya Mkopo"),
+      riba:sumM(r=>inM(r)&&r.aina==="Riba ya Mkopo"),adh:sumM(r=>inM(r)&&(r.aina==="Adhabu ya Mkopo"||r.aina==="Adhabu Nyingine")),
+      mp:D.mapato.filter(inM).reduce((s,r)=>s+num(r.kiasi),0),mt:D.matumizi.filter(inM).reduce((s,r)=>s+num(r.kiasi),0)})}
+  const mn=["Jan","Feb","Mac","Apr","Mei","Jun","Jul","Ago","Sep","Okt","Nov","Des"];
+  const late=D.mikopo.map(l=>({l,c:loanCalc(l)})).filter(x=>x.c.hali==="Imechelewa");
+  const T=months.reduce((t,m)=>{for(const k in m)if(k!=="a")t[k]=(t[k]||0)+m[k];return t},{});
+  return `
+  ${installEvt&&!isApp()?`<div class="alert ok"><b>Weka VICOBA SYSTEM kama programu kwenye kifaa hiki.</b> Itafunguka kutoka Desktop au Start Menu, bila intaneti. <button class="btn sm" data-a="installApp">&#11015; Sakinisha App</button></div>`:""}
+  ${moneyAlerts(F)}
+  ${orphanCount()?`<div class="alert bad">Kuna kumbukumbu ${orphanCount()} zisizo na mwenyewe (mf. miamala ya mwanachama aliyefutwa). <button class="btn sm dan" data-a="checkData">Kagua na Safisha</button></div>`:""}
+  ${!D.wanachama.length?`<div class="alert amb">Karibu! Anza kwa kujaza <b>Mipangilio</b>, kisha sajili wanachama kwenye <b>Wanachama</b>. Kama kikundi tayari kina wanachama na mawekezo, pakua kiolezo cha Excel, kijaze, kisha kipakie. <button class="btn sm sec" data-a="xlTemplate">Pakua Kiolezo</button> <button class="btn sm" data-a="importExcel">Pakia Excel</button></div>`:""}
+  <div class="grid kpis" style="margin-bottom:16px">
+    ${k("Wanachama",D.wanachama.length)}${k("Jumla ya Hisa",fm(F.hisa))}${k("Mfuko wa Jamii",fm(F.salioJamii))}${k("Pesa Iliyopo",fm(F.pesa),F.pesa<0)}
+    ${k("Mikopo Iliyotolewa",fm(F.mikopoJumla))}${k("Mikopo Inayodaiwa",fm(F.deni))}${k("Mikopo Iliyochelewa",F.iliyochelewa,F.iliyochelewa>0)}${k("Faida Halisi",fm(F.faida),F.faida<0)}
+  </div>
+  <div class="row noprint" style="margin-bottom:16px">
+    <button class="btn" data-a="go" data-v="michango">+ Pokea Michango</button>
+    <button class="btn sec" data-a="go" data-v="kikao">Kikao</button>
+    <button class="btn sec" data-a="go" data-v="mikopo">Toa Mkopo</button>
+    <button class="btn sec" data-a="go" data-v="ripoti">Ripoti</button>
+    <button class="btn sec" data-a="backup">Pakua Nakala (Backup)</button>
+  </div>
+  ${late.length?`<div class="card"><h3>Mikopo iliyochelewa</h3>${table(["Mkopo","Mwanachama",{t:"Malimbikizo",n:1},{t:"Adhabu Inayopendekezwa",n:1},{t:"Deni",n:1}],
+    late.map(x=>`<tr><td>${x.l.id}</td><td>${esc(memberLabel(x.l.mw))}</td><td class="n">${fm(x.c.malimbikizo)}</td><td class="n">${fm(x.c.adhabu)}</td><td class="n">${fm(x.c.deni)}</td></tr>`))}</div>`:""}
+  <div class="card"><h3>Muhtasari wa kila mwezi</h3>
+  ${table(["Mwezi",{t:"Hisa",n:1},{t:"Jamii",n:1},{t:"Marejesho",n:1},{t:"Riba",n:1},{t:"Adhabu",n:1},{t:"Mapato Mradi",n:1},{t:"Matumizi",n:1}],
+    months.map(m=>{const d=parseISO(m.a);return `<tr><td>${mn[d.getMonth()]} ${d.getFullYear()}</td><td class="n">${fm(m.hisa)}</td><td class="n">${fm(m.jamii)}</td><td class="n">${fm(m.mar)}</td><td class="n">${fm(m.riba)}</td><td class="n">${fm(m.adh)}</td><td class="n">${fm(m.mp)}</td><td class="n">${fm(m.mt)}</td></tr>`}),
+    `<tr class="tot"><td>JUMLA</td><td class="n">${fm(T.hisa)}</td><td class="n">${fm(T.jamii)}</td><td class="n">${fm(T.mar)}</td><td class="n">${fm(T.riba)}</td><td class="n">${fm(T.adh)}</td><td class="n">${fm(T.mp)}</td><td class="n">${fm(T.mt)}</td></tr>`)}
+  </div>`;
+};
+
+R.wanachama=()=>{
+  const q=(state.q||"").toLowerCase();
+  const list=D.wanachama.filter(m=>!q||(m.id+" "+fullName(m)+" "+m.simu+" "+m.anuani).toLowerCase().includes(q));
+  return `<div class="row" style="margin-bottom:12px"><h2 style="margin:0">Wanachama (${D.wanachama.length})</h2>
+    <input id="q" placeholder="Tafuta jina, namba au simu" value="${esc(state.q||"")}" style="max-width:280px" class="right">
+    <button class="btn sec" data-a="importExcel">Pakia kutoka Excel</button><button class="btn" data-a="memberForm">+ Sajili Mwanachama</button></div>
+  ${table([{t:"Rekebisha",np:1},"Namba","Jina Kamili","Simu","Anuani","Tarehe ya Kujiunga","Hali",{t:"Hisa",n:1},{t:"Jamii",n:1},{t:"Deni",n:1},""],
+    list.map(m=>{const s=mStats(m.id);return `<tr>${acts([bEdit("memberForm",m.id),bDel("delMember",m.id)])}<td>${m.id}</td><td>${esc(fullName(m))}</td><td>${esc(m.simu)}</td><td>${esc(m.anuani)}</td><td>${fd(m.tarehe)}</td><td>${esc(m.hali)}</td>
+    <td class="n">${fm(s.hisa)}</td><td class="n">${fm(s.jamii)}</td><td class="n">${fm(s.deni)}</td>
+    <td><button class="btn ghost sm" data-a="go" data-v="taarifa" data-id="${m.id}">Taarifa &rarr;</button></td></tr>`}))}`;
+};
+
+R.michango=()=>{
+  const f=state.f||{tarehe:todayISO()};state.f=f;
+  const fmw=resolveMember(f.mw);
+  const list=D.michango.filter(r=>(!f.mw||(fmw&&r.mw===fmw.id))&&(!f.aina||r.aina===f.aina)&&(!f.tarehe||r.tarehe===f.tarehe));
+  const byA=AINA.map(a=>[a,list.filter(r=>r.aina===a).reduce((t,r)=>t+num(r.kiasi),0)]);
+  const grand=byA.reduce((t,x)=>t+x[1],0);
+  const nWan=new Set(list.map(r=>r.mw)).size,nRis=new Set(list.map(r=>r.risiti)).size;
+  const shown=list.slice().reverse().slice(0,500);
+  return `<div class="grid two">
+  <div class="card" id="mchForm"><h3>Pokea michango ya mwanachama</h3>
+    <div class="form">
+      <label>Tarehe<input type="date" name="tarehe" value="${todayISO()}"></label>
+      ${picker("mw",state.mw||"","Namba ya mwanachama")}
+      <label class="full">Mkopo (kwa marejesho / riba / adhabu)<select name="mkopo" id="mchMk"></select></label>
+      <div class="info full" id="mchInfo">Andika namba ya mwanachama.</div>
+      <label>Hisa<input type="number" min="0" name="Hisa" inputmode="numeric"></label>
+      <label>Jamii<input type="number" min="0" name="Jamii" inputmode="numeric"></label>
+      <label>Marejesho ya mkopo (msingi)<input type="number" min="0" name="Marejesho ya Mkopo" inputmode="numeric"></label>
+      <label>Riba ya mkopo<input type="number" min="0" name="Riba ya Mkopo" inputmode="numeric"></label>
+      <label>Adhabu ya mkopo<input type="number" min="0" name="Adhabu ya Mkopo" inputmode="numeric"></label>
+      <label>Adhabu nyingine<input type="number" min="0" name="Adhabu Nyingine" inputmode="numeric"></label>
+      <div class="lengo-wrap"><label>Mchango mwingine (kiasi)<input type="number" min="0" name="Mchango Mwingine" inputmode="numeric"></label>
+        <label>Ni kwa ajili ya nini? (lazima ukiweka kiasi)<input name="lengo" list="dlLengo" autocomplete="off" placeholder="mf. Rambirambi, Harusi, T-shirt"></label></div>
+      <label class="full">Maelezo<input name="maelezo"></label>
+    </div>
+    <div class="row" style="margin-top:12px"><b>Jumla: <span id="mchTot">0</span></b><button class="btn right" data-a="saveMchango">Hifadhi Michango</button></div>
+  </div>
+  <div class="card"><h3>Chuja miamala na makusanyo</h3><div class="form">
+    <label>Tarehe<input type="date" id="fTarehe" value="${esc(f.tarehe||"")}"></label>
+    <label>Namba ya mwanachama<input id="fMw" list="dlMw" autocomplete="off" value="${esc(f.mw||"")}" placeholder="Wote"><span class="pickname">${fmw?esc(fullName(fmw)):(f.mw?"Namba haipo":"")}</span></label>
+    <label>Aina<select id="fAina">${opts(AINA,f.aina,"Zote")}</select></label></div>
+    <div class="row noprint" style="margin:10px 0"><button class="btn sec sm" data-a="fLeo">Leo</button><button class="btn sec sm" data-a="fZote">Tarehe zote</button>
+      <span class="right"></span>${pdfBtn("Makusanyo_"+(f.tarehe||"tarehe_zote"))}<button class="btn sec sm" data-a="print">Chapisha</button><button class="btn sec sm" data-a="csv" data-t="michango">CSV</button></div>
+    <div class="tw"><table class="stmt">
+      <tr class="sec"><td>Makusanyo ${f.tarehe?"ya "+fd(f.tarehe):"ya tarehe zote"}${fmw?" - "+esc(fmw.id+" "+fullName(fmw)):""}</td><td>Kiasi</td></tr>
+      ${byA.filter(([a])=>!f.aina||a===f.aina).map(([a,v])=>`<tr><td>${a}</td><td>${fm(v)}</td></tr>`).join("")}
+      <tr class="big"><td>JUMLA KUU YA MAKUSANYO</td><td>${fm(grand)}</td></tr></table></div>
+    <p class="muted">Risiti ${nRis} &middot; wanachama ${nWan} &middot; mistari ${list.length}.</p>
+    <div class="info">Kurekebisha au kufuta muamala: utafute kwenye jedwali hapa chini (chuja kwa tarehe au namba, au bonyeza <b>Tarehe zote</b>), kisha bonyeza <b>Hariri</b> au <b>Futa</b> mwanzoni mwa mstari wake.</div>
+  </div></div>
+  ${table([{t:"Rekebisha",np:1},"Risiti","Tarehe","Namba","Jina","Aina",{t:"Kiasi",n:1},"Mkopo","Maelezo"],
+    shown.map(r=>{const m=member(r.mw);return `<tr>${acts([bEdit("editMchango",r.id),bDel("delMchango",r.id)])}<td><a href="#" data-a="showReceipt" data-id="${r.risiti}">${r.risiti}</a></td><td>${fd(r.tarehe)}</td><td>${esc(r.mw)}</td><td>${esc(m?fullName(m):"")}</td><td>${esc(ainaTxt(r))}</td><td class="n">${fm(r.kiasi)}</td><td>${esc(r.mkopo||"")}</td><td>${esc(r.maelezo||"")}</td></tr>`}),
+    list.length?`<tr class="tot"><td class="noprint"></td><td colspan="5">JUMLA</td><td class="n">${fm(grand)}</td><td colspan="2"></td></tr>`:"")}`;
+};
+
+R.kikao=()=>{
+  const tab=state.tab||"ingiza";
+  const tabs=`<div class="row noprint" style="margin-bottom:12px"><button class="btn ${tab==="ingiza"?"":"sec"}" data-a="ktab" data-t="ingiza">Ingiza michango ya kikao</button><button class="btn ${tab==="muhtasari"?"":"sec"}" data-a="ktab" data-t="muhtasari">Muhtasari wa vikao</button></div>`;
+  if(tab==="muhtasari")return tabs+kikaoSummaryView();
+  const ms=D.wanachama.filter(m=>m.hali!=="Amejitoa");
+  const cols=AINA;
+  return tabs+`<div class="card"><div class="row"><h3 style="margin:0">Kikao - michango ya wanachama wote</h3>
+    <label class="right" style="flex-direction:row;align-items:center;gap:8px">Tarehe ya kikao<input type="date" id="kTarehe" value="${esc(state.tarehe||todayISO())}" style="width:auto"></label></div>
+    <p class="muted">Jaza kiasi cha kila mwanachama na tiki <b>Yupo</b> kwa aliyehudhuria, kisha Hifadhi. Au pakua Excel ya kikao, ijaze, kisha ipakie hapa: itajaza jedwali, nawe utakagua kabla ya kuhifadhi.</p>
+    <div class="row" style="margin:8px 0"><button class="btn sec" data-a="kikaoTemplate">1. Pakua Excel ya kikao</button><button class="btn sec" data-a="kikaoImport">2. Pakia Excel ya kikao</button><button class="btn ghost sm right" data-a="kikaoClear">Safisha jedwali</button></div>
+    <label style="max-width:420px">Mchango mwingine wa kikao hiki ni kwa ajili ya nini?<input id="kLengo" list="dlLengo" autocomplete="off" placeholder="mf. Rambirambi, Harusi, T-shirt"></label></div>
+  ${ms.length?`<div class="tw"><table id="kTbl"><thead><tr><th>Mwanachama</th><th>Yupo</th>${cols.map(c=>`<th class="n">${c}</th>`).join("")}<th class="n">Jumla</th><th>Mkopo</th><th class="n">Rejesho</th><th class="n">Malimbikizo</th></tr></thead><tbody>
+  ${ms.map(m=>{const l=activeLoan(m.id),c=l?loanCalc(l):null;return `<tr data-mw="${m.id}"><td>${esc(m.id+" - "+fullName(m))}<div class="muted kl"></div></td><td style="text-align:center"><input type="checkbox" class="yupo" style="width:20px;height:20px"></td>${cols.map(c2=>`<td><input type="number" min="0" data-c="${c2}" style="width:105px;padding:6px" ${LOAN_TYPES.includes(c2)&&!l?"disabled title='Hana mkopo unaodaiwa'":""}></td>`).join("")}
+  <td class="n rt">0</td><td>${l?l.id:"-"}</td><td class="n">${c?fm(c.rejesho):""}</td><td class="n">${c?fm(c.malimbikizo):""}</td></tr>`}).join("")}
+  <tr class="tot"><td>JUMLA</td><td class="n" id="kYupo">0</td>${cols.map(c=>`<td class="n" data-ct="${c}">0</td>`).join("")}<td class="n" id="kGrand">0</td><td colspan="3"></td></tr>
+  </tbody></table></div>
+  <div class="row" style="margin-top:12px"><button class="btn right" data-a="saveKikao">Hifadhi Kikao na Tengeneza Muhtasari</button></div>`:`<div class="empty card">Hakuna wanachama. Sajili wanachama kwanza.</div>`}`;
+};
+function kikaoDates(){const set=new Set(D.vikao.map(v=>v.tarehe));for(const r of D.michango)if(r.maelezo==="Kikao")set.add(r.tarehe);return [...set].sort()}
+function cashAt(d){const S=D.settings,le=r=>r.tarehe<=d;
+  return num(S.salioKuanzia)+num(S.mapatoMengineyo)+D.michango.filter(le).reduce((t,r)=>t+num(r.kiasi),0)+D.mapato.filter(le).reduce((t,r)=>t+num(r.kiasi),0)
+    -D.mikopo.filter(l=>!l.vushwa&&le(l)).reduce((t,l)=>t+num(l.kiasi),0)-D.matumizi.filter(le).reduce((t,r)=>t+num(r.kiasi),0)-D.miradi.filter(le).reduce((t,r)=>t+num(r.mtaji),0)}
+function kikaoSummaryView(){
+  const dates=kikaoDates(),d=state.tarehe||dates[dates.length-1]||todayISO();
+  const rec=D.vikao.find(v=>v.tarehe===d)||{tarehe:d,hudhurio:[],maazimio:""};
+  const tx=D.michango.filter(r=>r.tarehe===d),loans=D.mikopo.filter(l=>!l.vushwa&&l.tarehe===d),mt=D.matumizi.filter(r=>r.tarehe===d),mp=D.mapato.filter(r=>r.tarehe===d);
+  const active=D.wanachama.filter(m=>m.hali!=="Amejitoa");
+  const present=new Set(rec.hudhurio.concat(tx.map(r=>r.mw)));
+  const absent=active.filter(m=>!present.has(m.id));
+  const tr=(l,v,c)=>`<tr class="${c||""}"><td>${l}</td><td>${v}</td></tr>`;
+  const byA=AINA.map(a=>{const rs=tx.filter(r=>r.aina===a);return [a,rs.reduce((t,r)=>t+num(r.kiasi),0),new Set(rs.map(r=>r.mw)).size]}).filter(x=>x[1]>0);
+  const lengos={};for(const r of tx)if(r.aina==="Mchango Mwingine"){const k=r.lengo||"Bila lengo";lengos[k]=(lengos[k]||0)+num(r.kiasi)}
+  const makusanyo=tx.reduce((t,r)=>t+num(r.kiasi),0),mapato=mp.reduce((t,r)=>t+num(r.kiasi),0);
+  const nje=loans.reduce((t,l)=>t+num(l.kiasi),0)+mt.reduce((t,r)=>t+num(r.kiasi),0)+D.miradi.filter(r=>r.tarehe===d).reduce((t,r)=>t+num(r.mtaji),0);
+  const usedCols=AINA.filter(a=>tx.some(r=>r.aina===a));
+  const per=[...new Set(tx.map(r=>r.mw))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})).map(id=>{const v=usedCols.map(a=>tx.filter(r=>r.mw===id&&r.aina===a).reduce((t,r)=>t+num(r.kiasi),0));return {id,v,t:v.reduce((a,b)=>a+b,0)}});
+  const prev=dates.filter(x=>x<d).pop(),hisaD=D.michango.filter(r=>r.aina==="Hisa"&&r.tarehe<=d).reduce((t,r)=>t+num(r.kiasi),0);
+  const jamiiD=D.michango.filter(r=>r.aina==="Jamii"&&r.tarehe<=d).reduce((t,r)=>t+num(r.kiasi),0)-D.matumizi.filter(r=>r.kundi==="Msaada wa Jamii"&&r.tarehe<=d).reduce((t,r)=>t+num(r.kiasi),0);
+  const late=D.mikopo.map(l=>({l,c:loanCalc(l)})).filter(x=>x.c.hali==="Imechelewa");
+  const F=finance(),idx=dates.indexOf(d)+1;
+  return `<div class="card noprint"><div class="row"><label style="flex-direction:row;align-items:center;gap:8px">Kikao cha tarehe<select id="ksDate">${(dates.includes(d)?dates:dates.concat([d]).sort()).slice().reverse().map(x=>`<option value="${x}" ${x===d?"selected":""}>${fd(x)}</option>`).join("")}</select></label>
+    <label style="flex-direction:row;align-items:center;gap:8px">au chagua tarehe<input type="date" id="ksAny" value="${d}" style="width:auto"></label>
+    <span class="right"></span>${pdfBtn("Muhtasari_Kikao_"+d)}<button class="btn sec" data-a="print">Chapisha</button><button class="btn sec" data-a="kikaoXl" data-d="${d}">Pakua Excel</button></div></div>
+  <div class="card" id="ksDoc">
+    ${pdfHead("Muhtasari wa Kikao",fd(d))}
+    <div style="text-align:center;margin-bottom:12px"><div class="bn" style="color:var(--g)">VICOBA SYSTEM</div><h2 style="margin:4px 0">${esc(D.settings.jina)}</h2>
+      <b>MUHTASARI WA KIKAO${idx?" NA. "+idx:""}</b><div class="muted">Tarehe: ${fd(d)}${prev?" &middot; Kikao kilichopita: "+fd(prev):""}</div></div>
+    <div class="grid kpis" style="margin-bottom:14px">
+      <div class="kpi"><div class="l">Mahudhurio</div><div class="v">${present.size} / ${active.length}</div></div>
+      <div class="kpi"><div class="l">Makusanyo ya kikao</div><div class="v">${fm(makusanyo)}</div></div>
+      <div class="kpi"><div class="l">Mikopo iliyotolewa</div><div class="v">${fm(loans.reduce((t,l)=>t+num(l.kiasi),0))}</div></div>
+      <div class="kpi ${cashAt(d)<0?"warn":""}"><div class="l">Pesa baada ya kikao</div><div class="v">${fm(cashAt(d))}</div></div></div>
+    <h3>1. Mahudhurio</h3>
+    <p>Waliohudhuria: <b>${present.size}</b> kati ya wanachama hai ${active.length}.${absent.length?` Wasiohudhuria (${absent.length}): ${absent.map(m=>esc(m.id+" "+fullName(m))).join(", ")}.`:" Wote walihudhuria."}</p>
+    <h3 style="margin-top:14px">2. Makusanyo</h3>
+    ${byA.length?`<div class="tw"><table class="stmt"><tr class="sec"><td>Aina ya mchango (idadi ya waliochanga)</td><td>Kiasi</td></tr>${byA.map(([a,v,n])=>tr(esc(a)+` <span class="muted">(${n})</span>`,fm(v))).join("")}
+      ${Object.keys(lengos).length?Object.entries(lengos).map(([k,v])=>tr(`<span class="muted">&nbsp;&nbsp;&nbsp;Mchango mwingine: ${esc(k)}</span>`,fm(v))).join(""):""}
+      ${tr("JUMLA KUU YA MAKUSANYO",fm(makusanyo),"big")}</table></div>`:`<p class="muted">Hakuna michango iliyorekodiwa tarehe hii.</p>`}
+    ${per.length?`<h3 style="margin-top:14px">3. Michango kwa kila mwanachama</h3>`+table(["Namba","Jina",...usedCols.map(c=>({t:c,n:1})),{t:"Jumla",n:1}],per.map(r=>`<tr><td>${esc(r.id)}</td><td>${esc(fullName(member(r.id)||{}))}</td>${r.v.map(x=>`<td class="n">${x?fm(x):""}</td>`).join("")}<td class="n"><b>${fm(r.t)}</b></td></tr>`),
+      `<tr class="tot"><td colspan="2">JUMLA</td>${usedCols.map((c,i)=>`<td class="n">${fm(per.reduce((a,r)=>a+r.v[i],0))}</td>`).join("")}<td class="n">${fm(makusanyo)}</td></tr>`):""}
+    <h3 style="margin-top:14px">4. Mikopo iliyotolewa</h3>
+    ${loans.length?table(["Mkopo","Mwanachama",{t:"Kiasi",n:1},"Riba",{t:"Miezi",n:1},{t:"Rejesho/Mwezi",n:1},"Wadhamini"],loans.map(l=>{const c=loanCalc(l);return `<tr><td>${l.id}</td><td>${esc(memberLabel(l.mw))}</td><td class="n">${fm(c.P)}</td><td>${l.riba}% ${esc(l.aina)}</td><td class="n">${l.muda}</td><td class="n">${fm(c.rejesho)}</td><td>${esc(guarantorText(l))}</td></tr>`}),
+      `<tr class="tot"><td colspan="2">JUMLA</td><td class="n">${fm(loans.reduce((t,l)=>t+num(l.kiasi),0))}</td><td colspan="4"></td></tr>`):`<p class="muted">Hakuna mkopo uliotolewa kwenye kikao hiki.</p>`}
+    <h3 style="margin-top:14px">5. Matumizi na mapato mengine ya siku</h3>
+    ${mt.length||mp.length?table(["Aina","Maelezo",{t:"Kiasi",n:1}],mt.map(r=>`<tr><td>Matumizi: ${esc(r.kundi)}${r.lengo?" ("+esc(r.lengo)+")":""}</td><td>${esc(r.maelezo||"")}</td><td class="n">-${fm(r.kiasi)}</td></tr>`).concat(mp.map(r=>`<tr><td>Mapato ya mradi ${esc(r.mradi)}</td><td>${esc(r.maelezo||"")}</td><td class="n">${fm(r.kiasi)}</td></tr>`))):`<p class="muted">Hakuna.</p>`}
+    <h3 style="margin-top:14px">6. Hali ya fedha</h3>
+    <div class="tw"><table class="stmt">${tr("Pesa kabla ya kikao",fm(cashAt(d)-makusanyo-mapato+nje))}${tr("Pesa iliyoingia (makusanyo + mapato)",fm(makusanyo+mapato))}${tr("Pesa iliyotoka (mikopo + matumizi)","-"+fm(nje))}${tr("PESA BAADA YA KIKAO",fm(cashAt(d)),"big")}
+      ${tr("Jumla ya hisa hadi kikao hiki",fm(hisaD))}${tr("Mfuko wa jamii hadi kikao hiki",fm(jamiiD))}${tr("Mikopo inayodaiwa (kwa sasa)",fm(F.deni))}</table></div>
+    ${late.length?`<h3 style="margin-top:14px">7. Mikopo iliyochelewa (kwa sasa)</h3>`+table(["Mkopo","Mwanachama",{t:"Malimbikizo",n:1},{t:"Adhabu Inayopendekezwa",n:1}],late.map(x=>`<tr><td>${x.l.id}</td><td>${esc(memberLabel(x.l.mw))}</td><td class="n">${fm(x.c.malimbikizo)}</td><td class="n">${fm(x.c.adhabu)}</td></tr>`)):""}
+    <h3 style="margin-top:14px">${late.length?8:7}. Maazimio na mengineyo</h3>
+    <textarea id="ksNotes" rows="5" class="noprint" placeholder="Andika maamuzi ya kikao, mambo yaliyojadiliwa, na tarehe ya kikao kijacho...">${esc(rec.maazimio||"")}</textarea>
+    <div class="printonly" style="white-space:pre-wrap">${esc(rec.maazimio||"")||"................................................................"}</div>
+    <div class="row noprint" style="margin-top:8px"><button class="btn sec sm" data-a="saveNotes" data-d="${d}">Hifadhi Maazimio</button></div>
+    ${sigBlock()}
+  </div>`;
+}
+
+R.mikopo=()=>{
+  const S=D.settings;
+  const rows=D.mikopo.slice().reverse().map(l=>{const c=loanCalc(l);return `<tr>${acts([bEdit("editLoan",l.id),bDel("delLoan",l.id)])}<td>${l.id}${l.vushwa?' <span class="chip hai">imevushwa</span>':""}</td><td>${fd(l.tarehe)}</td><td>${esc(memberLabel(l.mw))}</td><td class="n">${fm(c.P)}</td><td>${l.vushwa?"Deni la zamani":l.riba+"% "+esc(l.aina)}</td><td class="n">${l.muda}</td>
+    <td class="n">${fm(c.riba)}</td><td class="n">${fm(c.rejesho)}</td><td class="n">${fm(c.paidP)}</td><td class="n">${fm(c.paidR)}</td><td class="n">${fm(c.deni)}</td><td class="n">${fm(c.malimbikizo)}</td><td>${chip(c.hali)}</td><td>${esc(guarantorText(l))}</td>
+    <td><button class="btn ghost sm" data-a="ratiba" data-id="${l.id}">Ratiba</button></td></tr>`});
+  return `<div class="card" id="mkForm"><h3>Toa mkopo</h3>
+    <div class="form">
+      <label>Tarehe ya mkopo<input type="date" name="tarehe" value="${todayISO()}"></label>
+      ${picker("mw","","Namba ya mwanachama")}
+      <label>Kiasi cha mkopo<input type="number" min="0" name="kiasi" inputmode="numeric"></label>
+      <label>Riba (% kwa mwezi)<input type="number" min="0" step="0.01" name="riba" value="${esc(S.riba)}"></label>
+      <label>Aina ya riba<select name="aina">${opts(["Flat","Inayopungua"],S.ainaRiba)}</select></label>
+      <label>Muda (miezi)<input type="number" min="1" step="1" name="muda"></label>
+      ${picker("mdhamini1","","Mdhamini wa 1 (hiari)")}${picker("mdhamini2","","Mdhamini wa 2 (hiari)")}
+    </div>
+    <div class="calc" style="margin-top:12px" id="mkCalc"></div>
+    <div id="mkWarn" style="margin-top:10px"></div>
+    <div class="row" style="margin-top:8px"><span class="muted">Flat = riba juu ya kiasi chote. Inayopungua = riba juu ya salio linalobaki kila mwezi.</span><button class="btn right" data-a="saveLoan">Toa Mkopo</button></div>
+  </div>
+  <div class="row" style="margin-bottom:8px"><h3 style="margin:0">Rejesta ya mikopo</h3><button class="btn sec sm right" data-a="csv" data-t="mikopo">Pakua CSV</button></div>
+  ${table([{t:"Rekebisha",np:1},"Namba","Tarehe","Mwanachama",{t:"Kiasi",n:1},"Riba",{t:"Miezi",n:1},{t:"Jumla Riba",n:1},{t:"Rejesho/Mwezi",n:1},{t:"Msingi Uliolipwa",n:1},{t:"Riba Iliyolipwa",n:1},{t:"Inayodaiwa",n:1},{t:"Malimbikizo",n:1},"Hali","Wadhamini",""],rows)}`;
+};
+
+R.miradi=()=>{
+  return `<div class="grid two">
+  <div class="card" id="mrForm"><h3>Sajili mradi</h3><div class="form">
+    <label>Jina la mradi<input name="jina"></label><label>Tarehe ya kuanza<input type="date" name="tarehe" value="${todayISO()}"></label>
+    <label>Mtaji uliowekwa<input type="number" min="0" name="mtaji"></label><label>Msimamizi<input name="msimamizi"></label>
+    <label class="full">Maelezo<input name="maelezo"></label></div>
+    <p class="muted">Mtaji ni pesa iliyowekezwa (mali ya kikundi), si matumizi - haupunguzi faida moja kwa moja.</p>
+    <div class="row"><button class="btn right" data-a="saveMradi">Sajili Mradi</button></div></div>
+  <div class="card" id="mpForm"><h3>Mapato ya mradi</h3><div class="form">
+    <label>Tarehe<input type="date" name="tarehe" value="${todayISO()}"></label>
+    <label>Mradi<select name="mradi"><option value="">-- Chagua mradi --</option>${D.miradi.map(p=>`<option value="${p.id}">${esc(p.id+" - "+p.jina)}</option>`).join("")}</select></label>
+    <label>Kiasi<input type="number" min="0" name="kiasi"></label><label>Maelezo<input name="maelezo"></label></div>
+    <div class="row" style="margin-top:12px"><button class="btn right" data-a="saveMapato">Hifadhi Mapato</button></div></div></div>
+  <h3>Miradi</h3>
+  ${table(["Namba","Jina","Tarehe",{t:"Mtaji",n:1},"Msimamizi",{t:"Mapato",n:1},{t:"Gharama",n:1},{t:"Faida ya Mradi",n:1},""],
+    D.miradi.map(p=>{const mp=D.mapato.filter(r=>r.mradi===p.id).reduce((s,r)=>s+num(r.kiasi),0),g=D.matumizi.filter(r=>r.mradi===p.id).reduce((s,r)=>s+num(r.kiasi),0);
+    return `<tr><td>${p.id}</td><td>${esc(p.jina)}</td><td>${fd(p.tarehe)}</td><td class="n">${fm(p.mtaji)}</td><td>${esc(p.msimamizi||"")}</td><td class="n">${fm(mp)}</td><td class="n">${fm(g)}</td><td class="n">${fm(mp-g)}</td>
+    <td><button class="btn ghost sm dan" data-a="delMradi" data-id="${p.id}">Futa</button></td></tr>`}))}
+  <h3 style="margin-top:16px">Mapato ya miradi</h3>
+  ${table([{t:"Rekebisha",np:1},"Namba","Tarehe","Mradi",{t:"Kiasi",n:1},"Maelezo"],D.mapato.slice().reverse().map(r=>{const p=D.miradi.find(x=>x.id===r.mradi);
+    return `<tr>${acts([bEdit("editMapato",r.id),bDel("delMapato",r.id)])}<td>${r.id}</td><td>${fd(r.tarehe)}</td><td>${esc(p?p.id+" - "+p.jina:r.mradi)}</td><td class="n">${fm(r.kiasi)}</td><td>${esc(r.maelezo||"")}</td></tr>`}))}`;
+};
+
+R.matumizi=()=>{
+  const F=finance();
+  return `<div class="card" id="mtForm"><h3>Ingiza matumizi / gharama</h3><div class="form">
+    <label>Tarehe<input type="date" name="tarehe" value="${todayISO()}"></label>
+    <label>Kundi<select name="kundi">${opts(KUNDI,"","-- Chagua kundi --")}</select></label>
+    <label>Mradi (kama ni gharama za mradi)<select name="mradi"><option value="">-- Hakuna --</option>${D.miradi.map(p=>`<option value="${p.id}">${esc(p.id+" - "+p.jina)}</option>`).join("")}</select></label>
+    <label>Kiasi<input type="number" min="0" name="kiasi"></label><label>Maelezo<input name="maelezo"></label><label>Vocha / risiti<input name="vocha"></label>
+    <label>Lengo (kwa Matumizi ya Michango Maalum)<input name="lengo" list="dlLengo" autocomplete="off" placeholder="mf. Rambirambi"></label></div>
+    <div class="row" style="margin-top:12px"><span class="muted">Msaada wa Jamii unatoka kwenye mfuko wa jamii (salio ${fm(F.salioJamii)}). Matumizi ya Michango Maalum yanatoka kwenye michango ya lengo husika (salio ${fm(F.salioMaalum)}). Yote mawili hayaathiri faida.</span><button class="btn right" data-a="saveMatumizi">Hifadhi Matumizi</button></div></div>
+  <div class="row" style="margin-bottom:8px"><h3 style="margin:0">Matumizi yote</h3><button class="btn sec sm right" data-a="csv" data-t="matumizi">Pakua CSV</button></div>
+  ${table([{t:"Rekebisha",np:1},"Namba","Tarehe","Kundi","Mradi",{t:"Kiasi",n:1},"Maelezo","Vocha"],D.matumizi.slice().reverse().map(r=>`<tr>${acts([bEdit("editMatumizi",r.id),bDel("delMatumizi",r.id)])}<td>${r.id}</td><td>${fd(r.tarehe)}</td><td>${esc(r.kundi)}${r.lengo?" ("+esc(r.lengo)+")":""}</td><td>${esc(r.mradi||"")}</td><td class="n">${fm(r.kiasi)}</td><td>${esc(r.maelezo||"")}</td><td>${esc(r.vocha||"")}</td></tr>`),
+    `<tr class="tot"><td class="noprint"></td><td colspan="4">JUMLA</td><td class="n">${fm(F.matumiziYote)}</td><td colspan="2"></td></tr>`)}`;
+};
+
+R.faida=()=>{
+  const F=finance(),S=D.settings,tr=(l,v,c)=>`<tr class="${c||""}"><td>${l}</td><td>${v}</td></tr>`;
+  return `<div class="card"><h2>Taarifa ya Faida</h2><div class="tw"><table class="stmt">
+  ${tr("A. MAPATO","","sec")}
+  ${tr("Riba ya mikopo iliyolipwa",fm(F.inc.riba))}${tr("Adhabu za mikopo",fm(F.inc.adhabuMk))}${tr("Adhabu nyinginezo",fm(F.inc.adhabuNy))}
+  ${tr("Ada za kujiunga",fm(F.inc.ada))}${tr("Mapato ya miradi",fm(F.inc.miradi))}${tr("Mapato mengineyo (Mipangilio)",fm(F.inc.mengineyo))}
+  ${tr("JUMLA YA MAPATO",fm(F.mapato),"tot")}
+  ${tr("B. MATUMIZI (yanayopunguza faida)","","sec")}
+  ${Object.entries(F.exp).map(([k,v])=>tr(k,fm(v))).join("")}
+  ${tr("Uchakavu / hasara ya miradi (uamuzi wa kikundi)",`<input type="number" min="0" data-s="uchakavu" value="${esc(S.uchakavu)}">`)}
+  ${tr("JUMLA YA MATUMIZI",fm(F.matumizi),"tot")}
+  ${tr("FAIDA HALISI (A - B)",fm(F.faida),"big")}
+  ${tr("<span class='muted'>Taarifa: riba iliyopangwa ambayo bado haijalipwa (haimo kwenye faida)</span>",fm(F.ribaHaijalipwa))}
+  ${tr("C. MGAWANYO WA FAIDA","","sec")}
+  ${tr("Asilimia ya kubaki kama akiba ya kikundi (%)",`<input type="number" min="0" max="100" data-s="akibaPct" value="${esc(S.akibaPct)}">`)}
+  ${tr("Akiba ya kikundi",fm(F.akiba))}${tr("Kiasi kinachopendekezwa kugawanywa",fm(F.pendekezo))}
+  ${tr("Kiasi kilichoamuliwa na kikundi (acha wazi kutumia pendekezo)",`<input type="number" min="0" data-s="kiasiKilichoamuliwa" value="${esc(S.kiasiKilichoamuliwa)}">`)}
+  ${tr("KIASI CHA KUGAWANYA",fm(F.kugawa),"big")}
+  ${tr("D. HALI YA FEDHA","","sec")}
+  ${tr("Salio la kuanzia mzunguko",fm(S.salioKuanzia))}${tr("Michango yote iliyopokelewa",fm(F.michangoYote))}${tr("Mapato ya miradi",fm(F.mapatoMiradi))}
+  ${tr("Mapato mengineyo",fm(S.mapatoMengineyo))}${tr("Mikopo iliyotolewa","-"+fm(F.mikopoJumla))}${tr("Matumizi yote (pamoja na msaada wa jamii)","-"+fm(F.matumiziYote))}
+  ${tr("Mtaji uliowekwa kwenye miradi","-"+fm(F.mtaji))}${tr("PESA ILIYOPO SASA",fm(F.pesa),"big")}
+  ${tr("E. MFUKO WA JAMII","","sec")}
+  ${tr("Michango ya jamii",fm(F.jamiiIn))}${tr("Msaada wa jamii uliotolewa",fm(F.msaada))}${tr("Salio la mfuko wa jamii",fm(F.salioJamii),"tot")}
+  ${tr("F. MICHANGO MAALUM (haimo kwenye faida wala gawio)","","sec")}
+  ${Object.keys(F.byLengo).length?Object.entries(F.byLengo).map(([k,b])=>tr(esc(k)+` <span class="muted">(imekusanywa ${fm(b.in)}, imetumika ${fm(b.out)})</span>`,fm(b.in-b.out))).join(""):tr("<span class='muted'>Hakuna michango maalum bado</span>","")}
+  ${tr("Salio la michango maalum",fm(F.salioMaalum),"tot")}
+  </table></div>
+  <div style="margin-top:12px">${moneyAlerts(F)}</div>
+  <p class="muted" style="margin-top:12px">Hisa, jamii na marejesho ya msingi wa mkopo si mapato - ni pesa za wanachama. Faida = mapato halisi yaliyopokelewa ukitoa matumizi yote.</p>
+  <div class="row noprint">${pdfBtn("Taarifa_ya_Faida_"+todayISO())}<button class="btn sec" data-a="print">Chapisha</button></div></div>`;
+};
+
+R.gawio=()=>{
+  const G=gawio(),F=G.F,S=D.settings,kila=round(G.kiwango*1000);
+  const k=(l,v,w)=>`<div class="kpi ${w?"warn":""}"><div class="l">${l}</div><div class="v">${v}</div></div>`;
+  return `<div class="card"><h2>Gawio la faida - mwisho wa mzunguko</h2>
+  <div class="grid kpis" style="margin-bottom:12px">
+    ${k("Faida halisi",fm(F.faida))}${k("Kiasi cha kugawanya",fm(F.kugawa))}${k("Jumla ya mawekezo (hisa + jamii)",fm(G.tot))}
+    ${k("Kila 1,000 iliyowekezwa imezalisha",fm(kila))}${k("Jumla ya malipo",fm(G.jumla))}${k("Pesa iliyopo",fm(F.pesa),F.pesa<0||G.jumla>F.pesa)}</div>
+  ${!G.tot?`<div class="info">Hakuna mawekezo (hisa au jamii) bado, kwa hiyo hakuna gawio la kuhesabu. Gawio litaonekana wanachama wakianza kuchanga.</div>`:`<div class="info" style="line-height:1.7">
+    <b>Jinsi gawio linavyopatikana</b><br>
+    1. Faida halisi ${fm(F.faida)} &minus; akiba ya kikundi ${fm(F.akiba)} = kiasi cha kugawanya <b>${fm(F.kugawa)}</b>${S.kiasiKilichoamuliwa!==""?" (kiasi kilichoamuliwa na kikundi)":""}.<br>
+    2. Mawekezo ya kila mwanachama = Hisa + Jamii zake. Jumla ya mawekezo ya wanachama wote = <b>${fm(G.tot)}</b>.<br>
+    3. Kiwango cha faida = ${fm(F.kugawa)} &divide; ${fm(G.tot)} = <b>${(G.kiwango*100).toFixed(2)}%</b> ya mawekezo (kila 1,000 &rarr; ${fm(kila)}).<br>
+    4. Gawio la mwanachama = mawekezo yake &times; ${(G.kiwango*100).toFixed(2)}%. Aliyewekeza zaidi anapata zaidi kwa uwiano ule ule.
+  </div>`}
+  <div class="form noprint" style="margin-top:12px">
+    <label>Rudisha jamii kwenye malipo?<select data-s="rudishaJamii">${opts(["NDIYO","HAPANA"],S.rudishaJamii)}</select></label>
+    <label>Kata deni la mkopo kwenye malipo?<select data-s="kataDeni">${opts(["HAPANA","NDIYO"],S.kataDeni)}</select></label>
+  </div>
+  <p class="muted">${G.kata?"Deni linakatwa kwenye malipo ya mwanachama; sehemu isiyokatika inavuka kwenda mzunguko ujao.":"Deni halikatwi: mwanachama analipwa kamili na deni lake linavuka kwenda mzunguko ujao."}</p>
+  ${moneyAlerts(F)}
+  ${G.jumla>0&&G.jumla>F.pesa&&F.pesa>=0?`<div class="alert bad">Malipo yanazidi pesa iliyopo kwa ${fm(G.jumla-F.pesa)}. Kusanya madeni, kata madeni, au punguza kiasi cha kugawa (ukurasa wa Faida).</div>`:""}
+  </div>
+  ${table(["Namba","Jina",{t:"Hisa",n:1},{t:"Jamii",n:1},{t:"Mawekezo",n:1},{t:"Sehemu ya mawekezo",n:1},"Hesabu ya gawio",{t:"Gawio (faida)",n:1},{t:"Mawekezo + Gawio",n:1},{t:"Deni",n:1},{t:"Kato la deni",n:1},{t:"Deni linalovuka",n:1},{t:"MALIPO YA MWISHO",n:1}],
+    G.rows.map(r=>`<tr><td>${esc(r.m.id)}</td><td>${esc(fullName(r.m))}</td><td class="n">${fm(r.hisa)}</td><td class="n">${fm(r.jamii)}</td><td class="n"><b>${fm(r.msingi)}</b></td><td class="n">${(r.pct*100).toFixed(2)}%</td>
+      <td class="muted">${fm(r.msingi)} &times; ${(G.kiwango*100).toFixed(2)}%</td><td class="n"><b>${fm(r.gawio)}</b></td><td class="n">${fm(r.msingi+r.gawio)}</td><td class="n">${fm(r.deni)}</td><td class="n">${fm(r.kato)}</td><td class="n">${fm(r.deniVuka)}</td><td class="n"><b>${fm(r.malipo)}</b></td></tr>`),
+    `<tr class="tot"><td colspan="2">JUMLA (wanachama ${G.rows.length})</td><td class="n">${fm(G.rows.reduce((a,r)=>a+r.hisa,0))}</td><td class="n">${fm(G.rows.reduce((a,r)=>a+r.jamii,0))}</td><td class="n">${fm(G.tot)}</td><td class="n">100%</td><td></td><td class="n">${fm(G.gawioJumla)}</td><td class="n">${fm(G.tot+G.gawioJumla)}</td><td class="n">${fm(G.rows.reduce((a,r)=>a+r.deni,0))}</td><td class="n">${fm(G.katoJumla)}</td><td class="n">${fm(G.deniVuka)}</td><td class="n">${fm(G.jumla)}</td></tr>`)}
+  ${G.tot?`<p class="muted">Tofauti ya kuzungusha (rounding): ${fm(F.kugawa-G.gawioJumla)}</p>`:""}
+  <div class="row noprint" style="margin-top:12px">${pdfBtn("Gawio_"+todayISO())}<button class="btn sec" data-a="csv" data-t="gawio">Pakua CSV</button><button class="btn sec" data-a="print">Chapisha</button></div>`;
+};
+
+R.taarifa=()=>{
+  const id=state.id||"",m=member(id);
+  let body="";
+  if(m){const s=mStats(id),G=gawio(),g=G.rows.find(r=>r.m.id===id)||{};
+    const tx=D.michango.filter(r=>r.mw===id),lo=D.mikopo.filter(l=>l.mw===id);
+    const t=a=>sumM(r=>r.mw===id&&r.aina===a);
+    body=`<div class="card"><h2>${esc(m.id+" - "+fullName(m))}</h2><p class="muted">Simu: ${esc(m.simu)} &nbsp;|&nbsp; Anuani: ${esc(m.anuani)} &nbsp;|&nbsp; Alijiunga: ${fd(m.tarehe)} &nbsp;|&nbsp; Hali: ${esc(m.hali)}</p>
+    <div class="grid kpis">${[["Hisa",s.hisa],["Jamii",s.jamii],["Marejesho",t("Marejesho ya Mkopo")],["Riba iliyolipwa",t("Riba ya Mkopo")],["Adhabu",t("Adhabu ya Mkopo")+t("Adhabu Nyingine")],["Michango mingine",t("Mchango Mwingine")],["Deni la sasa",s.deni],["Gawio linalotarajiwa",g.gawio||0],["Malipo ya mwisho",g.malipo||0]]
+      .map(([l,v])=>`<div class="kpi"><div class="l">${l}</div><div class="v">${fm(v)}</div></div>`).join("")}</div></div>
+    <h3>Miamala</h3>${table([{t:"Rekebisha",np:1},"Tarehe","Risiti","Aina",{t:"Kiasi",n:1},"Mkopo","Maelezo"],tx.map(r=>`<tr>${acts([bEdit("editMchango",r.id),bDel("delMchango",r.id)])}<td>${fd(r.tarehe)}</td><td>${r.risiti}</td><td>${esc(ainaTxt(r))}</td><td class="n">${fm(r.kiasi)}</td><td>${esc(r.mkopo||"")}</td><td>${esc(r.maelezo||"")}</td></tr>`))}
+    <h3 style="margin-top:16px">Mikopo</h3>${table(["Namba","Tarehe",{t:"Kiasi",n:1},"Riba",{t:"Rejesho/Mwezi",n:1},{t:"Inayodaiwa",n:1},"Hali",""],lo.map(l=>{const c=loanCalc(l);return `<tr><td>${l.id}</td><td>${fd(l.tarehe)}</td><td class="n">${fm(c.P)}</td><td>${l.riba}% ${esc(l.aina)}</td><td class="n">${fm(c.rejesho)}</td><td class="n">${fm(c.deni)}</td><td>${chip(c.hali)}</td><td class="noprint"><button class="btn ghost sm" data-a="editLoan" data-id="${l.id}">Hariri</button></td></tr>`}))}
+    ${(()=>{const gl=D.mikopo.filter(l=>l.mdhamini1===id||l.mdhamini2===id);return gl.length?`<h3 style="margin-top:16px">Mikopo aliyodhamini</h3>`+table(["Mkopo","Mkopaji",{t:"Inayodaiwa",n:1},"Hali"],gl.map(l=>{const c=loanCalc(l);return `<tr><td>${l.id}</td><td>${esc(memberLabel(l.mw))}</td><td class="n">${fm(c.deni)}</td><td>${chip(c.hali)}</td></tr>`})):""})()}
+    ${sigBlock()}<div class="row noprint" style="margin-top:12px">${pdfBtn("Taarifa_"+id+"_"+todayISO())}<button class="btn sec" data-a="print">Chapisha Taarifa</button><button class="btn sec" data-a="memberForm" data-id="${esc(id)}">&#9998; Hariri taarifa za mwanachama</button><button class="btn del" data-a="delMember" data-id="${esc(id)}">&#128465; Futa mwanachama</button></div>`;}
+  return `<div class="card noprint"><h3>Taarifa ya mwanachama</h3><label style="max-width:420px">Namba ya mwanachama<input id="tMw" list="dlMw" autocomplete="off" value="${esc(id)}" placeholder="Andika namba"></label></div>${body}`;
+};
+
+R.ripoti=()=>{
+  const S=D.settings,F=finance(),from=state.from||S.anza,to=state.to||todayISO(),tab=state.tab||"mm";
+  const inP=r=>r.tarehe>=from&&r.tarehe<=to,before=r=>r.tarehe<from;
+  const sumA=(a,f)=>D.michango.filter(r=>r.aina===a&&f(r)).reduce((t,r)=>t+num(r.kiasi),0);
+  const tr=(l,v,c)=>`<tr class="${c||""}"><td>${l}</td><td>${v}</td></tr>`;
+  const tabs=[["mm","Mapato na Matumizi"],["hf","Hali ya Fedha"],["mk","Mikopo"],["mc","Michango kwa Mwanachama"],["ml","Michango Maalum"]];
+  let body="";
+  if(tab==="mm"){
+    const inc=[["Riba ya mikopo",sumA("Riba ya Mkopo",inP)],["Adhabu za mikopo",sumA("Adhabu ya Mkopo",inP)],["Adhabu nyinginezo",sumA("Adhabu Nyingine",inP)],
+      ["Ada za kujiunga",sumA("Ada ya Kujiunga",inP)],["Mapato ya miradi",D.mapato.filter(inP).reduce((t,r)=>t+num(r.kiasi),0)]];
+    const ti=inc.reduce((t,x)=>t+x[1],0);
+    const exp=KUNDI_FAIDA.map(k=>[k,D.matumizi.filter(r=>r.kundi===k&&inP(r)).reduce((t,r)=>t+num(r.kiasi),0)]);
+    const te=exp.reduce((t,x)=>t+x[1],0),msaada=D.matumizi.filter(r=>r.kundi==="Msaada wa Jamii"&&inP(r)).reduce((t,r)=>t+num(r.kiasi),0);
+    body=`<div class="tw"><table class="stmt">${tr("MAPATO","","sec")}${inc.map(([l,v])=>tr(l,fm(v))).join("")}${tr("Jumla ya mapato",fm(ti),"tot")}
+      ${tr("MATUMIZI","","sec")}${exp.map(([l,v])=>tr(l,fm(v))).join("")}${tr("Jumla ya matumizi",fm(te),"tot")}
+      ${tr("ZIADA / FAIDA YA KIPINDI",fm(ti-te),"big")}
+      ${tr("<span class='muted'>Msaada wa jamii uliotolewa (kutoka mfuko wa jamii)</span>",fm(msaada))}</table></div>
+      <p class="muted">Mapato mengineyo ya Mipangilio (${fm(S.mapatoMengineyo)}) na uchakavu wa miradi (${fm(S.uchakavu)}) ni ya mzunguko mzima, kwa hiyo yako kwenye ukurasa wa Faida, si hapa.</p>`;
+  }else if(tab==="hf"){
+    const mtajiNet=F.mtaji-num(S.uchakavu),mali=F.pesa+F.salioMsingi+mtajiNet;
+    const mtajiKuanzia=num(S.salioKuanzia)+F.carriedP,dhima=F.hisa+F.salioJamii+F.salioMaalum+mtajiKuanzia+F.faida;
+    const flow=f=>{const i=D.michango.filter(f).reduce((t,r)=>t+num(r.kiasi),0)+D.mapato.filter(f).reduce((t,r)=>t+num(r.kiasi),0);
+      const o=D.mikopo.filter(l=>!l.vushwa&&f(l)).reduce((t,l)=>t+num(l.kiasi),0)+D.matumizi.filter(f).reduce((t,r)=>t+num(r.kiasi),0)+D.miradi.filter(f).reduce((t,r)=>t+num(r.mtaji),0);return [i,o]};
+    const [ib,ob]=flow(before),open=num(S.salioKuanzia)+num(S.mapatoMengineyo)+ib-ob;
+    const ins=AINA.map(a=>[a,sumA(a,inP)]).concat([["Mapato ya miradi",D.mapato.filter(inP).reduce((t,r)=>t+num(r.kiasi),0)]]);
+    const outs=[["Mikopo iliyotolewa",D.mikopo.filter(l=>!l.vushwa&&inP(l)).reduce((t,l)=>t+num(l.kiasi),0)],["Matumizi (yote)",D.matumizi.filter(inP).reduce((t,r)=>t+num(r.kiasi),0)],["Mtaji wa miradi",D.miradi.filter(inP).reduce((t,r)=>t+num(r.mtaji),0)]];
+    const ti=ins.reduce((t,x)=>t+x[1],0),to_=outs.reduce((t,x)=>t+x[1],0);
+    body=`<div class="grid two"><div><h3>Mizania (hali kwa sasa)</h3><div class="tw"><table class="stmt">
+      ${tr("MALI ZA KIKUNDI","","sec")}${tr("Pesa taslimu / benki / simu",fm(F.pesa))}${tr("Mikopo inayodaiwa (msingi)",fm(F.salioMsingi))}${tr("Mali ya miradi (mtaji - uchakavu)",fm(mtajiNet))}${tr("JUMLA YA MALI",fm(mali),"big")}
+      ${tr("MTAJI WA WANACHAMA NA KIKUNDI","","sec")}${tr("Hisa za wanachama",fm(F.hisa))}${tr("Mfuko wa jamii",fm(F.salioJamii))}${tr("Michango maalum (salio)",fm(F.salioMaalum))}${tr("Mtaji wa kuanzia (salio + madeni yaliyovuka)",fm(mtajiKuanzia))}${tr("Faida ya mzunguko hadi sasa",fm(F.faida))}${tr("JUMLA",fm(dhima),"big")}
+      </table></div>${Math.abs(mali-dhima)<1?`<div class="alert ok" style="margin-top:8px">Mizania imelingana.</div>`:`<div class="alert bad" style="margin-top:8px">Mizania haijalingana kwa ${fm(mali-dhima)}. Angalia salio la kuanzia kwenye Mipangilio.</div>`}
+      <p class="muted">Riba inayodaiwa (${fm(F.ribaHaijalipwa)}) haihesabiwi kama mali mpaka ilipwe.</p></div>
+      <div><h3>Mtiririko wa fedha (kipindi)</h3><div class="tw"><table class="stmt">
+      ${tr("Pesa mwanzo wa kipindi",fm(open),"tot")}${tr("PESA ILIYOINGIA","","sec")}${ins.map(([l,v])=>tr(l,fm(v))).join("")}${tr("Jumla iliyoingia",fm(ti),"tot")}
+      ${tr("PESA ILIYOTOKA","","sec")}${outs.map(([l,v])=>tr(l,fm(v))).join("")}${tr("Jumla iliyotoka",fm(to_),"tot")}${tr("PESA MWISHO WA KIPINDI",fm(open+ti-to_),"big")}</table></div></div></div>`;
+  }else if(tab==="mk"){
+    const iss=D.mikopo.filter(l=>!l.vushwa&&inP(l)),pp=sumA("Marejesho ya Mkopo",inP),pr=sumA("Riba ya Mkopo",inP),pa=sumA("Adhabu ya Mkopo",inP);
+    const act=D.mikopo.map(l=>({l,c:loanCalc(l)})).filter(x=>x.c.deni>0).sort((a,b)=>b.c.malimbikizo-a.c.malimbikizo);
+    const par=F.deni?F.deniChelewa/F.deni*100:0;
+    body=`<div class="grid kpis" style="margin-bottom:12px">${[["Mikopo iliyotolewa (kipindi)",iss.length+" / "+fm(iss.reduce((t,l)=>t+num(l.kiasi),0))],["Msingi uliorudishwa",fm(pp)],["Riba iliyolipwa",fm(pr)],["Adhabu zilizolipwa",fm(pa)],
+      ["Mikopo hai",act.length],["Jumla inayodaiwa",fm(F.deni)],["Malimbikizo",fm(F.malimbikizo)],["Mikopo hatarini (PAR)",par.toFixed(1)+"%"]].map(([l,v])=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div></div>`).join("")}</div>
+      <p class="muted">PAR = sehemu ya madeni yote iliyo kwenye mikopo iliyochelewa.</p>
+      ${table(["Mkopo","Mwanachama",{t:"Kiasi",n:1},{t:"Inayodaiwa",n:1},{t:"Malimbikizo",n:1},{t:"Adhabu Inayopendekezwa",n:1},"Mwisho","Hali","Wadhamini"],
+        act.map(({l,c})=>`<tr><td>${l.id}</td><td>${esc(memberLabel(l.mw))}</td><td class="n">${fm(c.P)}</td><td class="n">${fm(c.deni)}</td><td class="n">${fm(c.malimbikizo)}</td><td class="n">${fm(c.adhabu)}</td><td>${fd(c.mwisho)}</td><td>${chip(c.hali)}</td><td>${esc(guarantorText(l))}</td></tr>`))}`;
+  }else if(tab==="ml"){
+    const mi=D.michango.filter(r=>r.aina==="Mchango Mwingine"&&inP(r)),mo=D.matumizi.filter(r=>r.kundi==="Matumizi ya Michango Maalum"&&inP(r));
+    const keys=[...new Set(mi.map(r=>r.lengo||"Bila lengo").concat(mo.map(r=>r.lengo||"Bila lengo")))];
+    const sm=(arr,k)=>arr.filter(r=>(r.lengo||"Bila lengo")===k).reduce((t,r)=>t+num(r.kiasi),0);
+    body=table(["Lengo",{t:"Imekusanywa",n:1},{t:"Idadi ya waliochanga",n:1},{t:"Imetumika",n:1},{t:"Salio",n:1}],keys.map(k=>`<tr><td>${esc(k)}</td><td class="n">${fm(sm(mi,k))}</td><td class="n">${new Set(mi.filter(r=>(r.lengo||"Bila lengo")===k).map(r=>r.mw)).size}</td><td class="n">${fm(sm(mo,k))}</td><td class="n">${fm(sm(mi,k)-sm(mo,k))}</td></tr>`))
+      +`<h3 style="margin-top:16px">Waliochanga</h3>`+table(["Tarehe","Namba","Jina","Lengo",{t:"Kiasi",n:1}],mi.slice().sort((a,b)=>(a.lengo||"").localeCompare(b.lengo||"")||a.mw.localeCompare(b.mw,undefined,{numeric:true})).map(r=>`<tr><td>${fd(r.tarehe)}</td><td>${esc(r.mw)}</td><td>${esc(fullName(member(r.mw)||{}))}</td><td>${esc(r.lengo||"")}</td><td class="n">${fm(r.kiasi)}</td></tr>`));
+  }else{
+    const cols=AINA,rows=D.wanachama.map(m=>{const v=cols.map(a=>sumA(a,r=>r.mw===m.id&&inP(r)));return {m,v,t:v.reduce((a,b)=>a+b,0)}});
+    const tot=cols.map((_,i)=>rows.reduce((a,r)=>a+r.v[i],0));
+    body=table(["Namba","Jina",...cols.map(c=>({t:c,n:1})),{t:"Jumla",n:1}],rows.map(r=>`<tr><td>${esc(r.m.id)}</td><td>${esc(fullName(r.m))}</td>${r.v.map(x=>`<td class="n">${fm(x)}</td>`).join("")}<td class="n"><b>${fm(r.t)}</b></td></tr>`),
+      `<tr class="tot"><td colspan="2">JUMLA</td>${tot.map(x=>`<td class="n">${fm(x)}</td>`).join("")}<td class="n">${fm(tot.reduce((a,b)=>a+b,0))}</td></tr>`);
+  }
+  return `<div class="card noprint"><div class="row"><h2 style="margin:0">Ripoti</h2>
+    <label class="right" style="flex-direction:row;align-items:center;gap:6px">Kuanzia<input type="date" id="rFrom" value="${from}" style="width:auto"></label>
+    <label style="flex-direction:row;align-items:center;gap:6px">Hadi<input type="date" id="rTo" value="${to}" style="width:auto"></label></div>
+    <div class="row" style="margin-top:10px"><button class="btn sec sm" data-a="rPreset" data-p="leo">Leo</button><button class="btn sec sm" data-a="rPreset" data-p="mwezi">Mwezi huu</button><button class="btn sec sm" data-a="rPreset" data-p="mzunguko">Mzunguko mzima</button>
+    <span class="right"></span>${pdfBtn("Ripoti_"+tabs.find(x=>x[0]===tab)[1].replace(/ /g,"_")+"_"+from+"_hadi_"+to)}<button class="btn sec sm" data-a="print">Chapisha</button></div>
+    <div class="row" style="margin-top:10px">${tabs.map(([k,t])=>`<button class="btn sm ${k===tab?"":"sec"}" data-a="rtab" data-t="${k}">${t}</button>`).join("")}</div></div>
+  <div class="card">${pdfHead("Ripoti ya "+tabs.find(x=>x[0]===tab)[1],"Kipindi "+fd(from)+" - "+fd(to))}<h3>${esc(S.jina)} - ${tabs.find(x=>x[0]===tab)[1]}</h3><p class="muted">Kipindi: ${fd(from)} hadi ${fd(to)}</p>${body}${sigBlock()}
+    <div class="row noprint" style="margin-top:14px">${pdfBtn("Ripoti_"+tabs.find(x=>x[0]===tab)[1].replace(/ /g,"_")+"_"+from+"_hadi_"+to)}</div></div>`;
+};
+R.uongozi=()=>{
+  const card=(u,cheo)=>{const m=u?member(u.mw):null;return `<div class="leader"><div class="c">${cheo}</div>
+    <div class="n">${m?esc(fullName(m)):"<span class='muted'>Hajachaguliwa</span>"}</div>
+    ${m?`<div class="muted">Namba ${esc(m.id)} &middot; Simu ${esc(m.simu)}<br>Tangu ${fd(u.tarehe)}</div>`:""}
+    <div class="row noprint" style="margin-top:8px"><button class="btn sm sec" data-a="leaderForm" data-c="${cheo}" ${u?`data-id="${u.id}"`:""}>${m?"Badilisha":"Chagua"}</button>
+    ${u?`<button class="btn ghost sm dan" data-a="delLeader" data-id="${u.id}">Ondoa</button>`:""}</div></div>`};
+  const nid=D.uongozi.filter(u=>u.cheo==="Mtunza Nidhamu");
+  return `<div class="card"><div class="row"><h2 style="margin:0">Muundo wa Uongozi</h2><span class="right"></span>${pdfBtn("Uongozi_"+todayISO())}<button class="btn sec sm noprint" data-a="print">Chapisha</button></div>
+    <p class="muted">${esc(D.settings.jina)} &middot; viongozi wanachaguliwa kutoka kwa wanachama kwa namba zao.</p>
+    <div class="grid leaders">${CHEO.map(c=>card(D.uongozi.find(u=>u.cheo===c),c)).join("")}</div></div>
+  <div class="card"><div class="row"><h3 style="margin:0">Watunza Nidhamu (${nid.length})</h3><button class="btn sm right noprint" data-a="leaderForm" data-c="Mtunza Nidhamu">+ Ongeza Mtunza Nidhamu</button></div>
+    <div class="grid leaders" style="margin-top:12px">${nid.length?nid.map(u=>card(u,"Mtunza Nidhamu")).join(""):`<p class="muted">Hakuna mtunza nidhamu bado.</p>`}</div></div>
+  ${table(["Cheo","Namba","Jina","Simu","Tangu"],CHEO.concat(["Mtunza Nidhamu"]).flatMap(c=>D.uongozi.filter(u=>u.cheo===c)).map(u=>{const m=member(u.mw)||{};return `<tr><td>${u.cheo}</td><td>${esc(u.mw)}</td><td>${esc(fullName(m))}</td><td>${esc(m.simu||"")}</td><td>${fd(u.tarehe)}</td></tr>`}))}`;
+};
+R.mipangilio=()=>{
+  const S=D.settings,f=(k,l,t,extra)=>`<label>${l}<input ${t?`type="${t}"`:""} data-s="${k}" value="${esc(S[k])}" ${extra||""}></label>`;
+  return `<div class="card"><h3>Mipangilio ya kikundi</h3><div class="form">
+    ${f("jina","Jina la kikundi")}${f("anza","Tarehe ya kuanza mzunguko","date")}${f("mwisho","Tarehe ya mwisho wa mzunguko","date")}
+    ${f("beiHisa","Bei ya hisa moja","number")}${f("riba","Riba ya kawaida (% kwa mwezi)","number",'step="0.01"')}
+    <label>Aina ya riba ya kawaida<select data-s="ainaRiba">${opts(["Flat","Inayopungua"],S.ainaRiba)}</select></label>
+    ${f("kikomo","Kikomo cha mkopo (mara ya hisa, 0 = hakuna)","number")}${f("adhabuPct","Adhabu ya kuchelewa (% ya malimbikizo)","number")}
+    <label>Rudisha jamii mwisho wa mzunguko?<select data-s="rudishaJamii">${opts(["NDIYO","HAPANA"],S.rudishaJamii)}</select></label>
+    <label>Kata deni kwenye malipo ya gawio?<select data-s="kataDeni">${opts(["HAPANA","NDIYO"],S.kataDeni)}</select></label>
+    ${f("salioKuanzia","Salio la kuanzia mzunguko","number")}${f("mapatoMengineyo","Mapato mengineyo (mf. riba ya benki)","number")}${f("adaKujiunga","Ada ya kujiunga ya kawaida","number")}
+  </div><p class="muted">Mabadiliko yanahifadhiwa yenyewe.</p></div>
+  <div class="card"><h3>Password ya msimamizi (Mipangilio)</h3>
+  ${D.usalama.adminHash?`<p>Mipangilio inafunguka kwa password ya msimamizi tu. Inajifunga ukitoka kwenye ukurasa huu, au baada ya dakika 5 bila kutumika.</p>
+    <div class="form" id="apF"><label>Password ya msimamizi ya sasa<input type="password" name="old" autocomplete="current-password"></label>
+      <label>Password mpya (kubadilisha)<input type="password" name="a1" autocomplete="new-password"></label><label>Rudia password mpya<input type="password" name="a2" autocomplete="new-password"></label></div>
+    <div class="row" style="margin-top:10px"><button class="btn" data-a="changeAdminPw">Badilisha</button><button class="btn sec" data-a="removeAdminPw">Ondoa</button><button class="btn sec right" data-a="lockAdmin">Funga Mipangilio Sasa</button></div>`
+  :`<div class="alert amb">Hakuna password ya msimamizi. Mtu yeyote anayefungua mfumo anaweza kubadilisha Mipangilio. Weka password ambayo wewe tu unaijua, tofauti na password ya mfumo.</div>
+    <div class="form" id="apF"><label>Password ya msimamizi<input type="password" name="a1" autocomplete="new-password"></label><label>Rudia password<input type="password" name="a2" autocomplete="new-password"></label></div>
+    <div class="row" style="margin-top:10px"><button class="btn" data-a="setAdminPw">Weka Password ya Msimamizi</button></div>`}
+  <p class="muted" style="margin-top:10px">Inalinda: mipangilio yote, password, nakala na kurejesha, Excel ya data yote, kufuta data, kuanza mzunguko mpya, na kufuta mwanachama kabisa.</p></div>
+  <div class="card"><h3>Password ya mfumo (watumiaji wote)</h3>
+  ${D.usalama.hash?`<p>Password imewekwa. Mfumo wote unafungwa kila unapofunguliwa, na unajifunga wenyewe baada ya dakika 15 bila kutumika.</p>
+    <div class="form" id="pwF"><label>Password ya sasa<input type="password" name="old" autocomplete="current-password"></label>
+      <label>Password mpya (kubadilisha)<input type="password" name="pw1" autocomplete="new-password"></label><label>Rudia password mpya<input type="password" name="pw2" autocomplete="new-password"></label></div>
+    <div class="row" style="margin-top:10px"><button class="btn" data-a="changePw">Badilisha Password</button><button class="btn sec" data-a="removePw">Ondoa Password</button>
+      <button class="btn sec right" data-a="lockNow">Funga Sasa</button></div>`
+  :`<div class="alert amb">Hakuna password bado. Weka password ili mtu asiyeijua asiweze kufungua mfumo.</div>
+    <div class="form" id="pwF"><label>Password mpya<input type="password" name="pw1" autocomplete="new-password"></label><label>Rudia password<input type="password" name="pw2" autocomplete="new-password"></label></div>
+    <div class="row" style="margin-top:10px"><button class="btn" data-a="setPw">Weka Password</button></div>`}
+  <p class="muted" style="margin-top:10px">Usiisahau password: ukiisahau, njia pekee ni kurejesha nakala ya zamani au kufuta data. Password inazuia watu kuingia kiholela, lakini data haijasimbwa (encrypted) - linda pia kifaa chenyewe.</p></div>
+  <div class="card"><h3>Excel</h3>
+    <p class="muted">Kwa kikundi kilichokuwepo: pakua kiolezo, jaza wanachama, salio la hisa na jamii, na mikopo inayodaiwa, kisha pakia. Mfumo unaonyesha makosa kabla ya kuingiza chochote. Inafanya kazi bila intaneti.</p>
+    <div class="row"><button class="btn sec" data-a="xlTemplate">1. Pakua Kiolezo (Template)</button><button class="btn" data-a="importExcel">2. Pakia faili la Excel</button>
+      <button class="btn sec right" data-a="xlExport">Pakua data yote kama Excel</button></div></div>
+  <div class="card"><h3>Nakala (backup) na kurejesha</h3>
+    <p class="muted">Data inahifadhiwa kwenye kivinjari (browser) cha kifaa hiki tu. Pakua nakala mara kwa mara na uihifadhi mahali salama (flash, email, Google Drive). Ukifuta historia ya browser bila nakala, data itapotea.</p>
+    <div class="row"><button class="btn" data-a="backup">Pakua Nakala (.json)</button><button class="btn sec" data-a="restore">Rejesha kutoka Nakala</button>
+    <button class="btn sec" data-a="csv" data-t="wanachama">CSV Wanachama</button><button class="btn sec" data-a="csv" data-t="michango">CSV Michango</button><button class="btn sec" data-a="csv" data-t="mikopo">CSV Mikopo</button></div>
+    ${D.historia.length?`<h3 style="margin-top:16px">Mizunguko iliyopita</h3>${table(["Ilifungwa","Mzunguko",{t:"Faida",n:1},{t:"Iliyogawanywa",n:1},{t:"Salio lililobaki",n:1},{t:"Madeni yaliyovuka",n:1}],D.historia.map(h=>`<tr><td>${fd(h.tarehe)}</td><td>${fd(h.anza)} - ${fd(h.mwisho)}</td><td class="n">${fm(h.faida)}</td><td class="n">${fm(h.kugawa)}</td><td class="n">${fm(h.salio)}</td><td class="n">${fm(h.deniVuka||0)}</td></tr>`))}`:""}
+  </div>
+  <div class="card"><h3>Ukaguzi wa data</h3><p class="muted">Inatafuta miamala, mikopo au viongozi ambao mwanachama wao hayupo tena kwenye orodha, ili usafishe.</p>
+    <div class="row"><button class="btn sec" data-a="checkData">Kagua Data Sasa</button><span class="muted">${orphanCount()?`<b style="color:var(--red)">Kumbukumbu ${orphanCount()} zinahitaji kusafishwa.</b>`:"Data iko safi."}</span><span class="muted right">Toleo la mfumo: <b>${APP_VERSION}</b></span></div></div>
+  <div class="card"><h3>Kumbukumbu za marekebisho</h3><p class="muted">Kila muamala au mkopo unaporekebishwa au kufutwa, unaandikwa hapa ili kikundi kiweze kukagua.</p>
+    ${table(["Tarehe na saa","Kitendo","Maelezo"],D.kumbukumbu.slice(-100).reverse().map(k=>{const d=new Date(k.t);return `<tr><td>${fd(toISO(d))} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}</td><td>${esc(k.kitendo)}</td><td style="white-space:normal">${esc(k.maelezo)}</td></tr>`}))}</div>
+  <div class="card"><h3>Mwisho wa mzunguko</h3>
+    <p class="muted">Baada ya kugawa faida na kulipa wanachama: mfumo unapakua nakala kwanza, kisha unafuta michango, mapato na matumizi. Wanachama, miradi na madeni ambayo hayajalipwa vinavuka kwenda mzunguko mpya.</p>
+    <div class="row"><button class="btn dan" data-a="newCycle">Anza Mzunguko Mpya</button></div></div>
+  <div class="card"><h3>Kuanza upya</h3><p class="muted">Tumia baada ya kujaribu mfumo, kabla ya kuanza kuingiza data halisi.</p>
+    <div class="row"><button class="btn sec" data-a="wipeTx">Futa miamala yote (baki na wanachama)</button><button class="btn del" data-a="wipe">Futa kila kitu</button></div></div>`;
+};
+
+/* ================================================================ ACTIONS */
+const A={};
+A.go=el=>go(el.dataset.v,el.dataset.id?{id:el.dataset.id}:{});
+A.closeDlg=closeDlg;
+A.print=()=>window.print();
+function pdfHead(title,sub){const now=new Date();
+  return `<div class="pdfhead">${LOGO}<div><div class="t">${esc(D.settings.jina)} &middot; ${esc(title)}</div>
+  <div class="m">VICOBA SYSTEM${sub?" &middot; "+esc(sub):""} &middot; Imetolewa ${fd(toISO(now))} saa ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}</div></div></div>`}
+function pdfBtn(name,label){return `<button class="btn pdf noprint" data-a="savePdf" data-n="${esc(name)}">&#128196; ${label||"Hifadhi PDF"}</button>`}
+A.savePdf=async el=>{
+  const name=(slug()+"_"+el.dataset.n).replace(/[^A-Za-z0-9_\-]+/g,"_").replace(/_+/g,"_");
+  closeDlg();
+  if(window.vicobaDesktop&&window.vicobaDesktop.savePdf){
+    try{const r=await window.vicobaDesktop.savePdf(name+".pdf");if(r&&r.ok){kumb("PDF",r.path);save();toast("PDF imehifadhiwa: "+r.path)}else if(r&&r.error)toast("PDF haikuhifadhiwa: "+r.error)}
+    catch(e){toast("PDF haikuhifadhiwa.")}return}
+  const old=document.title;document.title=name;
+  const done=()=>{document.title=old;window.removeEventListener("afterprint",done)};window.addEventListener("afterprint",done);
+  toast('Kwenye dirisha la kuchapisha, chagua "Save as PDF" kisha Save.');
+  setTimeout(()=>{window.print();setTimeout(done,60000)},250);
+};
+
+A.memberForm=el=>{
+  const m=el.dataset.id?member(el.dataset.id):null;
+  dlg(m?"Hariri "+m.id:"Sajili mwanachama",`<div class="form" id="mwF">
+    <label class="full">Namba ya mwanachama (ya kikundi)<input name="namba" value="${esc(m?m.id:suggestNumber())}" autocomplete="off"><span class="pickname">Tumia namba ambayo kikundi kimempa. Haiwezi kujirudia.</span></label>
+    <label>Jina la kwanza<input name="j1" value="${esc(m?.j1)}"></label><label>Jina la kati<input name="j2" value="${esc(m?.j2)}"></label><label>Jina la mwisho<input name="j3" value="${esc(m?.j3)}"></label>
+    <label>Namba ya simu<input name="simu" inputmode="tel" value="${esc(m?.simu)}"></label><label>Anuani<input name="anuani" value="${esc(m?.anuani)}"></label>
+    <label>Tarehe ya kujiunga<input type="date" name="tarehe" value="${esc(m?.tarehe||todayISO())}"></label>
+    <label>Hali<select name="hali">${opts(HALI,m?.hali||"Hai")}</select></label>
+    ${m?"":`<label>Ada ya kujiunga<input type="number" min="0" name="ada" value="${esc(D.settings.adaKujiunga)}"></label>`}
+    </div>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn" data-a="saveMember" data-id="${m?.id||""}">Hifadhi</button>`);
+};
+A.saveMember=el=>{
+  const v=formVals($("#mwF")),old=el.dataset.id;
+  const id=v.namba.replace(/\s+/g," ");
+  if(!id)return toast("Ingiza namba ya mwanachama.");
+  if(id.includes(" - "))return toast("Namba isiwe na ' - ' ndani yake.");
+  const taken=D.wanachama.find(x=>x.id.toUpperCase()===id.toUpperCase()&&x.id!==old);
+  if(taken)return toast("Namba "+id+" tayari ni ya "+fullName(taken)+".");
+  if(!v.j1||!v.j2||!v.j3)return toast("Jaza majina yote matatu.");
+  if(!v.simu)return toast("Jaza namba ya simu.");
+  const dup=D.wanachama.find(x=>x.simu===v.simu&&x.id!==old);
+  if(dup&&!confirm("Simu "+v.simu+" tayari imesajiliwa kwa "+dup.id+" ("+fullName(dup)+"). Endelea?"))return;
+  if(old){
+    const m=member(old);
+    if(id!==old){
+      if(!confirm("Badilisha namba "+old+" kuwa "+id+"? Miamala na mikopo yake yote itahamishiwa namba mpya."))return;
+      for(const r of D.michango)if(r.mw===old)r.mw=id;
+      for(const l of D.mikopo){if(l.mw===old)l.mw=id;if(l.mdhamini1===old)l.mdhamini1=id;if(l.mdhamini2===old)l.mdhamini2=id}
+      for(const u of D.uongozi)if(u.mw===old)u.mw=id;
+      kumb("Badilisha namba",old+" => "+id);
+    }
+    Object.assign(m,{id,j1:v.j1,j2:v.j2,j3:v.j3,simu:v.simu,anuani:v.anuani,tarehe:v.tarehe,hali:v.hali});save();closeDlg();render();return toast("Taarifa zimesasishwa.")}
+  D.wanachama.push({id,j1:v.j1,j2:v.j2,j3:v.j3,simu:v.simu,anuani:v.anuani,tarehe:v.tarehe||todayISO(),hali:v.hali||"Hai"});
+  D.wanachama.sort((a,b)=>a.id.localeCompare(b.id,undefined,{numeric:true}));
+  if(num(v.ada)>0)D.michango.push({id:uid(),risiti:nextReceipt(),tarehe:v.tarehe||todayISO(),mw:id,aina:"Ada ya Kujiunga",kiasi:num(v.ada),mkopo:"",maelezo:"Ada ya kujiunga"});
+  save();closeDlg();render();toast("Mwanachama amesajiliwa: "+id);
+};
+A.delMember=el=>{
+  const id=el.dataset.id,m=member(id);if(!m)return;
+  const tx=D.michango.filter(r=>r.mw===id),lo=D.mikopo.filter(l=>l.mw===id),s=mStats(id);
+  const ld=D.uongozi.filter(u=>u.mw===id),gu=D.mikopo.filter(l=>l.mdhamini1===id||l.mdhamini2===id);
+  if(!tx.length&&!lo.length&&!ld.length&&!gu.length){if(!confirm("Futa "+memberLabel(id)+"?"))return;
+    D.wanachama=D.wanachama.filter(x=>x.id!==id);kumb("Futa mwanachama",memberLabel(id)+" (hakuwa na miamala)");closeDlg();save();go("wanachama");toast("Mwanachama amefutwa.");return}
+  dlg("Futa "+memberLabel(id),`${s.deni>0?`<div class="alert bad">Ana deni la ${fm(s.deni)}. Hawezi kufutwa mpaka deni lilipwe au mkopo urekebishwe.</div>`:""}
+    <p>Mwanachama huyu ana:</p><ul><li>Miamala ${tx.length} (jumla ${fm(tx.reduce((a,r)=>a+num(r.kiasi),0))}), hisa ${fm(s.hisa)}, jamii ${fm(s.jamii)}</li><li>Mikopo ${lo.length}</li>
+    ${ld.length?`<li>Cheo: ${ld.map(u=>u.cheo).join(", ")}</li>`:""}${gu.length?`<li>Ni mdhamini wa mikopo ${gu.length}</li>`:""}</ul>
+    <p><b>Kama amejitoa tu</b>, chagua <b>Weka Amejitoa</b>: taarifa zake zinabaki kwa ukaguzi.</p>
+    <p><b>Futa kabisa</b> kunaondoa mwanachama pamoja na miamala na mikopo yake yote. Pesa iliyopo kwenye mfumo itapungua kwa kiasi alichochanga, sawa na kumrudishia pesa zake. Tumia hii pia kwa mwanachama aliyesajiliwa kwa makosa.</p>
+    ${s.deni>0?"":`<label>Kuthibitisha Futa kabisa, andika namba yake (${esc(id)}):<input id="purgeConfirm" autocomplete="off"></label>`}
+    ${s.deni>0||!D.usalama.adminHash?"":`<label style="margin-top:8px">Password ya msimamizi<input type="password" id="purgeAdmin" autocomplete="current-password"></label>`}`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn sec" data-a="setAmejitoa" data-id="${esc(id)}">Weka Amejitoa</button>${s.deni>0?"":`<button class="btn dan" data-a="purgeMember" data-id="${esc(id)}">Futa kabisa</button>`}`);
+};
+A.setAmejitoa=el=>{const m=member(el.dataset.id);m.hali="Amejitoa";kumb("Hali ya mwanachama",m.id+" => Amejitoa");save();closeDlg();render();toast(fullName(m)+" amewekwa Amejitoa.")};
+A.purgeMember=async el=>{const id=el.dataset.id,m=member(id);
+  const inp=$("#purgeConfirm");const t=inp?inp.value:"";if(t.trim().toUpperCase()!==id.toUpperCase()){if(inp)inp.focus();return toast("Andika namba "+id+" kwenye kisanduku ili kuthibitisha.")}
+  if(D.usalama.adminHash&&!(await checkAdmin(($("#purgeAdmin")||{}).value||"")))return toast("Password ya msimamizi inahitajika kufuta mwanachama kabisa.");
+  const tx=D.michango.filter(r=>r.mw===id),lo=D.mikopo.filter(l=>l.mw===id);
+  D.michango=D.michango.filter(r=>r.mw!==id);const loIds=lo.map(l=>l.id);D.michango=D.michango.filter(r=>!loIds.includes(r.mkopo));
+  D.mikopo=D.mikopo.filter(l=>l.mw!==id);for(const l of D.mikopo){if(l.mdhamini1===id)l.mdhamini1="";if(l.mdhamini2===id)l.mdhamini2=""}
+  D.uongozi=D.uongozi.filter(u=>u.mw!==id);D.wanachama=D.wanachama.filter(x=>x.id!==id);
+  kumb("Futa mwanachama kabisa",id+" "+fullName(m)+": miamala "+tx.length+" ("+fm(tx.reduce((a,r)=>a+num(r.kiasi),0))+"), mikopo "+lo.length);
+  const txAll=tx.length;save();closeDlg();go("wanachama");
+  dlg("Mwanachama amefutwa",`<div class="alert ok">${esc(id+" - "+fullName(m))} amefutwa pamoja na miamala ${txAll} na mikopo ${lo.length}.</div>
+    <p>Imebaki: miamala ${D.michango.filter(r=>r.mw===id).length} ya namba ${esc(id)}.</p>`)};
+
+
+A.after_michango=()=>{
+  const inp=$('#mchForm [name="mw"]'),mk=$("#mchMk");
+  const upd=()=>{
+    const m=resolveMember(inp.value),info=$("#mchInfo");
+    const loans=m?D.mikopo.filter(l=>l.mw===m.id&&loanCalc(l).deni>0):[];
+    mk.innerHTML=`<option value="">${loans.length?"Chagua yenyewe (mkopo unaodaiwa)":"Hana mkopo unaodaiwa"}</option>`+loans.map(l=>`<option value="${l.id}">${l.id} (deni ${fm(loanCalc(l).deni)})</option>`).join("");
+    if(!m){info.textContent=inp.value.trim()?"Namba hii haijasajiliwa.":"Andika namba ya mwanachama.";return}
+    const s=mStats(m.id),l=loans[0];let t=`${fullName(m)}  |  Hisa: ${fm(s.hisa)}  |  Jamii: ${fm(s.jamii)}  |  Deni: ${fm(s.deni)}`;
+    if(l){const c=loanCalc(l);t+=`  |  ${l.id}: rejesho ${fm(c.rejesho)}/mwezi, malimbikizo ${fm(c.malimbikizo)}`}
+    info.textContent=t;
+  };
+  inp.addEventListener("input",upd);upd();
+  $("#mchForm").addEventListener("input",()=>{let t=0;AINA.forEach(a=>{const e=$("#mchForm").querySelector(`[name="${a}"]`);if(e)t+=num(e.value)});$("#mchTot").textContent=fm(t)});
+  const fl=()=>{state.f={tarehe:$("#fTarehe").value,mw:$("#fMw").value.trim(),aina:$("#fAina").value};state.mw=inp.value.trim();render()};
+  ["#fTarehe","#fMw","#fAina"].forEach(x=>$(x).addEventListener("change",fl));
+};
+A.fLeo=()=>{state.f=Object.assign(state.f||{},{tarehe:todayISO()});render()};
+A.fZote=()=>{state.f=Object.assign(state.f||{},{tarehe:""});render()};
+
+function postPayment(mw,tarehe,amounts,mkopo,maelezo,lengo){
+  const risiti=nextReceipt(),lines=[];
+  for(const a of AINA){const k=num(amounts[a]);if(k>0){const row={id:uid(),risiti,tarehe,mw,aina:a,kiasi:k,mkopo:LOAN_TYPES.includes(a)?mkopo:"",maelezo};
+    if(a==="Mchango Mwingine")row.lengo=(lengo||"").trim();D.michango.push(row);lines.push([a,k])}}
+  return {risiti,lines};
+}
+A.saveMchango=()=>{
+  const v=formVals($("#mchForm")),mm=resolveMember(v.mw);
+  if(!mm)return toast("Andika namba sahihi ya mwanachama.");
+  v.mw=mm.id;
+  let tot=0,needLoan=false;
+  for(const a of AINA){const k=num(v[a]);if(k<0)return toast("Kiasi hakiwezi kuwa hasi.");if(k>0){tot+=k;if(LOAN_TYPES.includes(a))needLoan=true}}
+  if(!tot)return toast("Hakuna kiasi kilichoingizwa.");
+  if(num(v["Mchango Mwingine"])>0&&!v.lengo)return toast("Andika mchango mwingine ni kwa ajili ya nini (mf. Rambirambi).");
+  let mk=v.mkopo;
+  if(needLoan){if(!mk){const l=activeLoan(v.mw);mk=l?l.id:""}
+    if(!mk)return toast("Mwanachama hana mkopo unaodaiwa.");
+    const c=loanCalc(D.mikopo.find(l=>l.id===mk));
+    if(num(v["Marejesho ya Mkopo"])>c.salio+0.5&&!confirm("Marejesho yanazidi salio la msingi ("+fm(c.salio)+"). Endelea?"))return;}
+  if(!confirm("Hifadhi michango ya "+memberLabel(v.mw)+" jumla "+fm(tot)+"?"))return;
+  const r=postPayment(v.mw,v.tarehe||todayISO(),v,mk,v.maelezo,v.lengo);
+  save();state.mw="";render();showReceipt(r.risiti);
+};
+function showReceipt(risiti){
+  const rows=D.michango.filter(r=>r.risiti===risiti);if(!rows.length)return;
+  const r0=rows[0],tot=rows.reduce((s,r)=>s+num(r.kiasi),0),mk=rows.find(r=>r.mkopo)?.mkopo;
+  dlg("Risiti "+risiti,`<div class="receipt"><div class="rl">${LOGO}</div><h4>${esc(D.settings.jina.toUpperCase())}</h4><div class="muted" style="text-align:center;font-size:11px;letter-spacing:2px">VICOBA SYSTEM</div><div class="t">RISITI YA MALIPO</div>
+    <table><tr><td>Namba ya risiti</td><td><b>${risiti}</b></td></tr><tr><td>Tarehe</td><td>${fd(r0.tarehe)}</td></tr><tr><td>Mwanachama</td><td>${esc(memberLabel(r0.mw))}</td></tr>${mk?`<tr><td>Mkopo</td><td>${mk}</td></tr>`:""}</table>
+    <table style="margin-top:10px">${rows.map(r=>`<tr><td>${esc(ainaTxt(r))}</td><td class="n">${fm(r.kiasi)}</td></tr>`).join("")}<tr class="tot"><td>JUMLA</td><td class="n">${fm(tot)}</td></tr></table>
+    <div class="sig"><span>Mweka Hazina: ${esc(leaderName("Mweka Hazina"))}<br>Sahihi: __________</span><span>Mwanachama: __________</span></div></div>`,
+    `<button class="btn sec" data-a="closeDlg">Funga</button><button class="btn" data-a="printDlg">Chapisha Risiti</button>`);
+}
+A.showReceipt=el=>showReceipt(el.dataset.id);
+A.printDlg=()=>{document.body.classList.add("pm");window.print();setTimeout(()=>document.body.classList.remove("pm"),500)};
+A.delMchango=el=>{const r=D.michango.find(x=>x.id===el.dataset.id);if(!r||!confirm("Futa "+r.aina+" "+fm(r.kiasi)+" ("+r.risiti+")?"))return;
+  D.michango=D.michango.filter(x=>x.id!==r.id);kumb("Futa muamala",rowTxt(r));save();render();toast("Muamala umefutwa.")};
+A.editMchango=el=>{
+  const r=D.michango.find(x=>x.id===el.dataset.id);if(!r)return;
+  const loans=D.mikopo.filter(l=>l.mw===r.mw);
+  dlg("Hariri muamala ("+r.risiti+")",`<div class="form" id="emF">
+    <label>Tarehe<input type="date" name="tarehe" value="${esc(r.tarehe)}"></label>
+    ${picker("mw",r.mw,"Namba ya mwanachama")}
+    <label>Aina<select name="aina">${opts(AINA,r.aina)}</select></label>
+    <label>Kiasi<input type="number" min="0" name="kiasi" value="${esc(r.kiasi)}"></label>
+    <label>Mkopo (kwa marejesho / riba / adhabu ya mkopo)<select name="mkopo"><option value="">-- Hakuna --</option>${loans.map(l=>`<option ${l.id===r.mkopo?"selected":""}>${l.id}</option>`).join("")}</select></label>
+    <label>Lengo (kwa Mchango Mwingine)<input name="lengo" list="dlLengo" autocomplete="off" value="${esc(r.lengo||"")}"></label>
+    <label class="full">Maelezo<input name="maelezo" value="${esc(r.maelezo||"")}"></label></div>
+    <p class="muted">Ukibadilisha namba ya mwanachama, hifadhi kwanza kisha chagua mkopo wake upya kama ni muamala wa mkopo.</p>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn" data-a="saveEditMchango" data-id="${r.id}">Hifadhi Mabadiliko</button>`);
+};
+A.saveEditMchango=el=>{
+  const r=D.michango.find(x=>x.id===el.dataset.id);if(!r)return;
+  const v=formVals($("#emF")),m=resolveMember(v.mw),k=num(v.kiasi);
+  if(!m)return toast("Andika namba sahihi ya mwanachama.");
+  if(k<=0)return toast("Kiasi kiwe zaidi ya 0. Kufuta, tumia kitufe cha Futa.");
+  if(v.aina==="Mchango Mwingine"&&!v.lengo)return toast("Andika lengo la mchango mwingine.");
+  let mk=v.mkopo;
+  if(LOAN_TYPES.includes(v.aina)){
+    if(m.id!==r.mw||!mk){const l=activeLoan(m.id)||D.mikopo.find(x=>x.mw===m.id);mk=l?l.id:""}
+    if(!mk)return toast("Mwanachama huyu hana mkopo.");
+    if(D.mikopo.find(l=>l.id===mk).mw!==m.id)return toast("Mkopo huo si wa mwanachama huyu.");
+  }else mk="";
+  const before=rowTxt(r);
+  Object.assign(r,{tarehe:v.tarehe||r.tarehe,mw:m.id,aina:v.aina,kiasi:k,mkopo:mk,maelezo:v.maelezo,lengo:v.aina==="Mchango Mwingine"?v.lengo:""});
+  kumb("Hariri muamala",before+"  =>  "+rowTxt(r));save();closeDlg();render();toast("Muamala umerekebishwa.");
+};
+
+A.ktab=el=>go("kikao",{tab:el.dataset.t});
+A.after_kikao=()=>{
+  const sd=$("#ksDate");if(sd){sd.addEventListener("change",()=>go("kikao",{tab:"muhtasari",tarehe:sd.value}));
+    $("#ksAny").addEventListener("change",e=>{if(e.target.value)go("kikao",{tab:"muhtasari",tarehe:e.target.value})});return}
+  const t=$("#kTbl");if(!t)return;
+  t.addEventListener("input",kikaoTotals);t.addEventListener("change",kikaoTotals);
+};
+function kikaoTotals(e){const t=$("#kTbl");if(!t)return;let g=0,y=0;const ct={};
+  t.querySelectorAll("tr[data-mw]").forEach(tr=>{let s=0;tr.querySelectorAll("input[data-c]").forEach(i=>{const k=num(i.value);s+=k;ct[i.dataset.c]=(ct[i.dataset.c]||0)+k});
+    const cb=tr.querySelector(".yupo");if(e&&e.target&&e.target.dataset&&e.target.dataset.c&&tr.contains(e.target)&&s>0)cb.checked=true;if(cb.checked)y++;
+    tr.querySelector(".rt").textContent=fm(s);g+=s});
+  t.querySelectorAll("[data-ct]").forEach(td=>td.textContent=fm(ct[td.dataset.ct]||0));$("#kGrand").textContent=fm(g);$("#kYupo").textContent=y}
+A.kikaoClear=()=>{document.querySelectorAll("#kTbl input[data-c]").forEach(i=>i.value="");document.querySelectorAll("#kTbl .yupo").forEach(c=>c.checked=false);
+  document.querySelectorAll("#kTbl tr[data-mw]").forEach(tr=>{tr.dataset.lengo="";tr.querySelector(".kl").textContent=""});kikaoTotals()};
+A.saveKikao=()=>{
+  const tarehe=$("#kTarehe").value||todayISO(),entries=[],hud=[];let tot=0;
+  const kl=$("#kLengo").value.trim();
+  for(const tr of document.querySelectorAll("#kTbl tr[data-mw]")){const am={};let s=0;
+    tr.querySelectorAll("input[data-c]").forEach(i=>{const k=num(i.value);if(k<0)s=NaN;am[i.dataset.c]=k;s+=k});
+    if(isNaN(s))return toast("Kuna kiasi hasi.");
+    const lengo=tr.dataset.lengo||kl;
+    if(num(am["Mchango Mwingine"])>0&&!lengo)return toast("Andika mchango mwingine ni kwa ajili ya nini (juu ya jedwali).");
+    if(tr.querySelector(".yupo").checked||s>0)hud.push(tr.dataset.mw);
+    if(s>0){entries.push({mw:tr.dataset.mw,am,lengo});tot+=s}}
+  if(!entries.length&&!hud.length)return toast("Hakuna kiasi wala mahudhurio yaliyoingizwa.");
+  if(!confirm("Hifadhi kikao cha "+fd(tarehe)+"?\nWaliohudhuria: "+hud.length+"\nWaliochanga: "+entries.length+"\nJumla: "+fm(tot)))return;
+  for(const e of entries){const l=activeLoan(e.mw);postPayment(e.mw,tarehe,e.am,l?l.id:"","Kikao",e.lengo)}
+  let rec=D.vikao.find(v=>v.tarehe===tarehe);if(!rec){rec={tarehe,hudhurio:[],maazimio:""};D.vikao.push(rec)}
+  rec.hudhurio=[...new Set(rec.hudhurio.concat(hud))];
+  save();go("kikao",{tab:"muhtasari",tarehe});toast("Kikao kimehifadhiwa: waliochanga "+entries.length+", jumla "+fm(tot));
+};
+A.saveNotes=el=>{const d=el.dataset.d;let rec=D.vikao.find(v=>v.tarehe===d);if(!rec){rec={tarehe:d,hudhurio:[],maazimio:""};D.vikao.push(rec)}
+  rec.maazimio=$("#ksNotes").value;save();render();toast("Maazimio yamehifadhiwa.")};
+A.kikaoTemplate=()=>{const d=($("#kTarehe")||{}).value||todayISO();
+  const ms=D.wanachama.filter(m=>m.hali!=="Amejitoa");
+  const head=["Namba","Jina","Amehudhuria",...AINA,"Lengo la Mchango Mwingine"];
+  const blob=XL.write([{name:"KIKAO",header:true,widths:[10,26,13,...AINA.map(()=>14),24],textCols:[0],lists:{2:["Ndiyo","Hapana"],[head.length-1]:lengoList()},
+    rows:[head,...ms.map(m=>[m.id,fullName(m),"",...AINA.map(()=>""),""])]},
+    {name:"MAELEZO",title:true,widths:[100],rows:[["Excel ya kikao cha "+fd(d)+" - "+D.settings.jina],[""],["1. Kila mstari ni mwanachama mmoja. Usibadilishe safu ya Namba wala vichwa."],
+      ["2. Amehudhuria: Ndiyo au Hapana. Jaza kiasi kwenye kila aina aliyolipa; acha tupu asicholipa."],["3. Marejesho, riba na adhabu ya mkopo zinaenda kwenye mkopo wake unaodaiwa."],
+      ["4. Kama ameweka Mchango Mwingine, andika lengo lake (mf. Rambirambi) kwenye safu ya mwisho."],["5. Hifadhi, kisha kwenye mfumo: Kikao > Pakia Excel ya kikao. Kagua jedwali, kisha Hifadhi Kikao."]]}]);
+  dlBlob(blob,"Kikao_"+slug()+"_"+d+".xlsx");toast("Excel ya kikao imepakuliwa.")};
+A.kikaoImport=()=>$("#xlsKikao").click();
+document.addEventListener("change",async e=>{if(e.target.id!=="xlsKikao")return;const f=e.target.files[0];e.target.value="";if(!f)return;
+  try{let sheets;if(/\.csv$/i.test(f.name))sheets=XL.csv(await f.text());
+    else{if(/\.xls$/i.test(f.name))throw new Error("Hifadhi faili kama .xlsx (Excel Workbook).");sheets=await XL.read(await f.arrayBuffer())}
+    let sh=null,hi=-1,hdr=null;
+    for(const x of sheets){const h=IM.headerRow(x.rows);if(h<0)continue;const n=x.rows[h].map(IM.norm);if(n.some(v=>IM.KEYS.namba.includes(v))&&n.some(v=>IM.ainaMap(v)||v==="hisa")){sh=x;hi=h;hdr=x.rows[h];break}}
+    if(!sh)throw new Error("Haikupatikana karatasi yenye safu za Namba na michango. Tumia 'Pakua Excel ya kikao'.");
+    const map={};hdr.forEach((h,ci)=>{const n=IM.norm(h);if(IM.KEYS.namba.includes(n)&&map.namba===undefined)map.namba=ci;
+      else if(["amehudhuria","yupo","mahudhurio","hudhurio","alihudhuria"].includes(n))map.yupo=ci;
+      else if(n.startsWith("lengo"))map.lengo=ci;else{const a=IM.ainaMap(n);if(a&&map[a]===undefined)map[a]=ci}});
+    const errs=[];let filled=0,att=0;
+    for(let r=hi+1;r<sh.rows.length;r++){const row=sh.rows[r]||[];if(row.every(v=>String(v??"").trim()===""))continue;
+      const raw=IM.id(row[map.namba]);const m=resolveMember(raw);
+      if(!m){errs.push("Mstari "+(r+1)+": namba "+raw+" haijasajiliwa");continue}
+      const tr=document.querySelector(`#kTbl tr[data-mw="${CSS.escape(m.id)}"]`);if(!tr){errs.push("Mstari "+(r+1)+": "+m.id+" hayupo kwenye kikao (amejitoa?)");continue}
+      let any=false;
+      for(const a of AINA){if(map[a]===undefined)continue;const k=IM.amt(row[map[a]]);const inp=tr.querySelector(`input[data-c="${a}"]`);
+        if(k<0){errs.push("Mstari "+(r+1)+": kiasi hasi ("+a+")");continue}
+        if(k>0&&inp.disabled){errs.push("Mstari "+(r+1)+": "+m.id+" hana mkopo, "+a+" "+fm(k)+" imerukwa");continue}
+        inp.value=k>0?k:"";if(k>0)any=true}
+      const yv=map.yupo===undefined?"":IM.norm(row[map.yupo]);const yes=["ndiyo","ndio","ndyo","yes","y","1","true","x","yupo"].includes(yv);
+      tr.querySelector(".yupo").checked=yes||any;if(yes||any)att++;
+      const lg=map.lengo===undefined?"":String(row[map.lengo]??"").trim();tr.dataset.lengo=lg;tr.querySelector(".kl").textContent=lg?"Lengo: "+lg:"";
+      if(any)filled++}
+    kikaoTotals();
+    dlg("Excel ya kikao imesomwa",`<div class="alert ok">Wanachama ${filled} wamejazwa michango; ${att} wamewekwa kuwa walihudhuria.</div>
+      ${errs.length?`<div class="alert bad">Mistari ${errs.length} ina makosa na imerukwa:</div><ul>${errs.slice(0,40).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+      <p>Kagua jedwali, kisha bonyeza <b>Hifadhi Kikao na Tengeneza Muhtasari</b>. Hakuna kilichohifadhiwa bado.</p>`);
+  }catch(err){dlg("Faili halikusomeka",`<div class="alert bad">${esc(err.message||String(err))}</div>`)}});
+A.kikaoXl=el=>{const d=el.dataset.d,tx=D.michango.filter(r=>r.tarehe===d);const ids=[...new Set(tx.map(r=>r.mw))];
+  const rows=ids.map(id=>[id,fullName(member(id)||{}),...AINA.map(a=>tx.filter(r=>r.mw===id&&r.aina===a).reduce((t,r)=>t+num(r.kiasi),0)),tx.filter(r=>r.mw===id).reduce((t,r)=>t+num(r.kiasi),0)]);
+  dlBlob(XL.write([{name:"Muhtasari",header:true,widths:[10,26,...AINA.map(()=>14),14],textCols:[0],rows:[["Namba","Jina",...AINA,"Jumla"],...rows]}]),"Muhtasari_Kikao_"+d+".xlsx")};
+
+A.after_mikopo=()=>{
+  const f=$("#mkForm"),upd=()=>{
+    const v=formVals(f),S=D.settings,P=num(v.kiasi),r=num(v.riba),n=Math.floor(num(v.muda)),c=$("#mkCalc"),w=$("#mkWarn");
+    if(P>0&&n>=1){const riba=loanInterest(P,r,n,v.aina),tot=P+riba;
+      c.innerHTML=`<div><span>Jumla ya riba</span><b>${fm(riba)}</b></div><div><span>Jumla ya kulipa</span><b>${fm(tot)}</b></div><div><span>Rejesho kwa mwezi</span><b>${fm(tot/n)}</b></div><div><span>Mwisho wa kulipa</span><b>${fd(addMonths(v.tarehe||todayISO(),n))}</b></div>`}
+    else c.innerHTML=`<div><span>Jaza kiasi na muda kuona riba na rejesho</span><b>-</b></div>`;
+    const ws=[],F=finance();
+    const bm=resolveMember(v.mw);
+    if(v.mw&&!bm)ws.push("Namba ya mwanachama haijasajiliwa.");
+    if(bm){const s=mStats(bm.id),k=num(S.kikomo);if(k>0&&P>s.hisa*k)ws.push("Kiasi kinazidi kikomo cha mkopo (hisa "+fm(s.hisa)+" x "+k+" = "+fm(s.hisa*k)+").");
+      const l=activeLoan(bm.id);if(l)ws.push("Mwanachama ana mkopo unaodaiwa ("+l.id+", deni "+fm(loanCalc(l).deni)+").")}
+    for(const g of ["mdhamini1","mdhamini2"]){const gm=resolveMember(v[g]);
+      if(gm&&bm&&gm.id===bm.id)ws.push("Mkopaji hawezi kuwa mdhamini wake mwenyewe.");
+      else if(gm){const d=mStats(gm.id).deni;if(d>0)ws.push("Mdhamini "+gm.id+" ("+fullName(gm)+") ana deni la "+fm(d)+".")}}
+    if(P>F.pesa)ws.push("Pesa iliyopo kwenye kikundi ni "+fm(F.pesa)+" tu.");
+    w.innerHTML=ws.map(x=>`<div class="alert amb">${esc(x)}</div>`).join("");
+  };
+  f.addEventListener("input",upd);f.addEventListener("change",upd);upd();
+};
+A.saveLoan=()=>{
+  const v=formVals($("#mkForm")),P=num(v.kiasi),r=num(v.riba),n=num(v.muda),bm=resolveMember(v.mw);
+  if(!bm)return toast("Andika namba sahihi ya mwanachama.");v.mw=bm.id;
+  const gid=t=>{const g=resolveMember(t);return g?g.id:t};
+  if((resolveMember(v.mdhamini1)||{}).id===bm.id||(resolveMember(v.mdhamini2)||{}).id===bm.id)return toast("Mkopaji hawezi kuwa mdhamini wake mwenyewe.");if(P<=0)return toast("Ingiza kiasi cha mkopo.");
+  if(r<0)return toast("Riba haiwezi kuwa hasi.");if(n<1||n!==Math.floor(n))return toast("Muda uwe idadi kamili ya miezi.");
+  const warn=$("#mkWarn").innerText.trim();
+  if(warn&&!confirm(warn+"\n\nEndelea kutoa mkopo?"))return;
+  const id=nextCode(D.mikopo,"MK-",4),l={id,tarehe:v.tarehe||todayISO(),mw:v.mw,kiasi:P,riba:r,aina:v.aina,muda:n,mdhamini1:gid(v.mdhamini1),mdhamini2:gid(v.mdhamini2)};
+  const c=loanCalc(l);
+  if(!confirm("Toa mkopo "+id+" kwa "+memberLabel(v.mw)+"?\nKiasi: "+fm(P)+"\nRiba: "+fm(c.riba)+"\nJumla ya kulipa: "+fm(c.total)+"\nRejesho kwa mwezi: "+fm(c.rejesho)))return;
+  D.mikopo.push(l);save();render();showRatiba(id);
+};
+function showRatiba(id){
+  const l=D.mikopo.find(x=>x.id===id),c=loanCalc(l),rows=schedule(l);
+  dlg("Ratiba ya "+id,`<p><b>${esc(memberLabel(l.mw))}</b><br>Kiasi ${fm(c.P)} &nbsp;|&nbsp; Riba ${l.riba}% kwa mwezi (${esc(l.aina)}) &nbsp;|&nbsp; Miezi ${l.muda}<br>Jumla ya riba ${fm(c.riba)} &nbsp;|&nbsp; Jumla ya kulipa ${fm(c.total)}${guarantorText(l)?"<br>Wadhamini: "+esc(guarantorText(l)):""}${l.vushwa?"<br><i>Deni lililovushwa kutoka mzunguko uliopita ("+esc(l.asili||"")+")</i>":""}</p>
+    ${table(["Mwezi","Tarehe",{t:"Rejesho",n:1},{t:"Riba",n:1},{t:"Msingi",n:1},{t:"Salio",n:1}],rows.map(r=>`<tr><td>${r.k}</td><td>${fd(r.tarehe)}</td><td class="n">${fm(r.rejesho)}</td><td class="n">${fm(r.riba)}</td><td class="n">${fm(r.msingi)}</td><td class="n">${fm(r.salio)}</td></tr>`))}
+    <p class="muted" style="margin-top:10px">Imelipwa hadi sasa: msingi ${fm(c.paidP)}, riba ${fm(c.paidR)}, adhabu ${fm(c.paidA)}. Inayodaiwa: ${fm(c.deni)}.</p>`,
+    `<button class="btn sec" data-a="closeDlg">Funga</button><button class="btn" data-a="printDlg">Chapisha</button>`);
+}
+A.ratiba=el=>showRatiba(el.dataset.id);
+A.editLoan=el=>{
+  const l=D.mikopo.find(x=>x.id===el.dataset.id);if(!l)return;
+  const paid=D.michango.some(r=>r.mkopo===l.id);
+  dlg("Hariri mkopo "+l.id,`${paid?`<div class="alert amb">Mkopo huu tayari una malipo. Kubadilisha kiasi, riba au muda kutabadilisha deni na malimbikizo yake.</div>`:""}
+    ${l.vushwa?`<div class="alert amb">Huu ni deni lililovushwa: riba iliyobaki ni ${fm(l.ribaYaZamani)}.</div>`:""}
+    <div class="form" id="elF">
+    <label>Tarehe<input type="date" name="tarehe" value="${esc(l.tarehe)}"></label>
+    <label>Mkopaji<input value="${esc(memberLabel(l.mw))}" disabled></label>
+    <label>Kiasi<input type="number" min="0" name="kiasi" value="${esc(l.kiasi)}"></label>
+    <label>Riba (% kwa mwezi)<input type="number" min="0" step="0.01" name="riba" value="${esc(l.riba)}"></label>
+    <label>Aina ya riba<select name="aina">${opts(["Flat","Inayopungua"],l.aina)}</select></label>
+    <label>Muda (miezi)<input type="number" min="1" step="1" name="muda" value="${esc(l.muda)}"></label>
+    ${picker("mdhamini1",l.mdhamini1||"","Mdhamini wa 1 (hiari)")}${picker("mdhamini2",l.mdhamini2||"","Mdhamini wa 2 (hiari)")}</div>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn" data-a="saveEditLoan" data-id="${l.id}">Hifadhi Mabadiliko</button>`);
+};
+A.saveEditLoan=el=>{
+  const l=D.mikopo.find(x=>x.id===el.dataset.id);if(!l)return;
+  const v=formVals($("#elF")),P=num(v.kiasi),r=num(v.riba),n=num(v.muda);
+  if(P<0||(P<=0&&!l.vushwa))return toast("Ingiza kiasi sahihi.");if(r<0)return toast("Riba haiwezi kuwa hasi.");if(n<1||n!==Math.floor(n))return toast("Muda uwe idadi kamili ya miezi.");
+  const gid=t=>{const g=resolveMember(t);return g?g.id:t};
+  if([v.mdhamini1,v.mdhamini2].some(g=>(resolveMember(g)||{}).id===l.mw))return toast("Mkopaji hawezi kuwa mdhamini wake mwenyewe.");
+  const before=`${l.id} ${fd(l.tarehe)} ${fm(l.kiasi)} ${l.riba}% ${l.aina} miezi ${l.muda}`;
+  Object.assign(l,{tarehe:v.tarehe||l.tarehe,kiasi:P,riba:r,aina:v.aina,muda:n,mdhamini1:gid(v.mdhamini1),mdhamini2:gid(v.mdhamini2)});
+  kumb("Hariri mkopo",before+"  =>  "+`${fd(l.tarehe)} ${fm(l.kiasi)} ${l.riba}% ${l.aina} miezi ${l.muda}`);save();closeDlg();render();toast("Mkopo umerekebishwa.");
+};
+A.delLoan=el=>{const id=el.dataset.id;if(D.michango.some(r=>r.mkopo===id))return dlg("Haiwezekani kufuta","<p>Mkopo huu una malipo yaliyorekodiwa. Futa malipo hayo kwanza kwenye Michango kama kweli ni kosa.</p>");
+  if(!confirm("Futa mkopo "+id+"?"))return;const lo=D.mikopo.find(l=>l.id===id);kumb("Futa mkopo",id+" "+lo.mw+" "+fm(lo.kiasi));D.mikopo=D.mikopo.filter(l=>l.id!==id);save();render()};
+
+A.saveMradi=()=>{const v=formVals($("#mrForm"));if(!v.jina)return toast("Ingiza jina la mradi.");if(num(v.mtaji)<0)return toast("Mtaji hauwezi kuwa hasi.");
+  const id=nextCode(D.miradi,"MR-",3);D.miradi.push({id,jina:v.jina,tarehe:v.tarehe||todayISO(),mtaji:num(v.mtaji),msimamizi:v.msimamizi,maelezo:v.maelezo});save();render();toast("Mradi umesajiliwa: "+id)};
+A.saveMapato=()=>{const v=formVals($("#mpForm"));if(!v.mradi)return toast("Chagua mradi.");if(num(v.kiasi)<=0)return toast("Ingiza kiasi.");
+  D.mapato.push({id:nextCode(D.mapato,"MP-",4),tarehe:v.tarehe||todayISO(),mradi:v.mradi,kiasi:num(v.kiasi),maelezo:v.maelezo});save();render();toast("Mapato yamehifadhiwa.")};
+A.delMradi=el=>{const id=el.dataset.id;if(D.mapato.some(r=>r.mradi===id)||D.matumizi.some(r=>r.mradi===id))return dlg("Haiwezekani kufuta","<p>Mradi huu una mapato au gharama zilizorekodiwa.</p>");
+  if(!confirm("Futa mradi "+id+"?"))return;D.miradi=D.miradi.filter(p=>p.id!==id);save();render()};
+A.delMapato=el=>{const r=D.mapato.find(x=>x.id===el.dataset.id);if(!r||!confirm("Futa mapato "+r.id+" ("+fm(r.kiasi)+")?"))return;D.mapato=D.mapato.filter(x=>x.id!==r.id);kumb("Futa mapato",r.id+" "+fm(r.kiasi));save();render()};
+A.saveMatumizi=()=>{const v=formVals($("#mtForm")),k=num(v.kiasi);
+  if(!v.kundi)return toast("Chagua kundi la matumizi.");if(k<=0)return toast("Ingiza kiasi.");
+  if(v.kundi==="Gharama za Mradi"&&!v.mradi)return toast("Chagua mradi husika.");
+  if(v.kundi==="Msaada wa Jamii"&&k>finance().salioJamii&&!confirm("Kiasi kinazidi salio la mfuko wa jamii. Endelea?"))return;
+  if(v.kundi==="Matumizi ya Michango Maalum"){if(!v.lengo)return toast("Andika lengo (mf. Rambirambi).");
+    const b=finance().byLengo[v.lengo];const sal=b?b.in-b.out:0;if(k>sal&&!confirm("Kiasi kinazidi michango iliyokusanywa kwa "+v.lengo+" (salio "+fm(sal)+"). Endelea?"))return;}
+  D.matumizi.push({id:nextCode(D.matumizi,"MT-",4),tarehe:v.tarehe||todayISO(),kundi:v.kundi,mradi:v.mradi,kiasi:k,maelezo:v.maelezo,vocha:v.vocha,lengo:v.kundi==="Matumizi ya Michango Maalum"?v.lengo:""});save();render();toast("Matumizi yamehifadhiwa.")};
+A.delMatumizi=el=>{const r=D.matumizi.find(x=>x.id===el.dataset.id);if(!r||!confirm("Futa matumizi "+r.id+" ("+r.kundi+", "+fm(r.kiasi)+")?"))return;
+  D.matumizi=D.matumizi.filter(x=>x.id!==r.id);kumb("Futa matumizi",r.id+" "+fd(r.tarehe)+" "+r.kundi+" "+fm(r.kiasi));save();render()};
+A.editMatumizi=el=>{const r=D.matumizi.find(x=>x.id===el.dataset.id);if(!r)return;
+  dlg("Hariri matumizi "+r.id,`<div class="form" id="etF"><label>Tarehe<input type="date" name="tarehe" value="${esc(r.tarehe)}"></label>
+    <label>Kundi<select name="kundi">${opts(KUNDI,r.kundi)}</select></label>
+    <label>Mradi<select name="mradi"><option value="">-- Hakuna --</option>${D.miradi.map(p=>`<option value="${p.id}" ${p.id===r.mradi?"selected":""}>${esc(p.id+" - "+p.jina)}</option>`).join("")}</select></label>
+    <label>Kiasi<input type="number" min="0" name="kiasi" value="${esc(r.kiasi)}"></label><label>Maelezo<input name="maelezo" value="${esc(r.maelezo||"")}"></label>
+    <label>Vocha<input name="vocha" value="${esc(r.vocha||"")}"></label><label>Lengo (michango maalum)<input name="lengo" list="dlLengo" value="${esc(r.lengo||"")}"></label></div>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn" data-a="saveEditMatumizi" data-id="${r.id}">Hifadhi Mabadiliko</button>`)};
+A.saveEditMatumizi=el=>{const r=D.matumizi.find(x=>x.id===el.dataset.id);if(!r)return;const v=formVals($("#etF")),k=num(v.kiasi);
+  if(k<=0)return toast("Kiasi kiwe zaidi ya 0.");if(v.kundi==="Gharama za Mradi"&&!v.mradi)return toast("Chagua mradi husika.");
+  if(v.kundi==="Matumizi ya Michango Maalum"&&!v.lengo)return toast("Andika lengo.");
+  const before=r.id+" "+fd(r.tarehe)+" "+r.kundi+" "+fm(r.kiasi);
+  Object.assign(r,{tarehe:v.tarehe||r.tarehe,kundi:v.kundi,mradi:v.mradi,kiasi:k,maelezo:v.maelezo,vocha:v.vocha,lengo:v.kundi==="Matumizi ya Michango Maalum"?v.lengo:""});
+  kumb("Hariri matumizi",before+"  =>  "+fd(r.tarehe)+" "+r.kundi+" "+fm(r.kiasi));save();closeDlg();render();toast("Matumizi yamerekebishwa.")};
+A.editMapato=el=>{const r=D.mapato.find(x=>x.id===el.dataset.id);if(!r)return;
+  dlg("Hariri mapato "+r.id,`<div class="form" id="epF"><label>Tarehe<input type="date" name="tarehe" value="${esc(r.tarehe)}"></label>
+    <label>Mradi<select name="mradi">${D.miradi.map(p=>`<option value="${p.id}" ${p.id===r.mradi?"selected":""}>${esc(p.id+" - "+p.jina)}</option>`).join("")}</select></label>
+    <label>Kiasi<input type="number" min="0" name="kiasi" value="${esc(r.kiasi)}"></label><label>Maelezo<input name="maelezo" value="${esc(r.maelezo||"")}"></label></div>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn" data-a="saveEditMapato" data-id="${r.id}">Hifadhi Mabadiliko</button>`)};
+A.saveEditMapato=el=>{const r=D.mapato.find(x=>x.id===el.dataset.id);if(!r)return;const v=formVals($("#epF")),k=num(v.kiasi);if(k<=0)return toast("Kiasi kiwe zaidi ya 0.");
+  const before=r.id+" "+fd(r.tarehe)+" "+fm(r.kiasi);Object.assign(r,{tarehe:v.tarehe||r.tarehe,mradi:v.mradi,kiasi:k,maelezo:v.maelezo});
+  kumb("Hariri mapato",before+"  =>  "+fd(r.tarehe)+" "+fm(r.kiasi));save();closeDlg();render();toast("Mapato yamerekebishwa.")};
+
+A.after_taarifa=()=>{$("#tMw").addEventListener("change",e=>{const m=resolveMember(e.target.value);if(m)go("taarifa",{id:m.id});else toast("Namba haijasajiliwa.")})};
+A.after_wanachama=()=>{const q=$("#q");q.addEventListener("input",()=>{state.q=q.value;const p=q.selectionStart;render();const n=$("#q");n.focus();n.setSelectionRange(p,p)})};
+
+function download(name,text,type){const b=new Blob([text],{type});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+function slug(){return (D.settings.jina||"kikundi").replace(/[^A-Za-z0-9]+/g,"_")}
+A.backup=()=>{download("Nakala_"+slug()+"_"+todayISO()+".json",JSON.stringify(D,null,1),"application/json");toast("Nakala imepakuliwa.")};
+A.restore=()=>$("#fileIn").click();
+$("#fileIn").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
+  rd.onload=()=>{try{const o=JSON.parse(rd.result);if(!o||!Array.isArray(o.wanachama))throw 0;
+    if(!confirm("Rejesha nakala hii? Data iliyopo sasa kwenye kifaa itabadilishwa.\nWanachama: "+o.wanachama.length+", Michango: "+(o.michango||[]).length))return;
+    D=normalize(o);unlocked=false;save();go("mwanzo");toast("Nakala imerejeshwa.")}
+    catch(err){toast("Faili hili si nakala sahihi ya mfumo.")}};rd.readAsText(f);e.target.value=""});
+function toCSV(rows){return "﻿"+rows.map(r=>r.map(v=>{const s=String(v??"");return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}).join(",")).join("\r\n")}
+A.csv=el=>{const t=el.dataset.t;let rows;
+  if(t==="michango")rows=[["Risiti","Tarehe","Namba","Jina","Aina","Lengo","Kiasi","Mkopo","Maelezo"],...D.michango.map(r=>[r.risiti,r.tarehe,r.mw,fullName(member(r.mw)||{}),r.aina,r.lengo||"",r.kiasi,r.mkopo,r.maelezo])];
+  else if(t==="mikopo")rows=[["Namba","Tarehe","Mwanachama","Jina","Kiasi","Riba %","Aina","Miezi","Jumla Riba","Rejesho","Msingi Uliolipwa","Riba Iliyolipwa","Inayodaiwa","Hali"],...D.mikopo.map(l=>{const c=loanCalc(l);return [l.id,l.tarehe,l.mw,fullName(member(l.mw)||{}),c.P,l.riba,l.aina,l.muda,c.riba,c.rejesho,c.paidP,c.paidR,c.deni,c.hali]})];
+  else if(t==="matumizi")rows=[["Namba","Tarehe","Kundi","Mradi","Kiasi","Maelezo","Vocha"],...D.matumizi.map(r=>[r.id,r.tarehe,r.kundi,r.mradi,r.kiasi,r.maelezo,r.vocha])];
+  else if(t==="wanachama")rows=[["Namba","Jina la Kwanza","Jina la Kati","Jina la Mwisho","Simu","Anuani","Tarehe","Hali","Hisa","Jamii","Deni"],...D.wanachama.map(m=>{const s=mStats(m.id);return [m.id,m.j1,m.j2,m.j3,m.simu,m.anuani,m.tarehe,m.hali,s.hisa,s.jamii,s.deni]})];
+  else if(t==="gawio"){const G=gawio();rows=[["Namba","Jina","Hisa","Jamii","Mawekezo","Sehemu %","Gawio","Mawekezo + Gawio","Deni","Kato la Deni","Deni Linalovuka","Malipo ya Mwisho"],...G.rows.map(r=>[r.m.id,fullName(r.m),r.hisa,r.jamii,r.msingi,(r.pct*100).toFixed(2),r.gawio,r.msingi+r.gawio,r.deni,r.kato,r.deniVuka,r.malipo])]}
+  download(t+"_"+slug()+"_"+todayISO()+".csv",toCSV(rows),"text/csv;charset=utf-8");
+};
+function cyclePlan(){
+  const G=gawio(),F=G.F,t=todayISO(),carried=[];
+  const katoMap={};for(const r of G.rows)katoMap[r.m.id]=r.kato;
+  for(const l of D.mikopo){const c=loanCalc(l);if(c.deni<=0)continue;
+    let k=katoMap[l.mw]||0,ribaDue=Math.max(0,c.riba-c.paidR),prin=c.salio;
+    const a=Math.min(k,ribaDue);ribaDue-=a;k-=a;const b=Math.min(k,prin);prin-=b;k-=b;katoMap[l.mw]=k;
+    if(prin+ribaDue>0)carried.push({id:l.id,tarehe:t,mw:l.mw,kiasi:prin,riba:0,aina:"Flat",
+      muda:Math.max(1,c.n-Math.min(c.n,monthsBetween(l.tarehe,t))),ribaYaZamani:ribaDue,vushwa:true,
+      asili:(l.asili?l.asili+"; ":"")+"mkopo wa "+fd(l.tarehe)+" wa "+fm(c.P),mdhamini1:l.mdhamini1||"",mdhamini2:l.mdhamini2||""});}
+  return {G,F,carried,salio:F.pesa-G.jumla};
+}
+A.newCycle=()=>{
+  const P=cyclePlan();
+  dlg("Anza mzunguko mpya",`<p>Hakikisha wanachama wamelipwa gawio kama inavyoonyeshwa kwenye ukurasa wa <b>Gawio</b> (jumla ${fm(P.G.jumla)}).</p>
+  ${P.salio<0?`<div class="alert bad"><b>Haiwezekani kuanza bado.</b> Malipo kwa wanachama (${fm(P.G.jumla)}) yanazidi pesa iliyopo (${fm(P.F.pesa)}) kwa ${fm(-P.salio)}, kwa sababu sehemu ya pesa iko kwenye mikopo. Chagua mojawapo: kusanya madeni, weka "Kata deni kwenye malipo" = NDIYO (ukurasa wa Gawio), au punguza kiasi cha kugawa (ukurasa wa Faida).</div>`:""}
+  <table class="stmt"><tr><td>Pesa iliyopo sasa</td><td>${fm(P.F.pesa)}</td></tr><tr><td>Malipo kwa wanachama</td><td>-${fm(P.G.jumla)}</td></tr>
+  <tr class="big"><td>Salio la kuanzia mzunguko mpya</td><td>${fm(Math.max(0,P.salio))}</td></tr></table>
+  <h3 style="margin-top:14px">Madeni yanayovuka (${P.carried.length})</h3>
+  ${P.carried.length?table(["Mkopo","Mwanachama",{t:"Msingi",n:1},{t:"Riba iliyobaki",n:1},{t:"Miezi iliyobaki",n:1}],P.carried.map(c=>`<tr><td>${c.id}</td><td>${esc(memberLabel(c.mw))}</td><td class="n">${fm(c.kiasi)}</td><td class="n">${fm(c.ribaYaZamani)}</td><td class="n">${c.muda}</td></tr>`)):`<p class="muted">Hakuna deni linalovuka.</p>`}
+  <p class="muted" style="margin-top:10px">Nakala itapakuliwa kwanza. Kisha michango, mapato na matumizi ya mzunguko huu yatafutwa; wanachama, miradi na madeni yanayovuka vinabaki. Hisa za wanachama zinaanza upya kutoka 0.</p>`,
+  `<button class="btn sec" data-a="closeDlg">Ghairi</button>${P.salio<0?"":`<button class="btn dan" data-a="doNewCycle">Thibitisha na Anza</button>`}`);
+};
+A.doNewCycle=()=>{
+  if(!confirm("Una uhakika? Kitendo hiki hakirudishwi (isipokuwa kwa kurejesha nakala)."))return;
+  A.backup();
+  const P=cyclePlan();if(P.salio<0)return toast("Pesa haitoshi kulipa malipo yote.");const salio=P.salio;
+  D.historia.push({tarehe:todayISO(),anza:D.settings.anza,mwisho:D.settings.mwisho,faida:P.F.faida,kugawa:P.F.kugawa,salio,
+    deniVuka:P.carried.reduce((a,c)=>a+c.kiasi+c.ribaYaZamani,0)});
+  D.michango=[];D.mikopo=P.carried;D.mapato=[];D.matumizi=[];D.vikao=[];
+  for(const p of D.miradi)if(num(p.mtaji)){p.maelezo=((p.maelezo||"")+" (Mtaji wa awali: "+fm(p.mtaji)+")").trim();p.mtaji=0}
+  const t=todayISO();Object.assign(D.settings,{salioKuanzia:salio,mapatoMengineyo:0,anza:t,mwisho:addMonths(t,12),uchakavu:0,kiasiKilichoamuliwa:""});
+  save();closeDlg();go("mwanzo");toast("Mzunguko mpya umeanza. Madeni yaliyovuka: "+P.carried.length);
+};
+
+A.setPw=async()=>{const v=formVals($("#pwF"));if(v.pw1.length<4)return toast("Password iwe na herufi 4 au zaidi.");if(v.pw1!==v.pw2)return toast("Password hazilingani.");
+  const salt=uid();D.usalama={hash:await hashPw(v.pw1,salt),salt,fungaWote:true};unlocked=true;save();render();toast("Password imewekwa.")};
+async function checkPw(pw){return !!D.usalama.hash&&(await hashPw(pw,D.usalama.salt))===D.usalama.hash}
+A.changePw=async()=>{const v=formVals($("#pwF"));if(!(await checkPw(v.old)))return toast("Password ya sasa si sahihi.");
+  if(v.pw1.length<4)return toast("Password mpya iwe na herufi 4 au zaidi.");if(v.pw1!==v.pw2)return toast("Password mpya hazilingani.");
+  const salt=uid();D.usalama.salt=salt;D.usalama.hash=await hashPw(v.pw1,salt);save();render();toast("Password imebadilishwa.")};
+A.removePw=async()=>{const v=formVals($("#pwF"));if(!(await checkPw(v.old)))return toast("Ingiza password ya sasa kwanza.");
+  if(!confirm("Ondoa password?"))return;D.usalama={hash:"",salt:"",fungaWote:false};save();render();toast("Password imeondolewa.")};
+A.lockNow=()=>{unlocked=false;adminUnlocked=false;closeDlg();go("mwanzo")};
+A.unlock=async()=>{const p=$("#pwIn");
+  if(needsLock()){if(await checkPw(p.value)){unlocked=true;render();toast("Karibu.")}else{p.value="";toast("Password si sahihi.")}return}
+  if(needsAdmin()){if(await checkAdmin(p.value)){adminUnlocked=true;render();toast("Karibu, msimamizi.")}else{p.value="";toast("Password ya msimamizi si sahihi.")}}};
+async function checkAdmin(pw){return !!D.usalama.adminHash&&(await hashPw(pw,D.usalama.adminSalt))===D.usalama.adminHash}
+A.setAdminPw=async()=>{const v=formVals($("#apF"));if(v.a1.length<4)return toast("Password iwe na herufi 4 au zaidi.");if(v.a1!==v.a2)return toast("Password hazilingani.");
+  if(D.usalama.hash&&await checkPw(v.a1))return toast("Tumia password tofauti na ya mfumo, ili watumiaji wengine wasiingie Mipangilio.");
+  const salt=uid();D.usalama.adminSalt=salt;D.usalama.adminHash=await hashPw(v.a1,salt);adminUnlocked=true;kumb("Usalama","password ya msimamizi imewekwa");save();render();toast("Password ya msimamizi imewekwa.")};
+A.changeAdminPw=async()=>{const v=formVals($("#apF"));if(!(await checkAdmin(v.old)))return toast("Password ya msimamizi ya sasa si sahihi.");
+  if(v.a1.length<4)return toast("Password mpya iwe na herufi 4 au zaidi.");if(v.a1!==v.a2)return toast("Password mpya hazilingani.");
+  if(D.usalama.hash&&await checkPw(v.a1))return toast("Tumia password tofauti na ya mfumo.");
+  const salt=uid();D.usalama.adminSalt=salt;D.usalama.adminHash=await hashPw(v.a1,salt);kumb("Usalama","password ya msimamizi imebadilishwa");save();render();toast("Password ya msimamizi imebadilishwa.")};
+A.removeAdminPw=async()=>{const v=formVals($("#apF"));if(!(await checkAdmin(v.old)))return toast("Ingiza password ya msimamizi ya sasa kwanza.");
+  if(!confirm("Ondoa password ya msimamizi? Kila mwenye password ya mfumo ataweza kuingia Mipangilio."))return;
+  D.usalama.adminHash="";D.usalama.adminSalt="";kumb("Usalama","password ya msimamizi imeondolewa");save();render()};
+A.lockAdmin=()=>{adminUnlocked=false;go("mwanzo");toast("Mipangilio imefungwa.")};
+A.rtab=el=>{state.tab=el.dataset.t;render()};
+A.after_ripoti=()=>{["#rFrom","#rTo"].forEach(x=>$(x).addEventListener("change",()=>{state.from=$("#rFrom").value;state.to=$("#rTo").value;render()}))};
+A.rPreset=el=>{const t=todayISO(),d=parseISO(t);const p=el.dataset.p;
+  if(p==="leo"){state.from=t;state.to=t}else if(p==="mwezi"){state.from=toISO(new Date(d.getFullYear(),d.getMonth(),1));state.to=t}
+  else{state.from=D.settings.anza;state.to=t>D.settings.mwisho?t:D.settings.mwisho}render()};
+A.leaderForm=el=>{
+  const u=el.dataset.id?D.uongozi.find(x=>x.id===el.dataset.id):null,cheo=el.dataset.c;
+  dlg(cheo,`<div class="form" id="ldF">${picker("mw",u?u.mw:"","Namba ya mwanachama")}
+    <label>Tarehe ya kuchaguliwa<input type="date" name="tarehe" value="${esc(u?u.tarehe:todayISO())}"></label></div>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn" data-a="saveLeader" data-c="${cheo}" data-id="${u?u.id:""}">Hifadhi</button>`);
+};
+A.saveLeader=el=>{
+  const v=formVals($("#ldF")),m=resolveMember(v.mw),cheo=el.dataset.c;
+  if(!m)return toast("Andika namba sahihi ya mwanachama.");
+  if(m.hali==="Amejitoa")return toast("Mwanachama huyu amejitoa.");
+  const other=D.uongozi.find(x=>x.mw===m.id&&x.id!==el.dataset.id);
+  if(other&&!confirm(fullName(m)+" tayari ni "+other.cheo+". Ashike vyeo viwili?"))return;
+  if(el.dataset.id){const u=D.uongozi.find(x=>x.id===el.dataset.id);kumb("Badilisha uongozi",cheo+": "+u.mw+" => "+m.id);Object.assign(u,{mw:m.id,tarehe:v.tarehe||todayISO()})}
+  else{if(cheo!=="Mtunza Nidhamu"&&D.uongozi.some(x=>x.cheo===cheo))return toast(cheo+" tayari yupo.");D.uongozi.push({id:uid(),cheo,mw:m.id,tarehe:v.tarehe||todayISO()});kumb("Chagua kiongozi",cheo+": "+m.id)}
+  save();closeDlg();render();toast(cheo+": "+fullName(m));
+};
+A.delLeader=el=>{const u=D.uongozi.find(x=>x.id===el.dataset.id);if(!u||!confirm("Mwondoe "+memberLabel(u.mw)+" kwenye cheo cha "+u.cheo+"?"))return;
+  D.uongozi=D.uongozi.filter(x=>x.id!==u.id);kumb("Ondoa kiongozi",u.cheo+": "+u.mw);save();render()};
+A.checkData=()=>{const o=orphans(),n=o.mich.length+o.mik.length+o.ldr.length;
+  if(!n)return dlg("Ukaguzi wa data",`<div class="alert ok">Data iko safi. Kila muamala, mkopo na kiongozi ana mwanachama aliyesajiliwa.</div>`);
+  dlg("Ukaguzi wa data",`<div class="alert bad">Zimepatikana kumbukumbu ${n} zisizo na mwenyewe.</div>
+    ${o.mich.length?`<h3>Miamala (${o.mich.length}, jumla ${fm(o.mich.reduce((a,r)=>a+num(r.kiasi),0))})</h3>`+table(["Risiti","Tarehe","Namba","Aina",{t:"Kiasi",n:1},"Tatizo"],o.mich.map(r=>`<tr><td>${r.risiti}</td><td>${fd(r.tarehe)}</td><td>${esc(r.mw)}</td><td>${esc(ainaTxt(r))}</td><td class="n">${fm(r.kiasi)}</td><td>${member(r.mw)?"Mkopo "+esc(r.mkopo)+" haupo":"Mwanachama hayupo"}</td></tr>`)):""}
+    ${o.mik.length?`<h3 style="margin-top:12px">Mikopo (${o.mik.length})</h3>`+table(["Mkopo","Namba",{t:"Kiasi",n:1}],o.mik.map(l=>`<tr><td>${l.id}</td><td>${esc(l.mw)}</td><td class="n">${fm(l.kiasi)}</td></tr>`)):""}
+    ${o.ldr.length?`<p>Viongozi ${o.ldr.length} ambao hawapo kwenye orodha ya wanachama.</p>`:""}
+    <p class="muted" style="margin-top:10px">Kama namba ilibadilishwa kimakosa, unaweza kumsajili mwanachama kwa namba hiyo badala ya kufuta. Vinginevyo bonyeza <b>Futa zote</b>. Nakala itapakuliwa kwanza.</p>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn dan" data-a="cleanData">Futa zote (${n})</button>`)};
+A.cleanData=()=>{const o=orphans();A.backup();
+  const mi=new Set(o.mich.map(r=>r.id)),mk=new Set(o.mik.map(l=>l.id));
+  D.michango=D.michango.filter(r=>!mi.has(r.id)&&!mk.has(r.mkopo));D.mikopo=D.mikopo.filter(l=>!mk.has(l.id));
+  const lr=new Set(o.ldr.map(u=>u.id));D.uongozi=D.uongozi.filter(u=>!lr.has(u.id));
+  kumb("Safisha data","miamala "+o.mich.length+", mikopo "+o.mik.length+", viongozi "+o.ldr.length);
+  save();closeDlg();render();toast("Data imesafishwa.")};
+A.clearKiasi=()=>{D.settings.kiasiKilichoamuliwa="";kumb("Kiasi cha kugawa","kimeondolewa, pendekezo linatumika");save();render();toast("Sasa kiasi cha kugawa ni pendekezo la mfumo.")};
+A.wipeTx=()=>{dlg("Futa miamala yote (data ya majaribio)",`<p>Hii inafuta <b>michango, mikopo, miradi, mapato, matumizi, mizunguko iliyopita na kumbukumbu</b>, na kurudisha Kiasi kilichoamuliwa, Uchakavu na Mapato mengineyo kuwa 0.</p>
+    <p>Kinachobaki: <b>wanachama, uongozi, mipangilio na password</b>.</p><p class="muted">Nakala itapakuliwa kwanza.</p>
+    <label>Andika FUTA kuthibitisha<input id="wipeTxIn" autocomplete="off"></label>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn dan" data-a="doWipeTx">Futa miamala</button>`)};
+A.doWipeTx=()=>{if(($("#wipeTxIn").value||"").trim().toUpperCase()!=="FUTA")return toast("Andika FUTA kuthibitisha.");A.backup();
+  D.michango=[];D.mikopo=[];D.miradi=[];D.mapato=[];D.matumizi=[];D.historia=[];D.kumbukumbu=[];D.vikao=[];
+  Object.assign(D.settings,{kiasiKilichoamuliwa:"",uchakavu:0,mapatoMengineyo:0});kumb("Futa miamala yote","data ya majaribio");
+  save();closeDlg();go("mwanzo");toast("Miamala yote imefutwa. Wanachama na mipangilio vimebaki.")};
+A.installApp=async()=>{
+  if(installEvt){installEvt.prompt();try{const r=await installEvt.userChoice;if(r.outcome==="accepted")toast("Inasakinishwa...")}catch(e){}installEvt=null;renderHeader();return}
+  const http=location.protocol.startsWith("http"),ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  dlg("Kusakinisha VICOBA SYSTEM",http?(ios?`<p>Kwenye iPhone/iPad (Safari): bonyeza kitufe cha <b>Share</b> chini, kisha <b>Add to Home Screen</b>.</p>`
+    :`<p>Kivinjari hiki hakijatoa kitufe cha kusakinisha bado. Jaribu:</p><ul><li><b>Edge</b>: menyu <b>…</b> &gt; <b>Apps</b> &gt; <b>Install this site as an app</b></li><li><b>Chrome</b>: menyu <b>⋮</b> &gt; <b>Cast, save and share</b> &gt; <b>Install page as app</b></li><li><b>Simu ya Android</b>: menyu <b>⋮</b> &gt; <b>Install app</b> / <b>Add to Home screen</b></li></ul><p class="muted">Kama tayari umesakinisha, ifungue kutoka Desktop au Start Menu.</p>`)
+    :`<div class="alert amb">Umefungua mfumo kama faili kutoka kwenye kompyuta (anwani inaanza na file:// au C:/). Faili haliwezi kusakinishwa kama app.</div><p>Fungua anwani yako ya mtandaoni (mf. <b>https://jina-lako.netlify.app</b>) kwenye Edge au Chrome, kisha bonyeza <b>Sakinisha App</b> juu.</p>`)};
+A.wipe=()=>{dlg("Futa kila kitu",`<div class="alert bad">Hii inafuta DATA YOTE ya kikundi kwenye kifaa hiki: wanachama, michango, mikopo, mipangilio na password.</div><p class="muted">Nakala itapakuliwa kwanza.</p><label>Andika FUTA kuthibitisha<input id="wipeAllIn" autocomplete="off"></label>`,
+  `<button class="btn sec" data-a="closeDlg">Ghairi</button><button class="btn dan" data-a="doWipeAll">Futa kila kitu</button>`)};
+A.doWipeAll=()=>{if(($("#wipeAllIn").value||"").trim().toUpperCase()!=="FUTA")return toast("Andika FUTA kuthibitisha.");A.backup();D=blank();unlocked=false;adminUnlocked=false;save();closeDlg();go("mwanzo")};
+
+/* settings inputs (Mipangilio + Faida) */
+document.addEventListener("change",e=>{const k=e.target.dataset&&e.target.dataset.s;if(!k)return;
+  const numeric=["beiHisa","riba","kikomo","adhabuPct","salioKuanzia","mapatoMengineyo","adaKujiunga","akibaPct","uchakavu"];
+  let v=e.target.value;if(numeric.includes(k))v=num(v);if(k==="kiasiKilichoamuliwa")v=v===""?"":num(v);
+  if((k==="anza"||k==="mwisho")&&!v)return;
+  D.settings[k]=v;save();if(["faida","gawio","ripoti"].includes(view))render();toast("Imehifadhiwa.")});
+
+document.addEventListener("input",e=>{const t=e.target;if(!t.matches||!t.matches("[data-picker],#fMw,#tMw"))return;
+  const sp=t.parentElement.querySelector(".pickname");if(!sp)return;const m=resolveMember(t.value);sp.textContent=m?fullName(m):(t.value.trim()?"Namba haijasajiliwa":"")});
+document.addEventListener("submit",e=>{if(e.target.id==="pwForm"){e.preventDefault();A.unlock()}});
+document.addEventListener("click",e=>{const el=e.target.closest("[data-a]");if(!el)return;const f=A[el.dataset.a];if(f){e.preventDefault();f(el)}});
+$("#dlg").addEventListener("close",()=>document.body.classList.remove("pm"));
+
+/* ================================================================ EXCEL (offline: no internet, no library) */
+const XL={};
+XL.u8=s=>new TextEncoder().encode(s);
+XL.crcT=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+XL.crc=b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=XL.crcT[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0};
+XL.zip=files=>{ // store-only zip writer
+  const parts=[],cd=[];let off=0;
+  for(const [name,data] of files){const nb=XL.u8(name),crc=XL.crc(data);
+    const lh=new DataView(new ArrayBuffer(30));lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(8,0,true);
+    lh.setUint32(14,crc,true);lh.setUint32(18,data.length,true);lh.setUint32(22,data.length,true);lh.setUint16(26,nb.length,true);
+    parts.push(new Uint8Array(lh.buffer),nb,data);
+    const ch=new DataView(new ArrayBuffer(46));ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);
+    ch.setUint32(16,crc,true);ch.setUint32(20,data.length,true);ch.setUint32(24,data.length,true);ch.setUint16(28,nb.length,true);ch.setUint32(42,off,true);
+    cd.push(new Uint8Array(ch.buffer),nb);off+=30+nb.length+data.length}
+  const cdSize=cd.reduce((a,b)=>a+b.length,0),end=new DataView(new ArrayBuffer(22));
+  end.setUint32(0,0x06054b50,true);end.setUint16(8,files.length,true);end.setUint16(10,files.length,true);end.setUint32(12,cdSize,true);end.setUint32(16,off,true);
+  return new Blob([...parts,...cd,new Uint8Array(end.buffer)],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+};
+XL.x=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"");
+XL.col=i=>{let s="";i++;while(i>0){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26)}return s};
+/* sheets: [{name, rows:[[...]], widths:[..], header:true, lists:{colIndex:[options]}, note:false}] */
+XL.write=sheets=>{
+  const files=[];
+  files.push(["[Content_Types].xml",XL.u8(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("")}</Types>`)]);
+  files.push(["_rels/.rels",XL.u8(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`)]);
+  files.push(["xl/workbook.xml",XL.u8(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${sheets.map((s,i)=>`<sheet name="${XL.x(s.name)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join("")}</sheets></workbook>`)]);
+  files.push(["xl/_rels/workbook.xml.rels",XL.u8(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join("")}<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`)]);
+  files.push(["xl/styles.xml",XL.u8(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><numFmts count="1"><numFmt numFmtId="164" formatCode="dd/mm/yyyy"/></numFmts><fonts count="3"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font><font><b/><sz val="13"/><color rgb="FF1F5C4A"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF1F5C4A"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="1"><border/></borders><cellStyleXfs count="1"><xf/></cellStyleXfs><cellXfs count="6"><xf/><xf fontId="1" fillId="2" applyFont="1" applyFill="1"/><xf numFmtId="3" applyNumberFormat="1"/><xf numFmtId="164" applyNumberFormat="1"/><xf fontId="2" applyFont="1"/><xf numFmtId="49" applyNumberFormat="1"/></cellXfs></styleSheet>`)]);
+  sheets.forEach((s,i)=>{
+    const rows=s.rows.map((r,ri)=>`<row r="${ri+1}">${r.map((v,ci)=>{
+      const ref=XL.col(ci)+(ri+1);if(v===""||v==null)return "";
+      if(s.header&&ri===0)return `<c r="${ref}" t="inlineStr" s="1"><is><t>${XL.x(v)}</t></is></c>`;
+      if(s.title&&ri===0)return `<c r="${ref}" t="inlineStr" s="4"><is><t>${XL.x(v)}</t></is></c>`;
+      if(typeof v==="number"&&isFinite(v))return `<c r="${ref}" s="2"><v>${v}</v></c>`;
+      if(v&&v.date){const d=parseISO(v.date),serial=Math.round((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-Date.UTC(1899,11,30))/86400000);return `<c r="${ref}" s="3"><v>${serial}</v></c>`}
+      return `<c r="${ref}" t="inlineStr"${s.textCols&&s.textCols.includes(ci)?' s="5"':""}><is><t xml:space="preserve">${XL.x(v)}</t></is></c>`}).join("")}</row>`).join("");
+    const cols=s.widths?`<cols>${s.widths.map((w,ci)=>`<col min="${ci+1}" max="${ci+1}" width="${w}" customWidth="1"${s.textCols&&s.textCols.includes(ci)?' style="5"':""}/>`).join("")}</cols>`:"";
+    const pane=s.header?`<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>`:"";
+    const lists=s.lists?Object.entries(s.lists).map(([ci,opt])=>`<dataValidation type="list" allowBlank="1" showErrorMessage="1" sqref="${XL.col(+ci)}2:${XL.col(+ci)}5000"><formula1>"${XL.x(opt.join(","))}"</formula1></dataValidation>`):[];
+    const dv=lists.length?`<dataValidations count="${lists.length}">${lists.join("")}</dataValidations>`:"";
+    files.push([`xl/worksheets/sheet${i+1}.xml`,XL.u8(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">${pane}${cols}<sheetData>${rows}</sheetData>${dv}</worksheet>`)]);
+  });
+  return XL.zip(files);
+};
+/* ---------- reader */
+XL.inflate=async data=>{const ds=new DecompressionStream("deflate-raw");return new Uint8Array(await new Response(new Blob([data]).stream().pipeThrough(ds)).arrayBuffer())};
+XL.unzip=async buf=>{
+  const dv=new DataView(buf),u=new Uint8Array(buf),out={};let e=-1;
+  for(let i=buf.byteLength-22;i>=Math.max(0,buf.byteLength-70000);i--)if(dv.getUint32(i,true)===0x06054b50){e=i;break}
+  if(e<0)throw new Error("Faili hili si la Excel (.xlsx).");
+  let p=dv.getUint32(e+16,true);const n=dv.getUint16(e+10,true),td=new TextDecoder();
+  for(let k=0;k<n;k++){
+    if(dv.getUint32(p,true)!==0x02014b50)break;
+    const method=dv.getUint16(p+10,true),cs=dv.getUint32(p+20,true),nl=dv.getUint16(p+28,true),el=dv.getUint16(p+30,true),cl=dv.getUint16(p+32,true),lo=dv.getUint32(p+42,true);
+    const name=td.decode(u.subarray(p+46,p+46+nl));
+    const ds=lo+30+dv.getUint16(lo+26,true)+dv.getUint16(lo+28,true);
+    out[name]={method,data:u.subarray(ds,ds+cs)};p+=46+nl+el+cl;
+  }
+  return {get:async name=>{const f=out[name];if(!f)return null;const b=f.method===0?f.data:await XL.inflate(f.data);return new TextDecoder().decode(b)},names:Object.keys(out)};
+};
+XL.els=(node,tag)=>Array.from(node.getElementsByTagNameNS("*",tag));
+XL.text=node=>XL.els(node,"t").map(t=>t.textContent).join("");
+XL.read=async buf=>{
+  const z=await XL.unzip(buf),P=s=>new DOMParser().parseFromString(s,"application/xml");
+  const wbx=await z.get("xl/workbook.xml");if(!wbx)throw new Error("Faili hili si la Excel (.xlsx).");
+  const ss=await z.get("xl/sharedStrings.xml"),shared=ss?XL.els(P(ss),"si").map(XL.text):[];
+  const relx=await z.get("xl/_rels/workbook.xml.rels"),rels={};
+  if(relx)for(const r of XL.els(P(relx),"Relationship")){let t=r.getAttribute("Target");t=t.startsWith("/")?t.slice(1):"xl/"+t;rels[r.getAttribute("Id")]=t}
+  const sheets=[];
+  for(const sh of XL.els(P(wbx),"sheet")){
+    const rid=sh.getAttribute("r:id")||sh.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships","id");
+    const path=rels[rid]||"xl/worksheets/sheet"+(sheets.length+1)+".xml";const x=await z.get(path);if(!x)continue;
+    const rows=[];
+    for(const row of XL.els(P(x),"row")){
+      const ri=(+row.getAttribute("r")||rows.length+1)-1,arr=[];
+      for(const c of XL.els(row,"c")){
+        const ref=c.getAttribute("r")||"";const m=ref.match(/^[A-Z]+/);let ci=arr.length;
+        if(m){ci=0;for(const ch of m[0])ci=ci*26+(ch.charCodeAt(0)-64);ci--}
+        const t=c.getAttribute("t"),vEl=XL.els(c,"v")[0],v=vEl?vEl.textContent:"";let val;
+        if(t==="s")val=shared[+v]??"";else if(t==="inlineStr")val=XL.text(c);else if(t==="b")val=v==="1";else if(t==="str"||t==="e")val=v;
+        else val=v===""?"":Number(v);
+        arr[ci]=val;
+      }
+      rows[ri]=arr;
+    }
+    sheets.push({name:sh.getAttribute("name"),rows:Array.from(rows,r=>r||[])});
+  }
+  return sheets;
+};
+XL.csv=text=>{const rows=[];let row=[],f="",q=false;text=text.replace(/^﻿/,"");
+  const delim=(text.split("\n")[0].split(";").length>text.split("\n")[0].split(",").length)?";":",";
+  for(let i=0;i<text.length;i++){const ch=text[i];
+    if(q){if(ch==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=ch}
+    else if(ch==='"')q=true;else if(ch===delim){row.push(f);f=""}else if(ch==="\n"){row.push(f);rows.push(row);row=[];f=""}else if(ch!=="\r")f+=ch}
+  if(f!==""||row.length){row.push(f);rows.push(row)}return [{name:"CSV",rows}]};
+
+/* ---------- import mapping */
+const IM={};
+IM.norm=h=>String(h??"").toLowerCase().replace(/[^a-z0-9%]/g,"");
+IM.KEYS={
+  namba:["namba","nambayamwanachama","nambayauanachama","nambayamwanakikundi","memberno","membernumber","no","id"],
+  j1:["jinalakwanza","jina1","jinalamwanzo","firstname"],j2:["jinalakati","jina2","middlename"],j3:["jinalamwisho","jina3","lastname","surname","jinalaukoo"],
+  full:["jinakamili","majina","jina","majinamatatu","fullname","name"],
+  simu:["simu","nambayasimu","phone","mobile"],anuani:["anuani","address","mahali","makazi"],
+  tarehe:["tareheyakujiunga","tarehe","tareheyasalio","tareheyamkopo","date"],hali:["hali","status"],
+  hisa:["hisa","shares"],jamii:["jamii","mfukowajamii","social"],
+  kiasi:["kiasichamkopo","kiasi","amount","mkopo"],riba:["riba%kwamwezi","riba%","riba","ribakwamwezi","interest"],
+  aina:["ainayariba","aina","type"],muda:["mudamiezi","muda","miezi","months"],
+  paidP:["msingiuliolipwa","msingiuliokwishalipwa","marejeshoyaliyolipwa","marejesho","principalpaid"],
+  paidR:["ribailiyolipwa","ribailiyokwishalipwa","interestpaid"],
+  g1:["mdhamini1","mdhaminiwa1","mdhamini"],g2:["mdhamini2","mdhaminiwa2"],lengo:["lengo","purpose"],maelezo:["maelezo","notes","maoni"]
+};
+IM.headerRow=rows=>{for(let i=0;i<Math.min(rows.length,10);i++){const r=rows[i]||[];if(r.filter(v=>String(v??"").trim()!=="").length>=2)return i}return -1};
+IM.map=(hdr,kind)=>{const map={};hdr.forEach((h,ci)=>{const n=IM.norm(h);if(!n)return;
+  for(const [k,alts] of Object.entries(IM.KEYS)){
+    if(kind!=="mikopo"&&(k==="paidP"||k==="paidR"||k==="g1"||k==="g2"||k==="riba"||k==="muda"))continue;
+    if(alts.includes(n)&&map[k]===undefined){map[k]=ci;return}}
+  if(kind==="mikopo"&&(n==="nambayamwanachama"||n==="namba")&&map.namba===undefined)map.namba=ci});return map};
+IM.classify=hdr=>{const n=hdr.map(IM.norm);const has=a=>a.some(x=>n.includes(x));
+  if(has(["kiasichamkopo","muda","mudamiezi","miezi"])&&has(["kiasichamkopo","kiasi","mkopo"]))return "mikopo";
+  if(has(IM.KEYS.j1)||has(IM.KEYS.j3)||has(IM.KEYS.full))return "wanachama";
+  if(n.includes("aina")&&has(["kiasi","amount"]))return "michango";
+  if(has(["hisa","jamii"]))return "salio";return null};
+IM.date=v=>{if(v===""||v==null)return "";if(typeof v==="number"&&v>20000&&v<80000){const d=new Date(Date.UTC(1899,11,30)+Math.round(v)*86400000);return d.toISOString().slice(0,10)}
+  const s=String(v).trim();let m=s.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);if(m)return m[1]+"-"+m[2].padStart(2,"0")+"-"+m[3].padStart(2,"0");
+  m=s.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})$/);if(m){const y=m[3].length===2?"20"+m[3]:m[3];return y+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0")}return null};
+IM.phone=v=>{let s=String(v??"").trim().replace(/\.0$/,"");if(/^[67]\d{8}$/.test(s))s="0"+s;if(/^255[67]\d{8}$/.test(s))s="0"+s.slice(3);return s};
+IM.id=v=>{let s=String(v??"").trim();if(/^\d+\.0$/.test(s))s=s.slice(0,-2);return s};
+IM.amt=v=>{if(v===""||v==null)return 0;const n=num(v);return n};
+IM.ainaMap=a=>{const n=IM.norm(a);const t={hisa:"Hisa",jamii:"Jamii",marejesho:"Marejesho ya Mkopo",marejeshoyamkopo:"Marejesho ya Mkopo",msingi:"Marejesho ya Mkopo",
+  riba:"Riba ya Mkopo",ribayamkopo:"Riba ya Mkopo",adhabuyamkopo:"Adhabu ya Mkopo",adhabumkopo:"Adhabu ya Mkopo",adhabu:"Adhabu Nyingine",adhabunyingine:"Adhabu Nyingine",
+  ada:"Ada ya Kujiunga",adayakujiunga:"Ada ya Kujiunga",mchangomwingine:"Mchango Mwingine",michangomingine:"Mchango Mwingine",mchangomaalum:"Mchango Mwingine"};return t[n]||null};
+
+/* analyse workbook → plan with errors, nothing saved */
+IM.plan=(sheets,baseDate)=>{
+  const P={wan:[],sal:[],mik:[],mic:[],err:[],skip:[],sheets:[]};
+  const existing=new Set(D.wanachama.map(m=>m.id.toUpperCase())),fileIds=new Set();
+  const found={};
+  for(const sh of sheets){const hi=IM.headerRow(sh.rows);if(hi<0)continue;const hdr=sh.rows[hi].map(v=>String(v??""));
+    let kind=IM.classify(hdr);const nn=IM.norm(sh.name);
+    if(nn.startsWith("wanachama"))kind="wanachama";else if(nn.startsWith("salio"))kind="salio";else if(nn.startsWith("mikopo"))kind="mikopo";else if(nn.startsWith("michango"))kind="michango";
+    if(!kind||nn.startsWith("maelezo"))continue;
+    found[kind]=found[kind]||[];found[kind].push({sh,hi,map:IM.map(hdr,kind)});P.sheets.push(sh.name+" → "+kind)}
+  const E=(sh,r,msg)=>P.err.push({sheet:sh.name,row:r+1,msg});
+  const blank=row=>!row||row.every(v=>String(v??"").trim()==="");
+  for(const {sh,hi,map} of found.wanachama||[]){
+    if(map.namba===undefined){E(sh,hi,"Safu ya 'Namba' haipo");continue}
+    for(let r=hi+1;r<sh.rows.length;r++){const row=sh.rows[r];if(blank(row))continue;const g=k=>map[k]===undefined?"":row[map[k]];
+      const id=IM.id(g("namba"));let j1=String(g("j1")||"").trim(),j2=String(g("j2")||"").trim(),j3=String(g("j3")||"").trim();
+      if(!j1&&!j3&&g("full")){const parts=String(g("full")).trim().split(/\s+/);j1=parts[0]||"";j3=parts.length>1?parts[parts.length-1]:"";j2=parts.slice(1,-1).join(" ")}
+      if(!id){E(sh,r,"Namba ya mwanachama haipo");continue}
+      if(id.includes(" - ")){E(sh,r,"Namba isiwe na ' - '");continue}
+      if(fileIds.has(id.toUpperCase())){E(sh,r,"Namba "+id+" imejirudia kwenye faili");continue}
+      if(existing.has(id.toUpperCase())){P.skip.push(sh.name+" mstari "+(r+1)+": namba "+id+" tayari imesajiliwa (imerukwa)");fileIds.add(id.toUpperCase());continue}
+      if(!j1||!j3){E(sh,r,"Jina la kwanza na la mwisho vinahitajika (namba "+id+")");continue}
+      const td=IM.date(g("tarehe"));if(td===null){E(sh,r,"Tarehe si sahihi: "+g("tarehe"));continue}
+      const hali=String(g("hali")||"Hai").trim();const h=HALI.find(x=>x.toLowerCase()===hali.toLowerCase())||"Hai";
+      fileIds.add(id.toUpperCase());
+      P.wan.push({id,j1,j2,j3,simu:IM.phone(g("simu")),anuani:String(g("anuani")||"").trim(),tarehe:td||D.settings.anza||baseDate,hali:h});
+    }}
+  const known=id=>{if(!id)return null;const u=id.toUpperCase();const m=D.wanachama.find(x=>x.id.toUpperCase()===u)||P.wan.find(x=>x.id.toUpperCase()===u);
+    if(m)return m.id;if(/^\d+$/.test(id)){const k=D.wanachama.concat(P.wan).find(x=>/^\d+$/.test(x.id)&&Number(x.id)===Number(id));if(k)return k.id}return null};
+  for(const {sh,hi,map} of found.salio||[]){
+    for(let r=hi+1;r<sh.rows.length;r++){const row=sh.rows[r];if(blank(row))continue;const g=k=>map[k]===undefined?"":row[map[k]];
+      const id=known(IM.id(g("namba")));if(!id){E(sh,r,"Mwanachama "+IM.id(g("namba"))+" hajasajiliwa");continue}
+      const h=IM.amt(g("hisa")),j=IM.amt(g("jamii"));if(h<0||j<0){E(sh,r,"Kiasi hasi");continue}if(!h&&!j)continue;
+      const td=IM.date(g("tarehe"));if(td===null){E(sh,r,"Tarehe si sahihi: "+g("tarehe"));continue}
+      if(D.michango.some(x=>x.mw===id&&x.imp==="salio")||P.sal.some(x=>x.mw===id)){P.skip.push(sh.name+" mstari "+(r+1)+": salio la "+id+" tayari limeingizwa (limerukwa)");continue}
+      P.sal.push({mw:id,hisa:h,jamii:j,tarehe:td||baseDate,maelezo:String(g("maelezo")||"Salio la kuanzia (Excel)")})}}
+  for(const {sh,hi,map} of found.mikopo||[]){
+    for(let r=hi+1;r<sh.rows.length;r++){const row=sh.rows[r];if(blank(row))continue;const g=k=>map[k]===undefined?"":row[map[k]];
+      const id=known(IM.id(g("namba")));if(!id){E(sh,r,"Mwanachama "+IM.id(g("namba"))+" hajasajiliwa");continue}
+      const P0=IM.amt(g("kiasi")),rb=IM.amt(g("riba")),n=IM.amt(g("muda"));
+      if(P0<=0){E(sh,r,"Kiasi cha mkopo hakipo");continue}if(rb<0){E(sh,r,"Riba hasi");continue}
+      if(n<1||n!==Math.floor(n)){E(sh,r,"Muda uwe idadi kamili ya miezi");continue}
+      const an=IM.norm(g("aina")||D.settings.ainaRiba);const aina=an.startsWith("inayo")||an.startsWith("reduc")||an.startsWith("decl")?"Inayopungua":"Flat";
+      const td=IM.date(g("tarehe"));if(!td){E(sh,r,"Tarehe ya mkopo inahitajika");continue}
+      const pp=IM.amt(g("paidP")),pr=IM.amt(g("paidR"));if(pp<0||pr<0){E(sh,r,"Malipo hasi");continue}
+      if(pp>P0+0.5){E(sh,r,"Msingi uliolipwa unazidi kiasi cha mkopo");continue}
+      const gm=v=>{const s=IM.id(v);return s?(known(s)||s):""};
+      if(D.mikopo.some(l=>l.mw===id&&l.tarehe===td&&num(l.kiasi)===P0)){P.skip.push(sh.name+" mstari "+(r+1)+": mkopo wa "+id+" wa "+fd(td)+" tayari upo (umerukwa)");continue}
+      P.mik.push({mw:id,tarehe:td,kiasi:P0,riba:rb,aina,muda:n,paidP:pp,paidR:pr,mdhamini1:gm(g("g1")),mdhamini2:gm(g("g2"))})}}
+  for(const {sh,hi,map} of found.michango||[]){
+    for(let r=hi+1;r<sh.rows.length;r++){const row=sh.rows[r];if(blank(row))continue;const g=k=>map[k]===undefined?"":row[map[k]];
+      const id=known(IM.id(g("namba")));if(!id){E(sh,r,"Mwanachama "+IM.id(g("namba"))+" hajasajiliwa");continue}
+      const aina=IM.ainaMap(g("aina"));if(!aina){E(sh,r,"Aina haijulikani: "+g("aina"));continue}
+      const k=IM.amt(g("kiasi"));if(k<=0){E(sh,r,"Kiasi hakipo");continue}
+      const td=IM.date(g("tarehe"));if(!td){E(sh,r,"Tarehe inahitajika");continue}
+      const lengo=String(g("lengo")||"").trim();if(aina==="Mchango Mwingine"&&!lengo){E(sh,r,"Mchango mwingine unahitaji lengo");continue}
+      if(LOAN_TYPES.includes(aina)&&!D.mikopo.some(l=>l.mw===id)&&!P.mik.some(l=>l.mw===id)){E(sh,r,id+" hana mkopo wa kulipia "+aina);continue}
+      if(D.michango.some(x=>x.mw===id&&x.tarehe===td&&x.aina===aina&&num(x.kiasi)===k)){P.skip.push(sh.name+" mstari "+(r+1)+": muamala huu tayari upo (umerukwa)");continue}
+      P.mic.push({mw:id,tarehe:td,aina,kiasi:k,lengo,maelezo:String(g("maelezo")||"Excel")})}}
+  return P;
+};
+IM.apply=P=>{
+  for(const m of P.wan)D.wanachama.push(m);
+  D.wanachama.sort((a,b)=>a.id.localeCompare(b.id,undefined,{numeric:true}));
+  for(const s of P.sal){const before=D.michango.length;postPayment(s.mw,s.tarehe,{"Hisa":s.hisa,"Jamii":s.jamii},"",s.maelezo,"");for(let i=before;i<D.michango.length;i++)D.michango[i].imp="salio"}
+  for(const l of P.mik){const id=nextCode(D.mikopo,"MK-",4);D.mikopo.push({id,tarehe:l.tarehe,mw:l.mw,kiasi:l.kiasi,riba:l.riba,aina:l.aina,muda:l.muda,mdhamini1:l.mdhamini1,mdhamini2:l.mdhamini2});
+    if(l.paidP>0||l.paidR>0)postPayment(l.mw,P.baseDate,{"Marejesho ya Mkopo":l.paidP,"Riba ya Mkopo":l.paidR},id,"Malipo ya awali (Excel)","")}
+  const byDate=P.mic.slice().sort((a,b)=>a.tarehe.localeCompare(b.tarehe));
+  for(const c of byDate){let mk="";if(LOAN_TYPES.includes(c.aina)){const ls=D.mikopo.filter(l=>l.mw===c.mw);const l=ls.find(x=>loanCalc(x).deni>0)||ls[ls.length-1];mk=l?l.id:""}
+    postPayment(c.mw,c.tarehe,{[c.aina]:c.kiasi},mk,c.maelezo,c.lengo)}
+  kumb("Pakia Excel",`wanachama ${P.wan.length}, salio ${P.sal.length}, mikopo ${P.mik.length}, michango ${P.mic.length}`);
+};
+let pendingImport=null;
+A.importExcel=()=>$("#xlsIn").click();
+document.addEventListener("change",async e=>{if(e.target.id!=="xlsIn")return;const f=e.target.files[0];e.target.value="";if(!f)return;
+  try{let sheets;
+    if(/\.csv$/i.test(f.name))sheets=XL.csv(await f.text());
+    else if(/\.xls$/i.test(f.name))throw new Error("Faili la .xls (Excel ya zamani) halisomeki. Kwenye Excel: File > Save As > Excel Workbook (.xlsx).");
+    else{if(typeof DecompressionStream==="undefined")throw new Error("Kivinjari hiki ni cha zamani. Tumia Chrome au Edge mpya, au hifadhi faili kama CSV.");sheets=await XL.read(await f.arrayBuffer())}
+    showImportPlan(sheets,f.name);
+  }catch(err){dlg("Faili halikusomeka",`<div class="alert bad">${esc(err.message||String(err))}</div><p class="muted">Tumia kiolezo (template) cha mfumo: Mipangilio &gt; Excel &gt; Pakua Kiolezo.</p>`)}});
+function showImportPlan(sheets,fname,baseDate){
+  baseDate=baseDate||todayISO();const P=IM.plan(sheets,baseDate);P.baseDate=baseDate;pendingImport={sheets,fname,P};
+  const n=P.wan.length+P.sal.length+P.mik.length+P.mic.length;
+  const sumH=P.sal.reduce((a,s)=>a+s.hisa,0),sumJ=P.sal.reduce((a,s)=>a+s.jamii,0),sumL=P.mik.reduce((a,l)=>a+l.kiasi-l.paidP,0);
+  dlg("Pakia kutoka Excel: "+fname,`
+    ${P.sheets.length?`<p class="muted">Karatasi zilizotambuliwa: ${esc(P.sheets.join(", "))}</p>`:`<div class="alert bad">Hakuna karatasi iliyotambuliwa. Tumia vichwa vya safu vya kiolezo (template).</div>`}
+    <table class="stmt"><tr class="sec"><td>Kitakachoingizwa</td><td>Idadi</td></tr>
+      <tr><td>Wanachama wapya</td><td>${P.wan.length}</td></tr>
+      <tr><td>Salio la kuanzia (hisa ${fm(sumH)}, jamii ${fm(sumJ)})</td><td>${P.sal.length}</td></tr>
+      <tr><td>Mikopo (msingi unaodaiwa ${fm(sumL)})</td><td>${P.mik.length}</td></tr>
+      <tr><td>Michango ya historia</td><td>${P.mic.length}</td></tr></table>
+    ${P.sal.length||P.mik.length?`<label style="margin-top:10px">Tarehe ya salio la kuanzia na malipo ya awali ya mikopo<input type="date" id="impDate" value="${baseDate}"></label>`:""}
+    ${P.err.length?`<h3 style="margin-top:12px;color:var(--red)">Mistari yenye makosa (${P.err.length}) - itarukwa</h3>`+table(["Karatasi","Mstari","Tatizo"],P.err.slice(0,60).map(x=>`<tr><td>${esc(x.sheet)}</td><td>${x.row}</td><td style="white-space:normal">${esc(x.msg)}</td></tr>`))+(P.err.length>60?`<p class="muted">...na ${P.err.length-60} zaidi.</p>`:""):`<div class="alert ok" style="margin-top:10px">Hakuna makosa yaliyopatikana.</div>`}
+    ${P.skip.length?`<details style="margin-top:8px"><summary class="muted">${P.skip.length} tayari vimo kwenye mfumo na vitarukwa (bonyeza kuona)</summary><ul class="muted">${P.skip.slice(0,80).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`:""}
+    ${P.mik.some(l=>l.paidR>0)?`<p class="muted">Riba iliyokwisha lipwa kwenye mikopo (${fm(P.mik.reduce((a,l)=>a+l.paidR,0))}) inahesabiwa kama mapato ya mzunguko huu.</p>`:""}
+    <p class="muted" style="margin-top:10px">Nakala (backup) itapakuliwa kwanza. Unaweza kurekebisha faili na kulipakia tena; wanachama walioshaingizwa watarukwa.</p>`,
+    `<button class="btn sec" data-a="closeDlg">Ghairi</button>${n?`<button class="btn" data-a="doImport">Ingiza (${n})</button>`:""}`);
+  const di=$("#impDate");if(di)di.addEventListener("change",()=>showImportPlan(sheets,fname,di.value||todayISO()));
+}
+A.doImport=()=>{if(!pendingImport)return;const {P}=pendingImport;A.backup();IM.apply(P);pendingImport=null;save();closeDlg();go("wanachama");
+  const F=finance();dlg("Data imeingizwa",`<div class="alert ok">Wanachama ${P.wan.length}, salio ${P.sal.length}, mikopo ${P.mik.length}, michango ${P.mic.length} vimeingizwa.</div>
+    <p><b>Hatua inayofuata:</b> linganisha <b>Pesa iliyopo</b> kwenye mfumo (${fm(F.pesa)}) na pesa halisi ya sanduku, benki na simu. Tofauti iwekwe kwenye <b>Mipangilio &gt; Salio la kuanzia mzunguko</b>.</p>`)};
+A.xlTemplate=()=>{
+  const S=D.settings,y=new Date().getFullYear();
+  const blob=XL.write([
+    {name:"MAELEZO",title:true,widths:[110],rows:[["VICOBA SYSTEM - Kiolezo cha kupakia data"],[""],
+      ["1. Jaza karatasi unazohitaji tu. Usibadilishe majina ya karatasi wala vichwa vya safu (mstari wa kwanza)."],
+      ["2. WANACHAMA: namba ya kikundi, majina matatu, simu, anuani, tarehe ya kujiunga, hali (Hai / Amesimamishwa / Amejitoa)."],
+      ["3. SALIO: hisa na jamii za kila mwanachama hadi siku ya kuanza kutumia mfumo. Kiasi kimoja kwa kila mwanachama."],
+      ["4. MIKOPO: mikopo ambayo bado inadaiwa: tarehe, kiasi cha awali, riba % kwa mwezi, aina (Flat / Inayopungua), muda (miezi), na kiasi kilichokwisha lipwa (msingi na riba)."],
+      ["5. MICHANGO (hiari): historia ya michango moja moja. Usiweke hisa/jamii hapa ikiwa tayari umeziweka kwenye SALIO, la sivyo zitahesabiwa mara mbili."],
+      ["6. Tarehe ziandikwe kama 15/03/2026. Namba za simu kama 0712345678 (safu imewekwa kama maandishi ili 0 isipotee)."],
+      ["7. Hifadhi kama .xlsx, kisha kwenye mfumo: Mipangilio > Excel > Pakia faili la Excel. Mfumo unaonyesha makosa kabla ya kuingiza chochote."],
+      [""],["Aina za michango zinazokubalika: "+AINA.join(", ")],["Mzunguko: "+fd(S.anza)+" - "+fd(S.mwisho)]]},
+    {name:"WANACHAMA",header:true,widths:[12,16,16,16,15,22,18,14],textCols:[0,4],lists:{7:HALI},rows:[["Namba","Jina la Kwanza","Jina la Kati","Jina la Mwisho","Simu","Anuani","Tarehe ya Kujiunga","Hali"]]},
+    {name:"SALIO",header:true,widths:[12,14,14,16,30],textCols:[0],rows:[["Namba","Hisa","Jamii","Tarehe ya Salio","Maelezo"]]},
+    {name:"MIKOPO",header:true,widths:[20,16,16,16,14,13,18,16,13,13],textCols:[0,8,9],lists:{4:["Flat","Inayopungua"]},rows:[["Namba ya Mwanachama","Tarehe ya Mkopo","Kiasi cha Mkopo","Riba % kwa Mwezi","Aina ya Riba","Muda (Miezi)","Msingi Uliolipwa","Riba Iliyolipwa","Mdhamini 1","Mdhamini 2"]]},
+    {name:"MICHANGO",header:true,widths:[14,12,22,14,18,30],textCols:[1],lists:{2:AINA},rows:[["Tarehe","Namba","Aina","Kiasi","Lengo","Maelezo"]]}
+  ]);
+  dlBlob(blob,"VICOBA_Kiolezo.xlsx");toast("Kiolezo kimepakuliwa.");
+};
+A.xlExport=()=>{
+  const ms=D.wanachama.map(m=>{const s=mStats(m.id);return [m.id,m.j1,m.j2,m.j3,m.simu,m.anuani,{date:m.tarehe},m.hali,s.hisa,s.jamii,s.deni]});
+  const lo=D.mikopo.map(l=>{const c=loanCalc(l);return [l.id,l.mw,fullName(member(l.mw)||{}),{date:l.tarehe},c.P,num(l.riba),l.aina,num(l.muda),c.riba,c.rejesho,c.paidP,c.paidR,c.deni,c.malimbikizo,c.hali,guarantorText(l)]});
+  const mi=D.michango.map(r=>[r.risiti,{date:r.tarehe},r.mw,fullName(member(r.mw)||{}),r.aina,r.lengo||"",num(r.kiasi),r.mkopo||"",r.maelezo||""]);
+  const mt=D.matumizi.map(r=>[r.id,{date:r.tarehe},r.kundi,r.mradi||"",r.lengo||"",num(r.kiasi),r.maelezo||"",r.vocha||""]);
+  const G=gawio();const gw=G.rows.map(r=>[r.m.id,fullName(r.m),r.hisa,r.jamii,r.msingi,+(r.pct*100).toFixed(2),r.gawio,r.deni,r.kato,r.malipo]);
+  const blob=XL.write([
+    {name:"Wanachama",header:true,widths:[10,14,14,14,14,18,13,12,13,13,13],textCols:[0,4],rows:[["Namba","Jina la Kwanza","Jina la Kati","Jina la Mwisho","Simu","Anuani","Tarehe ya Kujiunga","Hali","Hisa","Jamii","Deni"],...ms]},
+    {name:"Michango",header:true,widths:[11,12,9,24,20,14,12,11,26],rows:[["Risiti","Tarehe","Namba","Jina","Aina","Lengo","Kiasi","Mkopo","Maelezo"],...mi]},
+    {name:"Mikopo",header:true,widths:[10,9,22,12,12,9,12,7,12,12,12,12,12,12,11,22],rows:[["Mkopo","Namba","Jina","Tarehe","Kiasi","Riba %","Aina","Miezi","Jumla Riba","Rejesho/Mwezi","Msingi Uliolipwa","Riba Iliyolipwa","Inayodaiwa","Malimbikizo","Hali","Wadhamini"],...lo]},
+    {name:"Matumizi",header:true,widths:[10,12,24,10,14,12,26,10],rows:[["Namba","Tarehe","Kundi","Mradi","Lengo","Kiasi","Maelezo","Vocha"],...mt]},
+    {name:"Gawio",header:true,widths:[10,24,12,12,12,10,12,12,12,14],rows:[["Namba","Jina","Hisa","Jamii","Mawekezo","Sehemu %","Gawio","Deni","Kato la Deni","Malipo ya Mwisho"],...gw]}
+  ]);
+  dlBlob(blob,"VICOBA_"+slug()+"_"+todayISO()+".xlsx");toast("Faili la Excel limepakuliwa.");
+};
+function dlBlob(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},800)}
+
+load();renderHeader();render();
+if(!storageOk)toast("Kivinjari hiki hakiruhusu kuhifadhi - tumia Pakua Nakala.");
+</script>
+<script>
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
+</script>
+</body>
+</html>
